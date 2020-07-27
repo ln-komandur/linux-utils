@@ -66,6 +66,14 @@ apt-get clean
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
+echo "Cleaning up other stuff - apt-get autoclean && apt-get autoremove && apt autoclean && apt autoremove"
+echo "------------------------------------------------------------------------"
+apt-get autoclean && apt-get autoremove && apt autoclean && apt autoremove
+
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
 echo "Space taken by /var/log/journal/* . Also cleaning it up to be less than 10 days and 1 megabyte"
 echo "------------------------------------------------------------------------"
 du -sh /var/log/journal/*
