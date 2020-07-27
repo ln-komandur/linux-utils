@@ -47,7 +47,7 @@ echo "--------------------------------------------------------------------------
 echo "Space taken by /var/cache/apt folder"
 echo "------------------------------------------------------------------------"
 du -sh /var/cache/apt/
-echo "Cleaning up /var/cache/apt folder"
+echo "Cleaning up /var/cache/apt folder. autoclean && autoremove"
 echo "------------------------------------------------------------------------"
 apt-get autoclean && apt-get autoremove && apt autoclean && apt autoremove
 
@@ -61,14 +61,6 @@ echo "Cleaning up /var/cache/apt/archives folder"
 echo "------------------------------------------------------------------------"
 # this benefits a lot
 apt-get clean
-
-
-echo
-echo
-echo "---------------------------------------------------------------------------------------------------"
-echo "Cleaning up other stuff - apt-get autoclean && apt-get autoremove && apt autoclean && apt autoremove"
-echo "------------------------------------------------------------------------"
-apt-get autoclean && apt-get autoremove && apt autoclean && apt autoremove
 
 
 echo
