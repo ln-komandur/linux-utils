@@ -1,3 +1,4 @@
+echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps if any."
 echo "You are executing the Cache and Log clean-up script as" $USER
 echo
 echo "---------------------------------------------------------------------------------------------------"
@@ -41,6 +42,20 @@ echo "Deleting *.1 files in /var/log/ folder"
 echo "------------------------------------------------------------------------"
 find /var/log -type f -name "*.1" -exec rm -f {} \;
 
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Remove disabled snaps"
+echo "------------------------------------------------------------------------"
+#!/bin/bash
+set -eu
+
+snap list --all | awk '/disabled/{print $1, $3}' |
+    while read disabledsnapname revision; do
+        sudo snap remove "$disabledsnapname" --revision="$revision"
+    done
+
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
@@ -57,7 +72,7 @@ echo "--------------------------------------------------------------------------
 echo "Space taken by /var/cache/apt/archives"
 echo "------------------------------------------------------------------------"
 du -sh /var/cache/apt/archives/
-echo "Cleaning up /var/cache/apt/archives folder"
+echo "Cleaning up /var/cache/apt/archives folder. apt-get clean"
 echo "------------------------------------------------------------------------"
 # this benefits a lot
 apt-get clean
@@ -80,4 +95,6 @@ echo "------------------------------------------------------------------------"
 echo "Vacuuming up /var/log/journal/* folder to keep less than 1 MB days of data"
 echo "------------------------------------------------------------------------"
 journalctl --vacuum-size=1M
+echo
+echo "Exit"
 
