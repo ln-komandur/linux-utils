@@ -111,7 +111,7 @@ echo
 echo
 echo "------------------------------------------------------------------------"
 echo "Current Kernel is as below. DO NOT REMOVE IT" 
-echo "Remove others from the above list using SYNAPTIC package manager to address interdependencies"
+echo "MANUALLY remove others from the above list using SYNAPTIC package manager to address interdependencies"
 echo "Check disk space usage before and after removal using 'df -H'" 
 echo "------------------------------------------------------------------------"
 uname -a
