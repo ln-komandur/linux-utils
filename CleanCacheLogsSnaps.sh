@@ -96,5 +96,25 @@ echo "Vacuuming up /var/log/journal/* folder to keep less than 1 MB days of data
 echo "------------------------------------------------------------------------"
 journalctl --vacuum-size=1M
 echo
+echo
+echo "------------------------------------------------------------------------"
+echo "Number of Kernel Packages installed"
+echo "------------------------------------------------------------------------"
+dpkg --list | egrep -i --color 'linux-image|linux-headers' | wc -l
+echo
+echo
+echo "------------------------------------------------------------------------"
+echo "List of Kernel Packages installed"
+echo "------------------------------------------------------------------------"
+dpkg --list | egrep -i --color 'linux-image|linux-headers'
+echo
+echo
+echo "------------------------------------------------------------------------"
+echo "Current Kernel is as below. DO NOT REMOVE IT" 
+echo "Remove others from the above list using SYNAPTIC package manager to address interdependencies"
+echo "Check disk space usage before and after removal using 'df -H'" 
+echo "------------------------------------------------------------------------"
+uname -a
+echo
+echo
 echo "Exit"
-
