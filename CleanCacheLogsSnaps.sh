@@ -1,5 +1,21 @@
+#!/bin/bash
+#ref: https://unix.stackexchange.com/questions/28791/prompt-for-sudo-password-and-programmatically-elevate-privilege-in-bash-script
+#ref: https://askubuntu.com/a/30157/8698
+
+if (($EUID != 0)); then
+  if [[ -t 1 ]]; then
+#https://unix.stackexchange.com/questions/218715/what-does-t-1-do
+    sudo "$0" "$@"
+  else
+    exec 1>output_file
+    gksu "$0 $@"
+  fi
+  exit
+fi
 echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps if any."
-echo "You are executing the Cache and Log clean-up script as" $USER
+echo "It provides INFORMATION on old kernels that can be deleted manually through other means."
+echo "AUTHENTICATION SUCCESSFUL. You are executing the script as" $USER
+echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
 echo "Size of all files in /var/log/ folder"
