@@ -12,3 +12,10 @@ sudo pip3 install ocrmypdf
 sudo ln -s /usr/bin/local/ocrmypdf /usr/bin/ocrmypdf
 
 ocrmypdf --version # check that the latest version is installed
+
+
+# To additionally install tamil language and tamil script, use the following
+sudo apt-get install tesseract-ocr-tam tesseract-ocr-script-taml
+
+# To additionally install sanskrit language and devanagari script, use the following
+sudo apt-get install tesseract-ocr-san tesseract-ocr-script-deva
