@@ -142,9 +142,10 @@ NO_OF_RC_PACKAGES_TO_PURGE="`dpkg --list | grep "^rc" | wc -l`"
 
 if (($NO_OF_RC_PACKAGES_TO_PURGE != 0)); then
   echo "------------------------------------------------------------------------"
-  echo "The following packages are marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'. They are being purged"
+  echo "There are "$NO_OF_RC_PACKAGES_TO_PURGE" packages marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'."
+  echo "They are being purged as below."
   echo "------------------------------------------------------------------------"
-  dpkg-query -l | grep "\^rc" | cut -d " " -f 3 | xargs dpkg --purge
+  dpkg-query -l | grep "^rc" | cut -d " " -f 3 | xargs dpkg --purge
 else
   echo "There are no packages marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'. None are being purged"
 fi
