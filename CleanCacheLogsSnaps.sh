@@ -126,11 +126,29 @@ dpkg --list | egrep -i --color 'linux-image|linux-headers'
 echo
 echo
 echo "------------------------------------------------------------------------"
-echo "Current Kernel is as below. DO NOT REMOVE IT" 
-echo "MANUALLY remove others from the above list using SYNAPTIC package manager to address interdependencies"
-echo "Check disk space usage before and after removal using 'df -H'" 
-echo "------------------------------------------------------------------------"
+echo "Current Kernel is as below. DO NOT REMOVE IT." 
 uname -a
+echo "------------------------------------------------------------------------"
+echo "This script will remove packages including kernel versions that are marked 'rc' in dpkg --list. " 
+echo "If they still linger around, then MANUALLY remove them from the above list using SYNAPTIC or MUON " 
+echo "package manager to address interdependencies. Check disk space usage before and after removal using 'df -H'" 
+echo "------------------------------------------------------------------------"
+echo
+echo
+
+#Purges packages marked rc, if any. Refer examples in https://linuxprograms.wordpress.com/2010/05/12/remove-packages-marked-rc/
+
+NO_OF_RC_PACKAGES_TO_PURGE="`dpkg --list | grep "^rc" | wc -l`"
+
+if (($NO_OF_RC_PACKAGES_TO_PURGE != 0)); then
+  echo "------------------------------------------------------------------------"
+  echo "The following packages are marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'. They are being purged"
+  echo "------------------------------------------------------------------------"
+  dpkg-query -l | grep "\^rc" | cut -d " " -f 3 | xargs dpkg --purge
+else
+  echo "There are no packages marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'. None are being purged"
+fi
+
 echo
 echo
 echo "Exit"
