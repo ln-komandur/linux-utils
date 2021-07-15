@@ -9,3 +9,6 @@ Remove `splash` in this line in `/etc/default/grub` and `usbcore.autosuspend=-1`
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
 Not having enough space for root may even stop your system from booting up (will not load X)
 
+![Alt text](low_root_disk_space_popup_gnome.png "a title")
+
+![Alt text](low_root_disk_space_popup_ubuntu.png "a title")
