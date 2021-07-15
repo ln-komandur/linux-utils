@@ -21,6 +21,35 @@ Restart udisks2 and check its status to see if the warnings are gone
  
 `sudo systemctl status udisks2`
 
+## blueman prompt / error requiring every user to authenticate with sudo privilleges upon login
+
+View blueman.rules with
+
+`$ cat /usr/share/polkit-1/rules.d/blueman.rules`
+
+```
+// Allow users in sudo or netdev group to use blueman feature requiring root without authentication
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.network.setup" ||
+         action.id == "org.blueman.dhcp.client" ||
+         action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.pppd.pppconnect") &&
+        subject.local && subject.active &&
+        (subject.isInGroup("sudo") || subject.isInGroup("netdev"))) {
+        return polkit.Result.YES;
+    }
+});
+
+```
+
+Confirm if the logged in user belongs to `netdev` group by executing 
+
+`$ groups`
+
+If not, include them in `netdev` group by executing
+
+`sudo gpasswd -a ${USER} netdev` and check again by executing `groups`
+
 
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
