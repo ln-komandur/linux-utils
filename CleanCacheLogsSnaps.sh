@@ -150,6 +150,22 @@ else
   echo "There are no packages marked \"rc\" in 'dpkg --list' or 'dpkg-query -l'. None are being purged"
 fi
 
+
+#Re-installs packages marked ic, if any. 
+
+NO_OF_IC_PACKAGES_TO_REINSTALL="`dpkg --list | grep "^ic" | wc -l`"
+
+if (($NO_OF_IC_PACKAGES_TO_REINSTALL != 0)); then
+  echo "------------------------------------------------------------------------"
+  echo "There are "$NO_OF_IC_PACKAGES_TO_REINSTALL" packages marked \"ic\" in 'dpkg --list' or 'dpkg-query -l'."
+  echo "They are being re-installed as below."
+  echo "------------------------------------------------------------------------"
+  dpkg-query -l | grep "^ic" | cut -d " " -f 3 | xargs apt-get install
+else
+  echo "There are no packages marked \"ic\" in 'dpkg --list' or 'dpkg-query -l'. None are being re-installed"
+fi
+
+
 echo
 echo
 echo "Exit"
