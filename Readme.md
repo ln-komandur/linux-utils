@@ -65,6 +65,20 @@ and check the status
 
 `sudo ufw status verbose`
 
+
+## Create common mount points for partitions commonly accessed by all users and include them in fstab.
+This will help in avoiding warnings in `journalctl -u udisks2` whenever a super user who mounted these partitions re-boots. The boot process will try to re-mount the partition with the <username> and it cannot do it as the user is not logged in yet. This warning will look like `udisksd[695]: mountpoint /media/<username>/<partition-name> is invalid, cannot recover the canonical path`
+ 
+ `sudo mkdir /media/all-users-<partition-name>` creates a common mount point for all users
+ `sudo blkid | grep UUID=` gets the UUID of those partitions
+  `sudo nano /etc/fstab` opens fstab to put the mount point against the UUID
+ 
+ ```
+# The below line is added so that the path to the CommonData partition is common for all users
+# Change between auto and noauto based on whether to mount this partition automatically at boot
+UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
+```
+ 
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
 Not having enough space for root may even stop your system from booting up (will not load X)
