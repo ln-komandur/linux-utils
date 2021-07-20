@@ -51,6 +51,20 @@ If not, include them in `netdev` group by executing
 `sudo gpasswd -a ${USER} netdev` and check again by executing `groups`
 
 
+## Allow multicast incoming pings / packets from your router if you use UFW
+
+Add the following rule where `192.168.254.1` is an example of your router's IP address
+
+`sudo ufw allow in from 192.168.254.1 to 224.0.0.0/24` - Refer - https://bbs.archlinux.org/viewtopic.php?id=212452 or https://forums.linuxmint.com/viewtopic.php?t=111630
+
+Then reload the firewall
+
+`sudo ufw reload`
+
+and check the status
+
+`sudo ufw status verbose`
+
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
 Not having enough space for root may even stop your system from booting up (will not load X)
