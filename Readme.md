@@ -114,9 +114,9 @@ Execute `dmesg | grep NVRM` and see if you get the errors below
 [   17.214726] NVRM: drivers including, but not limited to, vesafb, may result in
 [   17.214729] NVRM: corruption and stability problems, and is not supported.
 ```
- Then edit the `/etc/default/grub` file and add parameters to the line
+ Then edit the `/etc/default/grub` file and add kernel parameters to the line
 
- `GRUB_CMDLINE_LINUX="video=vesafb:off vga=normal"` and 
+ `GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"` and execute
  
  `sudo update-grub`
  
