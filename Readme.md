@@ -79,6 +79,48 @@ This will help in avoiding warnings in `journalctl -u udisks2` whenever a super 
 UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
 ```
  
+## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
+### Driver Installation error
+Install NVIDIA binary driver - vesion 340.108 from nvidia-340 (properitary, tested). If you get an error as below
+``` 
+ pk-client-error-quark: The following packages have unmet dependencies:
+  nvidia-340: Depends: lib32gcc-s1 but it is not going to be installed
+              Depends: libc6-i386 but it is not going to be installed (268)
+```
+then install it like below
+
+ `sudo ubuntu-drivers autoinstall`
+
+This will give the same errors, but with the version of the package it is expecting. In this case 2.31-0ubuntu9.2 (For e.g. downgrade from 2.31-0ubuntu9.3)
+
+`sudo apt-get install libc6=2.31-0ubuntu9.2 libc-bin=2.31-0ubuntu9.2`
+
+`sudo apt-get install libc6-i386`
+
+`sudo ubuntu-drivers autoinstall`
+
+`sudo apt-get update`
+
+ Reference https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken
+
+ 
+### NVRM VGA errors in dmesg
+Execute `dmesg | grep NVRM` and see if you get the errors below
+
+```
+[   17.214717] NVRM: Your system is not currently configured to drive a VGA console
+[   17.214720] NVRM: on the primary VGA device. The NVIDIA Linux graphics driver
+[   17.214723] NVRM: requires the use of a text-mode VGA console. Use of other console
+[   17.214726] NVRM: drivers including, but not limited to, vesafb, may result in
+[   17.214729] NVRM: corruption and stability problems, and is not supported.
+```
+ Then edit the `/etc/default/grub` file and add parameters to the line
+
+ `GRUB_CMDLINE_LINUX="video=vesafb:off vga=normal"` and 
+ 
+ `sudo update-grub`
+ 
+ 
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
 Not having enough space for root may even stop your system from booting up (will not load X)
