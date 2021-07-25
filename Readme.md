@@ -1,7 +1,7 @@
 # Speeding up the boot process
 Run `DisableUnnecessaryServices.sh` to disable `NetworkManager-wait-online.service` , `plymouth-quit-wait.service` , `ModemManager.service` , `ofono.service` (IF Installed)
 
-Remove `splash` in this line in `/etc/default/grub` and `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work
+Remove `splash` in this line in `/etc/default/grub` and `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work.
 
 `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`and run `sudo update-grub`
 
@@ -23,9 +23,9 @@ Restart udisks2 and check its status to see if the warnings are gone
 
 ## blueman prompt / error requiring every user to authenticate with sudo privilleges upon login
 
-View blueman.rules with
+View `blueman.rules` with
 
-`$ cat /usr/share/polkit-1/rules.d/blueman.rules`
+`cat /usr/share/polkit-1/rules.d/blueman.rules`
 
 ```
 // Allow users in sudo or netdev group to use blueman feature requiring root without authentication
@@ -44,7 +44,7 @@ polkit.addRule(function(action, subject) {
 
 Confirm if the logged in user belongs to `netdev` group by executing 
 
-`$ groups`
+`groups`
 
 If not, include them in `netdev` group by executing
 
@@ -67,11 +67,13 @@ and check the status
 
 
 ## Create common mount points for partitions commonly accessed by all users and include them in fstab.
-This will help in avoiding warnings in `journalctl -u udisks2` whenever a super user who mounted these partitions re-boots. The boot process will try to re-mount the partition with the <username> and it cannot do it as the user is not logged in yet. This warning will look like `udisksd[695]: mountpoint /media/<username>/<partition-name> is invalid, cannot recover the canonical path`
+This will help in avoiding warnings in `journalctl -u udisks2` whenever a super user who mounted these partitions re-boots as these warning rould appear as the boot process tries to re-mount those partition with the <username> in their path and it cannot do it as the user is not logged in yet. This warning will look like `udisksd[695]: mountpoint /media/<username>/<partition-name> is invalid, cannot recover the canonical path`
  
- `sudo mkdir /media/all-users-<partition-name>` creates a common mount point for all users
- `sudo blkid | grep UUID=` gets the UUID of those partitions
-  `sudo nano /etc/fstab` opens fstab to put the mount point against the UUID
+`sudo mkdir /media/all-users-<partition-name>` creates a common mount point for all users
+
+`sudo blkid | grep UUID=` gets the UUID of those partitions
+
+`sudo nano /etc/fstab` opens fstab to put the mount point against the UUID
  
  ```
 # The below line is added so that the path to the CommonData partition is common for all users
@@ -81,27 +83,29 @@ UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4
  
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 ### Driver Installation error
-Install NVIDIA binary driver - vesion 340.108 from nvidia-340 (properitary, tested). If you get an error as below
+Install NVIDIA binary driver - vesion 340.108 from nvidia-340 (properitary, tested) from "Additional Drivers" in the GUI. If you get an error as below
 ``` 
  pk-client-error-quark: The following packages have unmet dependencies:
   nvidia-340: Depends: lib32gcc-s1 but it is not going to be installed
               Depends: libc6-i386 but it is not going to be installed (268)
 ```
-then install it like below
+then re-attempt the installation like below from the terminal
 
- `sudo ubuntu-drivers autoinstall`
+`sudo ubuntu-drivers autoinstall`
 
-This will give the same errors, but with the version of the package it is expecting. In this case 2.31-0ubuntu9.2 (For e.g. downgrade from 2.31-0ubuntu9.3)
+This will give the same errors as in the GUI, but with the version of the package it is expecting. In this case 2.31-0ubuntu9.2 (For e.g. downgrade from 2.31-0ubuntu9.3). Install those specific version of the package like below.
 
 `sudo apt-get install libc6=2.31-0ubuntu9.2 libc-bin=2.31-0ubuntu9.2`
 
 `sudo apt-get install libc6-i386`
+ 
+And then re-attempt the driver installation
 
 `sudo ubuntu-drivers autoinstall`
 
 `sudo apt-get update`
 
- Reference https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken
+Reference https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken
 
  
 ### NVRM VGA errors in dmesg
@@ -114,12 +118,17 @@ Execute `dmesg | grep NVRM` and see if you get the errors below
 [   17.214726] NVRM: drivers including, but not limited to, vesafb, may result in
 [   17.214729] NVRM: corruption and stability problems, and is not supported.
 ```
- Then edit the `/etc/default/grub` file and add kernel parameters to the line
+Then edit the `/etc/default/grub` file and add kernel parameters to the line
 
- `GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"` and execute
+`GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"` and execute
  
- `sudo update-grub`
+`sudo update-grub`
  
+### Disable NVIDIA Splash screen
+ 
+Execute `sudo nvidia-xconfig --no-logo` to disable NVIDIA Splash screen and `sudo nvidia-xconfig --logo` to enable it back again if needed
+
+
  
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
