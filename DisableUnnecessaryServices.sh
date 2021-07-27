@@ -13,7 +13,7 @@ echo "Stopping and Disabling ModemManager.service"
 systemctl stop ModemManager.service
 systemctl disable ModemManager.service
 
-echo "Stopping and Disabling ofono.service (IF Installed)"
-systemctl stop ofono.service
-systemctl disable ofono.service
+echo "Stopping and Disabling ofono.service and dundee.service (IF Installed)"
+systemctl stop ofono.service dundee.service
+systemctl disable ofono.service dundee.service
 
