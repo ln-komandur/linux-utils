@@ -9,6 +9,6 @@
     1. Select the Keyboard input method as "IBus"
 
 1. Go to "Preference" and open the "IBus Preferences" app
-    1.  Go to the "Input" tab and add the required Keyboards for the languages. e.g. Tamil - itrans (m17n), Sanskrit - itrans (m17n)
+    1.  Go to the "Input Method" tab and add the required Keyboards for the languages. e.g. Tamil - itrans (m17n), Sanskrit - itrans (m17n)
     1.  In the General tab, configure short cuts
     1.  In the "Advanced" tab, check "Use System Keyboard Layout"
