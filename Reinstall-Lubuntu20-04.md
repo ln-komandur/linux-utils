@@ -139,12 +139,12 @@ Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all 
 ### ====================== Boot Time below ======================
 ```
 
-firstuser@firstuser-inspiron1720:~$ systemd-analyze time
+$ systemd-analyze time
 Startup finished in 4.619s (kernel) + 11.798s (userspace) = 16.418s 
 graphical.target reached after 11.616s in userspace
 
 
-firstuser@firstuser-inspiron1720:~$ systemd-analyze critical-chain 
+$ systemd-analyze critical-chain 
 The time when unit became active or started is printed after the "@" character.
 The time the unit took to start is printed after the "+" character.
 
@@ -162,7 +162,7 @@ graphical.target @11.616s
                     └─dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.device @7.373s
 
 
-firstuser@firstuser-inspiron1720:~$ systemd-analyze blame 
+$ systemd-analyze blame 
 6.849s dev-sda1.device                                                                          
 4.086s systemd-journal-flush.service                                                            
 4.059s systemd-udevd.service                                                                    
