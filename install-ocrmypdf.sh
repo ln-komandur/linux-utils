@@ -1,4 +1,5 @@
 # Reference https://ocrmypdf.readthedocs.io/en/latest/installation.html
+# installing the latest version of ocrmypdf in Ubuntu or Lubuntu 20-04
 ocrmypdf --version # check the initial version
 
 sudo apt-get -y remove ocrmypdf  # remove system ocrmypdf, if installed
