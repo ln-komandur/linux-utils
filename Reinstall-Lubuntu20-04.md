@@ -76,7 +76,7 @@
 2. `sudo apt full-upgrade`
 
 ## Support for typing in multiple languages if needed
-1. Refer [Installing Phonetic Keyboards](Phonetic Keyboards.md) 
+1. Refer [Installing Phonetic Keyboards](Phonetic-Keyboards.md) 
 
 ## Install zoom and signal if needed
 1. `sudo dpkg -i ./Downloads/zoom_amd64_5-7-4.deb`
