@@ -96,12 +96,12 @@
 ### Add the second user to group of the first user to share common files
 `sudo gpasswd -a seconduser firstuser` 
 
-## Bluetooth application with more functionality
+## Bluetooth applet that supports receiving files
 1. `sudo apt-get remove bluedevil`
 2. `sudo apt-get install blueman`
-3. `systemctl status blueman-mechanism.service # Check for 'gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed'`
+3. `systemctl status blueman-mechanism.service # Check for 'gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed'` Note: The service might have already failed to start.
 4. `sudo systemctl stop blueman-mechanism.service # Stop if for 'gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed' is present`
-5. `sudo systemctl disable blueman-mechanism.service # Disable
+5. `sudo systemctl disable blueman-mechanism.service # Disable` Note: The service will still try to start and give the same error. But it will not hold up the boot process like before.
 6. `sudo gpasswd -a seconduser netdev # Add the second user to netdev group to avoid blueman authentication prompts if seen`
 
  
