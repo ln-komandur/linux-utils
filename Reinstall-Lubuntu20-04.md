@@ -140,66 +140,65 @@ Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all 
 ```
 
 firstuser@firstuser-inspiron1720:~$ systemd-analyze time
-Startup finished in 4.548s (kernel) + 15.691s (userspace) = 20.240s 
-graphical.target reached after 15.488s in userspace
+Startup finished in 4.619s (kernel) + 11.798s (userspace) = 16.418s 
+graphical.target reached after 11.616s in userspace
 
 
 firstuser@firstuser-inspiron1720:~$ systemd-analyze critical-chain 
 The time when unit became active or started is printed after the "@" character.
 The time the unit took to start is printed after the "+" character.
 
-graphical.target @15.488s
-└─multi-user.target @15.488s
-  └─blueman-mechanism.service @4.469s +11.018s
-    └─basic.target @4.375s
-      └─sockets.target @4.375s
-        └─uuidd.socket @4.375s
-          └─sysinit.target @4.347s
-            └─systemd-timesyncd.service @3.606s +740ms
-              └─systemd-tmpfiles-setup.service @3.464s +118ms
-                └─local-fs.target @3.418s
-                  └─home.mount @3.389s +28ms
-                    └─systemd-fsck@dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.service @3.261s +114ms
-                      └─dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.device @3.182s
+graphical.target @11.616s
+└─udisks2.service @9.877s +1.737s
+  └─basic.target @9.507s
+    └─sockets.target @9.507s
+      └─uuidd.socket @9.507s
+        └─sysinit.target @9.468s
+          └─haveged.service @9.467s
+            └─apparmor.service @8.492s +970ms
+              └─local-fs.target @8.488s
+                └─home.mount @8.471s +16ms
+                  └─systemd-fsck@dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.service @7.376s +1.091s
+                    └─dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.device @7.373s
 
 
 firstuser@firstuser-inspiron1720:~$ systemd-analyze blame 
-11.018s blueman-mechanism.service                                                                
-10.301s man-db.service                                                                           
-10.296s udisks2.service                                                                          
- 3.068s logrotate.service                                                                        
- 2.550s dev-sda1.device                                                                          
- 2.118s accounts-daemon.service                                                                  
- 1.862s networkd-dispatcher.service                                                              
- 1.580s systemd-logind.service                                                                   
- 1.381s avahi-daemon.service                                                                     
- 1.378s upower.service                                                                           
- 1.331s apport.service                                                                           
- 1.233s NetworkManager.service                                                                   
- 1.178s bluetooth.service                                                                        
- 1.080s gpu-manager.service                                                                      
-  827ms wpa_supplicant.service                                                                   
-  757ms thermald.service                                                                         
-  747ms alsa-restore.service                                                                     
-  740ms systemd-timesyncd.service                                                                
-  737ms systemd-resolved.service                                                                 
-  706ms grub-common.service                                                                      
-  694ms systemd-rfkill.service                                                                   
-  687ms systemd-journald.service                                                                 
-  685ms apparmor.service                                                                         
-  594ms keyboard-setup.service                                                                   
-  580ms systemd-udev-trigger.service                                                             
-  482ms polkit.service                                                                           
-  445ms e2scrub_reap.service                                                                     
-  423ms kerneloops.service                                                                       
-  410ms rsyslog.service                                                                          
-  388ms user@1000.service                                                                        
-  309ms grub-initrd-fallback.service                                                             
-  302ms systemd-journal-flush.service                                                            
-  286ms pppd-dns.service                                                                         
-  278ms systemd-udevd.service                                                                    
-  213ms lvm2-monitor.service                                                                     
-  180ms systemd-modules-load.service                                                             
-  153ms dev-mqueue.mount             
+6.849s dev-sda1.device                                                                          
+4.086s systemd-journal-flush.service                                                            
+4.059s systemd-udevd.service                                                                    
+1.737s udisks2.service                                                                          
+1.338s blueman-mechanism.service                                                                
+1.290s upower.service                                                                           
+1.240s accounts-daemon.service                                                                  
+1.188s networkd-dispatcher.service                                                              
+1.091s systemd-fsck@dev-disk-by\x2duuid-ffc6e43d\x2d06d8\x2d4499\x2db3f8\x2d45730e965e33.service
+ 970ms apparmor.service                                                                         
+ 708ms avahi-daemon.service                                                                     
+ 682ms bluetooth.service                                                                        
+ 676ms systemd-journald.service                                                                 
+ 629ms NetworkManager.service                                                                   
+ 619ms dev-disk-by\x2duuid-e5367b61\x2d1c1b\x2d4379\x2db0a2\x2d2c5b4bc981dd.swap                
+ 599ms keyboard-setup.service                                                                   
+ 567ms apport.service                                                                           
+ 560ms systemd-logind.service                                                                   
+ 539ms systemd-udev-trigger.service                                                             
+ 478ms alsa-restore.service                                                                     
+ 428ms systemd-rfkill.service                                                                   
+ 408ms systemd-resolved.service                                                                 
+ 402ms grub-common.service                                                                      
+ 391ms user@1000.service                                                                        
+ 375ms thermald.service                                                                         
+ 358ms wpa_supplicant.service                                                                   
+ 340ms kerneloops.service                                                                       
+ 337ms gpu-manager.service                                                                      
+ 328ms e2scrub_reap.service                                                                     
+ 281ms systemd-timesyncd.service                                                                
+ 255ms rsyslog.service                                                                          
+ 222ms polkit.service                                                                           
+ 198ms lvm2-monitor.service                                                                     
+ 198ms pppd-dns.service                                                                         
+ 196ms systemd-modules-load.service                                                             
+ 162ms dev-hugepages.mount                                                                      
+ 159ms dev-mqueue.mount              
 
 ```
