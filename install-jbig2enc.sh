@@ -1,3 +1,4 @@
+# Install jbig2 encoding in Ubuntu or Lubuntu 20.04
 git clone https://github.com/agl/jbig2enc
 cd jbig2enc/
 sudo apt install build-essential automake autotools-dev libtool
