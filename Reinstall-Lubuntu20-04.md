@@ -41,6 +41,8 @@
 2. Then perform the update prompted in the GUI soon after restart or with `sudo apt update && sudo apt upgrade`
 
 ## Purge unnecessary packages and disable unnecessary services
+Refer "Speeding up the boot process" in [Read Me](Readme.md)
+
 1. `sudo apt-get purge plymouth snapd` 
 2. `sudo systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service` 
 3. `sudo systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service`
@@ -48,21 +50,12 @@
 
 
 ## Include swap and other partitions in fstab
-1. `blkid # Get UUIDs of all partitions`
-2. `sudo mkdir /media/all-users-nextcloud-data # Create user agnostic mount points for each`
-3. `sudo mkdir /media/all-users-commondata # Create user agnostic mount points for each`
-4. `sudo mkdir /media/all-users-vault # Create user agnostic mount points for each`
-5. `sudo nano /etc/fstab # Include UUID of Swap partition and then the UUIDs and mount points for each user agnostic partition above`
-6. `sudo mount -a # Check if the edits are good`
-7. `swapon # Turn on Swap`
+1. Refer "Create common mount points for partitions commonly accessed by all users and include them in fstab." in [Read Me](Readme.md)
+2. Remember to include UUID of Swap partition in `/etc/fstab` in the above. Put it after the mount points for "/" (root), "/home" and "tmpfs"
+3. `swapon # Turn on Swap`
 
 ## Fix udisks2 raid warnings
-1. `journalctl -b | grep udisks`
-2. `sudo apt-get install libblockdev-crypto2 libblockdev-mdraid2`
-3. `sudo systemctl status udisks2`
-4. `sudo systemctl restart udisks2`
-5. `sudo systemctl status udisks2`
-6. `journalctl -b | grep udisks`
+Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 
 ## Remove NVIDIA Splash logo
 `sudo nvidia-xconfig --no-logo`
@@ -99,10 +92,8 @@
 ## Bluetooth applet that supports receiving files
 1. `sudo apt-get remove bluedevil`
 2. `sudo apt-get install blueman`
-3. `systemctl status blueman-mechanism.service # Check for 'gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed'` Note: The service might have already failed to start.
-4. `sudo systemctl stop blueman-mechanism.service # Stop if for 'gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed' is present`
-5. `sudo systemctl disable blueman-mechanism.service # Disable` Note: The service will still try to start and give the same error. But it will not hold up the boot process like before.
-6. `sudo gpasswd -a seconduser netdev # Add the second user to netdev group to avoid blueman authentication prompts if seen`
+3. Refer "blueman gtk_icon_theme_get_for_screen warnings" in [Read Me](Readme.md)
+4. Add the second user to netdev group to avoid blueman authentication prompts if seen. `sudo gpasswd -a seconduser netdev`. Refer "blueman prompt / error requiring every user to authenticate with sudo privilleges upon login" in [Read Me](Readme.md)
 
  
 ## Preferred PDF viewer
