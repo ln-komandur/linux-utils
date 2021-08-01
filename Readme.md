@@ -19,7 +19,7 @@ Restart udisks2 and check its status to see if the warnings are gone
  
 `sudo systemctl restart udisks2`
  
-`sudo systemctl status udisks2`
+`journalctl -b | grep udisks` or `sudo systemctl status udisks2`
 
 ## blueman prompt / error requiring every user to authenticate with sudo privilleges upon login
 
@@ -50,6 +50,11 @@ If not, include them in `netdev` group by executing
 
 `sudo gpasswd -a ${USER} netdev` and check again by executing `groups`
 
+### blueman gtk_icon_theme_get_for_screen warnings
+1. Check for "gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed". Note: The service might have already failed to start. `systemctl status blueman-mechanism.service`
+2. Stop if "gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed" is present `sudo systemctl stop blueman-mechanism.service`
+3. Disable blueman-mechanism.service. Note: The service will still try to start and give the same error. But it will not hold up the boot process like before.
+ `sudo systemctl disable blueman-mechanism.service` 
 
 ## Allow multicast incoming pings / packets from your router if you use UFW
 
@@ -80,6 +85,8 @@ This will help in avoiding warnings in `journalctl -u udisks2` whenever a super 
 # Change between auto and noauto based on whether to mount this partition automatically at boot
 UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
 ```
+`sudo mount -a # Check if the mount points are good per the edits made in fstab`
+
  
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 ### Driver Installation error
