@@ -18,7 +18,7 @@
 1. Go to "Preference" and open the "IBus Preferences" app
     1.  Go to the "Input Method" tab and add the required Keyboards for the languages. e.g. Tamil - itrans (m17n), Sanskrit - itrans (m17n)
         1. ![Alt text](IBus%20Input%20Method%20tab.jpg "IBus Input Method tab")
-        2. ![Alt text](Select%Language%20popup.jpg "Select Language Popup")
+        2. ![Alt text](Select%20Language%20popup.jpg "Select Language Popup")
     1.  In the General tab, configure shortcuts
         1. ![Alt text](IBus%20General%20tab.jpg "IBus General tab")
     1.  In the "Advanced" tab, check "Use System Keyboard Layout"
