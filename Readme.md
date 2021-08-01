@@ -159,7 +159,7 @@ Boot000B* Onboard NIC(IPV4)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2
 Boot000C* Onboard NIC(IPV6)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2b8f3,0)/IPv6([::]:<->[::]:,0,0)..BO
 
 ```
-It may be required to go over the above steps a couple of times if a message like the below appears soon after BIOS Flash on "Secure Boot Violation" like below
+It may be required to go over this step a couple of times if a red message on "Secure Boot Violation" appears soon after BIOS Flash like below
 
 ![Alt text](secure-boot-violation.jpg "Secure Boot Violation")
  
