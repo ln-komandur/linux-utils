@@ -146,7 +146,7 @@ Execute `sudo nvidia-xconfig --no-logo` to disable NVIDIA Splash screen and `sud
 3. `sudo update-grub`, reboot and check `dmesg --level=warn` if the MDS CPU bug warning is gone
 
 ### EFI Secure boot
-1. `sudo efibootmgr -v` and check if `BootCurrent` shows `0000`, which in turnpoints to `SHIMX64.EFI`. If not change the boot order to SHIMX64.EFI in the BIOS Boot order. Refer [this link](https://askubuntu.com/questions/871179/secure-boot-error-invalid-signature-detected-check-secure-boot-policy-in-setup), [This link](https://askubuntu.com/questions/840602/double-ubuntu-entry-in-bios-boot-options) 
+1. `sudo efibootmgr -v` and check if `BootCurrent` shows `0000`, which in turnpoints to `SHIMX64.EFI`. If not change the boot order to SHIMX64.EFI in the BIOS Boot order. Refer [Secure Boot Error: Invalid signature detected. Check secure boot policy in setup](https://askubuntu.com/questions/871179/secure-boot-error-invalid-signature-detected-check-secure-boot-policy-in-setup), [Double Ubuntu entry in BIOS boot options](https://askubuntu.com/questions/840602/double-ubuntu-entry-in-bios-boot-options) 
  
  
 ```
@@ -159,6 +159,10 @@ Boot000B* Onboard NIC(IPV4)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2
 Boot000C* Onboard NIC(IPV6)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2b8f3,0)/IPv6([::]:<->[::]:,0,0)..BO
 
 ```
+It may be required to go over the above steps a couple of times if a message like the below appears soon after BIOS Flash on "Secure Boot Violation" like below
+
+![Alt text](secure-boot-violation.jpg "Secure Boot Violation")
+ 
  
 # Regular Cleanup
 Periodically run the `CleanCacheAndLogs.sh` as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
