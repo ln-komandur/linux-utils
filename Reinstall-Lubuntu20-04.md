@@ -1,9 +1,12 @@
 # Taking backups
 
 ## Backup the following
+
+**Note:** This is a precautionary step. Restoration of any of these backups is not covered as that need did not arise (knock on good wood)
 1. `/home/<username>` folders of each user who needs to be restored post reinstallation. Ensure that they include the respective .bash_rc and .profile files
 2. `/etc/default/grub`
 3. `/etc/fstab`
+4. Export bookmarks from all browsers of all users and take a backup
 
 ## Users' UIDs and their groups. 
 
