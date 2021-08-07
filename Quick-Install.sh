@@ -81,7 +81,7 @@ echo "INSTALLING GAMES - (1) KSUDOKU (2) KPAT (CARD GAME) (3) KMAHJONGG (4) KNIG
 echo "apt-get install ksudoku kpat kmahjongg knights"
 echo "---------------------------------------------------------------------------------------------------"
 
-apt-get install ksudoku kpat kmahjongg knights okular 
+apt-get install ksudoku kpat kmahjongg knights 
 
 
 echo
