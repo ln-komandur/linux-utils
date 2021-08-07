@@ -100,7 +100,10 @@ Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 1. `sudo apt-get install okular`
 2. `sudo apt-get purge qpdfview`
 
- 
+## Games
+Install KDE games for Sudoko, Card Games, Mahjongg & Chess with
+
+`sudo apt-get install ksudoku kpat kmahjongg knights`
 
 ## jbig2 encoding
 Use the commands in the script [Install JBIG2ENC](install-jbig2enc.sh) one by one
