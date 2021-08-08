@@ -74,11 +74,19 @@ Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 ## Support for typing in multiple languages if needed
 1. Refer [Installing Phonetic Keyboards](Phonetic-Keyboards.md) 
 
-## Install zoom and signal if needed
-1. `sudo dpkg -i ./Downloads/zoom_amd64_5-7-4.deb`
-2. `wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg`
-3. `echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |sudo tee -a /etc/apt/sources.list.d/signal-xenial.list`
-4. `sudo apt update && sudo apt install signal-desktop`
+## Install zoom if needed
+1. `sudo dpkg -i ./Downloads/zoom_amd64.deb`
+2. Use `sudo apt --fix-broken install` to fix the follwing errors and re-execute the above command if needed - refer [this link](https://askubuntu.com/questions/1244720/dependency-errors-while-installing-zoom-on-ubuntu-20-04) 
+```
+        dpkg: dependency problems prevent configuration of zoom:
+         zoom depends on libgl1-mesa-glx; however:
+```
+
+## Install signal if needed
+
+1. `wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg`
+2. `echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |sudo tee -a /etc/apt/sources.list.d/signal-xenial.list`
+3. `sudo apt update && sudo apt install signal-desktop`
 
  
  
