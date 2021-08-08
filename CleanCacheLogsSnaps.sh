@@ -169,3 +169,4 @@ fi
 echo
 echo
 echo "Exit"
+exit
