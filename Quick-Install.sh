@@ -39,7 +39,7 @@ echo "STOPPING SERVICES (1) NetworkManager-wait-online (2) ModemManager (3) ofon
 echo "systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service"
 echo "---------------------------------------------------------------------------------------------------"
 
-systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service
+systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
 echo
 echo
@@ -48,7 +48,7 @@ echo "DISABLING SERVICES (1) NetworkManager-wait-online (2) ModemManager (3) ofo
 echo "systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service"
 echo "---------------------------------------------------------------------------------------------------"
 
-systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service
+systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
 echo
 echo
@@ -110,9 +110,4 @@ echo "apt full-upgrade"
 echo "---------------------------------------------------------------------------------------------------"
 
 apt full-upgrade
-
-
-
-
-
-
+exit
