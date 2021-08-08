@@ -110,4 +110,8 @@ echo "apt full-upgrade"
 echo "---------------------------------------------------------------------------------------------------"
 
 apt full-upgrade
+
+echo
+echo
+echo "Exit"
 exit
