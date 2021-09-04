@@ -26,29 +26,29 @@ ubuntu-drivers autoinstall
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "PURGING (1) PLYMOUTH (2) SNAPD (3) BLUEDEVIL (4) QPDFVIEW (5) 2048-QT"
-echo "apt-get purge plymouth snapd bluedevil qpdfview 2048-qt"
+echo "PURGING (1) PLYMOUTH (2) SNAPD (3) BLUEDEVIL (4) QPDFVIEW (5) 2048-QT (6) ModemManager"
+echo "apt-get purge plymouth snapd bluedevil qpdfview 2048-qt modemmanager"
 echo "---------------------------------------------------------------------------------------------------"
 
-apt-get purge plymouth snapd bluedevil qpdfview 2048-qt
-
-echo
-echo
-echo "---------------------------------------------------------------------------------------------------"
-echo "STOPPING SERVICES (1) NetworkManager-wait-online (2) ModemManager (3) ofono (4) dundee (5) blueman-mechanism"
-echo "systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service"
-echo "---------------------------------------------------------------------------------------------------"
-
-systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
+apt-get purge plymouth snapd bluedevil qpdfview 2048-qt modemmanager
 
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "DISABLING SERVICES (1) NetworkManager-wait-online (2) ModemManager (3) ofono (4) dundee (5) blueman-mechanism"
-echo "systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service"
+echo "STOPPING SERVICES (1) NetworkManager-wait-online (2) ofono (3) dundee (4) blueman-mechanism"
+echo "systemctl stop NetworkManager-wait-online.service ofono.service dundee.service blueman-mechanism.service"
 echo "---------------------------------------------------------------------------------------------------"
 
-systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
+systemctl stop NetworkManager-wait-online.service ofono.service dundee.service blueman-mechanism.service
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "DISABLING SERVICES (1) NetworkManager-wait-online (2) ofono (3) dundee (4) blueman-mechanism"
+echo "systemctl disable NetworkManager-wait-online.service ofono.service dundee.service blueman-mechanism.service"
+echo "---------------------------------------------------------------------------------------------------"
+
+systemctl disable NetworkManager-wait-online.service ofono.service dundee.service blueman-mechanism.service
 
 echo
 echo
