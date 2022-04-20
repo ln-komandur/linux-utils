@@ -23,3 +23,8 @@
         1. ![Alt text](IBus%20General%20tab.jpg "IBus General tab")
     1.  In the "Advanced" tab, check "Use System Keyboard Layout"
         1. ![Alt text](IBus%20Advanced%20tab.jpg "IBus Advanced tab")
+
+
+1. Links to Phonetic Key Maps
+    1.  Tamil - itrans (m17n) - https://fedoraproject.org/wiki/I18N/Indic/TamilKeyboardLayouts 
+    2.  Sanskrit - itrans (m17n) - https://help.keyman.com/keyboard/itrans_devanagari_sanskrit_vedic/1.2.1/itrans_devanagari_sanskrit_vedic
