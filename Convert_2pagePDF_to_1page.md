@@ -52,6 +52,7 @@ for file in *.png
 do
     echo "Removing background on - " $file
     convert "$file" -transparent white -alpha remove -alpha off "./whitebkgnd/$file"
+    # convert "$file" -background white -alpha remove -alpha off "./whitebkgnd/$file"    
 done
 ```
 Also use any other means to enhance these png images now. e.g. using shotwell, gimp etc.
