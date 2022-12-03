@@ -55,5 +55,9 @@ Also use any other means to enhance these png images now. e.g. using shotwell, g
 
 `img2pdf PageNo*.* -o Book-v2-nobkgnd.pdf`
 
+Use any other options to define page size and include page borders too. For e.g.
+
+`img2pdf --output Book-v2-nobkgnd.pdf --pagesize A4^T --border 2.5cm:2.5cm PageNo*.*`
+
 ### OCR that PDF 
 `ocrmypdf --lang eng+tam+san --sidecar english-tamil-sanskrit-text.txt --optimize 3 --deskew Book-v2-nobkgnd.pdf Book-final-nobkgnd-OCR.pdf`
