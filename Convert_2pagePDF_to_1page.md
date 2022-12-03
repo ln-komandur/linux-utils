@@ -34,6 +34,7 @@ There is no command for this
 
 ### Whiten the background
 Create a directory to store images without background / white background 
+
 `mkdir whitebkgnd`
  
 ### Convert every file to remove background using a shell script
