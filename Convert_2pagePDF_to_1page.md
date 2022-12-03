@@ -11,6 +11,9 @@ Can also try `pdftoppm -mono` or `pdftoppm -png` if those gives better outputs. 
 `cd double-page-images/`
  
 ### Split the double-page-images into 2 separate single page images
+
+Remember to use the right file extn i.e. .ppm / .pgm / .png etc. in the command below
+
 `unpaper --layout double --output-pages 2  R-and-L-page-%02d.pgm single-page%02d.pgm`
  
 ### Rename all pgm files so that the numbering with order the pages properly when using img2pdf command later
