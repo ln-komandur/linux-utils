@@ -42,10 +42,13 @@ Create a directory to store images without background / white background
 
 ```
 #This shell script has only the below
+
+# Example in the line below is with too many parameters: Pick whatever produces the least file size 
+# convert Test.png -transparent white -background white -alpha remove -alpha off Transparent.png
 for file in *.png
 do
     echo "Removing background on - " $file
-    convert "$file" -background white -alpha remove -alpha off "./whitebkgnd/$file"
+    convert "$file" -transparent white -alpha remove -alpha off "./whitebkgnd/$file"
 done
 ```
 Also use any other means to enhance these png images now. e.g. using shotwell, gimp etc.
