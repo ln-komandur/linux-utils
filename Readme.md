@@ -94,13 +94,26 @@ Refer
 https://ubuntuhandbook.org/index.php/2022/04/remove-snap-block-ubuntu-2204/
 
 https://www.debugpoint.com/remove-snap-ubuntu/
+ 
+https://haydenjames.io/remove-snap-ubuntu-22-04-lts/
+
+https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu-2204
+ 
 ### Remove each app installed by snap
 
 List all installed snap applications:
 
 `snap list` - Remember to install these packages as needed after removing snap using deb or apt
 
+Disable snapd services with 
+
+`sudo systemctl disable snapd.service snapd.socket snapd.seeded.service`
+
+Remove packages one by one 
+ 
 `sudo snap remove --purge <each package in the list>`
+ 
+Remove the daemon 
 
 `sudo apt remove --autoremove snapd`
 
@@ -120,6 +133,33 @@ Paste the following lines in the file to prevent the package installation from a
     Pin-Priority: -10
 ```
 Save the file and refresh package cache with `sudo apt update`
+ 
+### Install firefox from PPA
+ 
+Refer https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04
+
+`sudo snap remove firefox` 
+
+`sudo add-apt-repository ppa:mozillateam/ppa`
+ 
+Alter the Firefox package priority to ensure the PPA/deb/apt version of Firefox is preferred. This can be done using a slither of code from FosTips (copy and paste it whole, not line by line):
+```
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+```
+
+Since we want future Firefox upgrades to be installed automatically, Balint Reczey shares a concise command on his blog that ensures it happens:
+
+`echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox`
+
+Finally, install Firefox via apt by running this command:
+
+`sudo apt install firefox`
+ 
+ 
 
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 ### Driver Installation error
