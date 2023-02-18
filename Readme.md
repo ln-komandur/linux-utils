@@ -112,10 +112,18 @@ Disable snapd services with
 Remove packages one by one 
  
 `sudo snap remove --purge <each package in the list>`
+
+ For e.g. `sudo snap remove --purge firefox` and `sudo snap remove --purge snap-store`
  
 Remove the daemon 
 
-`sudo apt remove --autoremove snapd`
+`sudo apt remove --autoremove snapd` or `sudo apt autoremove --purge snapd`
+
+Delete any leftover cache from Snap with
+
+`sudo rm -rf /var/cache/snapd/`
+
+`rm -rf ~/snap`
 
 ### Prevent ubuntu from installing snap package again
 
