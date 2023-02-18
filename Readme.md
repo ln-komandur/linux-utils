@@ -87,7 +87,40 @@ UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4
 ```
 `sudo mount -a # Check if the mount points are good per the edits made in fstab`
 
- 
+## Remove snapd
+
+Refer 
+
+https://ubuntuhandbook.org/index.php/2022/04/remove-snap-block-ubuntu-2204/
+
+https://www.debugpoint.com/remove-snap-ubuntu/
+### Remove each app installed by snap
+
+List all installed snap applications:
+
+`snap list` - Remember to install these packages as needed after removing snap using deb or apt
+
+`sudo snap remove --purge <each package in the list>`
+
+`sudo apt remove --autoremove snapd`
+
+### Prevent ubuntu from installing snap package again
+
+After completely removing snap packages, set a low priority for the snapd package to prevent Ubuntu from reinstalling it
+
+Create and open a configuration file with `sudo gedit /etc/apt/preferences.d/nosnap.pref`
+
+Paste the following lines in the file to prevent the package installation from any repository:
+```
+    # Prevent repository packages from triggering the installation of snap,
+    # Forbids snapd from being installed by APT by using  Pin-Priority: -10
+
+    Package: snapd
+    Pin: release a=*
+    Pin-Priority: -10
+```
+Save the file and refresh package cache with `sudo apt update`
+
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 ### Driver Installation error
 Install NVIDIA binary driver - vesion 340.108 from nvidia-340 (properitary, tested) from "Additional Drivers" in the GUI. If you get an error as below
