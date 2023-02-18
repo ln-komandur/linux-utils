@@ -144,8 +144,15 @@ Save the file and refresh package cache with `sudo apt update`
  
 ### Install firefox from PPA
  
-Refer https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04
+Refer 
+ 
+ https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04
 
+ https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22
+ 
+ https://bitcoden.com/answers/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-2204-jammy (solution 4 discusses an interesting aspect)
+ 
+ 
 `sudo snap remove firefox` 
 
 `sudo add-apt-repository ppa:mozillateam/ppa`
@@ -159,8 +166,23 @@ Pin-Priority: 1001
 ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
 ```
 
-Since we want future Firefox upgrades to be installed automatically, Balint Reczey shares a concise command on his blog that ensures it happens:
+If you are not removing snapd entirely and only want non-snap firefox, then use the below per https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22 instead of the above
+ 
+```
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
 
+Package: firefox
+Pin: version 1:1snap1-0ubuntu2
+Pin-Priority: -1
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+```
+ 
+ 
+To ensure that unattended upgrades do not reinstall the snap version of Firefox, enter the following command.
+ 
 `echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox`
 
 Finally, install Firefox via apt by running this command:
