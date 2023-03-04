@@ -44,3 +44,7 @@ Then edit the `/etc/default/grub` file and add kernel parameters to the line
 ### Disable NVIDIA Splash screen
  
 Execute `sudo nvidia-xconfig --no-logo` to disable NVIDIA Splash screen and `sudo nvidia-xconfig --logo` to enable it back again if needed
+
+
+**On the Dell Inspiron 1720, stay on Lubuntu 20.04 LTS with Linux kernel 5.8.0-63-generic (64 bit). Do not opt for Hardware Enablement (HWE) or any updates to this kernel version as later versions do not offer support for the NVIDIA driver (and therefore later Ubuntu LTS versions too).**
+
