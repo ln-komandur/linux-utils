@@ -58,7 +58,7 @@ UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4
 
 ## Remove snapd
 
-[Instructions to remove snapd](Removing-snapd.md)
+[Instructions to remove snapd](why-not-snapd.md)
  
 ### Install firefox from PPA
 
