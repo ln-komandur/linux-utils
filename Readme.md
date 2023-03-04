@@ -89,86 +89,21 @@ UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4
 
 ## Remove snapd
 
-Remove-snapd.md
+[Instructions to remove snapd](Removing-snapd.md)
  
 ### Install firefox from PPA
 
-Firefox-from-PPA.md
+[Instructions to install firefox from PPA](Firefox-from-PPA.md)
+ 
 
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
-### Driver Installation error
-Install NVIDIA binary driver - vesion 340.108 from nvidia-340 (properitary, tested) from "Additional Drivers" in the GUI. If you get an error as below
-``` 
- pk-client-error-quark: The following packages have unmet dependencies:
-  nvidia-340: Depends: lib32gcc-s1 but it is not going to be installed
-              Depends: libc6-i386 but it is not going to be installed (268)
-```
-then re-attempt the installation like below from the terminal
 
-`sudo ubuntu-drivers autoinstall`
-
-This will give the same errors as in the GUI, but with the version of the package it is expecting. In this case 2.31-0ubuntu9.2 (For e.g. downgrade from 2.31-0ubuntu9.3). Install those specific version of the package like below.
-
-`sudo apt-get install libc6=2.31-0ubuntu9.2 libc-bin=2.31-0ubuntu9.2`
-
-`sudo apt-get install libc6-i386`
+[Handling NVIDIA G86M on Dell Inspiron 1720](Inspiron-1720-NVIDIA-G86M.md)
  
-And then re-attempt the driver installation
-
-`sudo ubuntu-drivers autoinstall`
-
-`sudo apt-get update`
-
-Reference https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken
-
  
-### NVRM VGA errors in dmesg
-Execute `dmesg | grep NVRM` and see if you get the errors below
-
-```
-[   17.214717] NVRM: Your system is not currently configured to drive a VGA console
-[   17.214720] NVRM: on the primary VGA device. The NVIDIA Linux graphics driver
-[   17.214723] NVRM: requires the use of a text-mode VGA console. Use of other console
-[   17.214726] NVRM: drivers including, but not limited to, vesafb, may result in
-[   17.214729] NVRM: corruption and stability problems, and is not supported.
-```
-Then edit the `/etc/default/grub` file and add kernel parameters to the line
-
-`GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"` and execute
- 
-`sudo update-grub`
- 
-### Disable NVIDIA Splash screen
- 
-Execute `sudo nvidia-xconfig --no-logo` to disable NVIDIA Splash screen and `sudo nvidia-xconfig --logo` to enable it back again if needed
-
 ## Only for Dell Inspiron 3542 
+[Dell Inspiron 3542](Inspiron-3542.md)
 
-### MDS CPU Vulnerability
-1. `dmesg --level=warn` and check if there is a warning like below
-```
-[    0.146525] MDS CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html for more details.
-```
-2. `sudo nano /etc/default/grub` and edit the line `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1 mds=full,nosmt"` to have `mds=full,nosmt`
-3. `sudo update-grub`, reboot and check `dmesg --level=warn` if the MDS CPU bug warning is gone
-
-### EFI Secure boot
-1. `sudo efibootmgr -v` and check if `BootCurrent` shows `0000`, which in turnpoints to `SHIMX64.EFI`. If not change the boot order to SHIMX64.EFI in the BIOS Boot order. Refer [Secure Boot Error: Invalid signature detected. Check secure boot policy in setup](https://askubuntu.com/questions/871179/secure-boot-error-invalid-signature-detected-check-secure-boot-policy-in-setup), [Double Ubuntu entry in BIOS boot options](https://askubuntu.com/questions/840602/double-ubuntu-entry-in-bios-boot-options) 
- 
- 
-```
-BootCurrent: 0000
-Timeout: 0 seconds
-BootOrder: 0000,0001,000C,000B
-Boot0000* ubuntu shimx64	HD(1,GPT,d0d091ea-ce94-4f15-8f27-4d9a11007a81,0x800,0xef000)/File(\EFI\UBUNTU\SHIMX64.EFI)
-Boot0001* ubuntu grubx64	HD(1,GPT,d0d091ea-ce94-4f15-8f27-4d9a11007a81,0x800,0xef000)/File(\EFI\UBUNTU\GRUBX64.EFI)
-Boot000B* Onboard NIC(IPV4)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2b8f3,0)/IPv4(0.0.0.00.0.0.0,0,0)..BO
-Boot000C* Onboard NIC(IPV6)	PciRoot(0x0)/Pci(0x1c,0x3)/Pci(0x0,0x0)/MAC(b82a72c2b8f3,0)/IPv6([::]:<->[::]:,0,0)..BO
-
-```
-It may be required to go over this step a couple of times if a red message on "Secure Boot Violation" appears soon after BIOS Flash like below
-
-![Alt text](secure-boot-violation.jpg "Secure Boot Violation")
  
  
 # Regular Cleanup
