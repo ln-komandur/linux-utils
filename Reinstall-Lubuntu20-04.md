@@ -1,4 +1,6 @@
-# Taking backups
+***Note:*** Though originally written with Lubuntu 20.04.2 64 bit in mind, this applies to other Ubuntu variants as well.
+
+# Backup
 
 ## Backup the following
 
@@ -10,7 +12,7 @@
 
 ## Users' UIDs and their groups. 
 
-1. Get the groups that each user belongs to, as well their UIDs. Copy the outputs of the following commands in a text file for access post reinstallationThis is need to recreate in them in the same order after reinstallation
+1. Get the groups that each user belongs to, as well their UIDs. Copy the outputs of the following commands in a text file for access post reinstallation. This is needed to recreate in them in the same order after reinstallation
 
 `groups firstuser # This is the super user. Output needs to show sudo as a group that this user belongs to`
 
@@ -24,6 +26,14 @@
 
 `sudo dpkg-query --list >> System-Backup-dpkg-query_list.txt`
 
+# BIOS
+
+## Latest version
+Update to the latest version of BIOS released by the manufacturer
+
+## Secure boot
+Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and Secure boot is enabled
+
 # Installing new Lubuntu from USB Start-up disk
 
 ## Get USB Start-up disk ready
@@ -36,6 +46,13 @@
 2. Install "/" (root) in the same partition as before and also format it at the same time
 3. For "/home", select the same partition (mount point) as before but DO NOT format it 
 4. Provide the name of the PC and the firstuser EXACTLY as the previous installation
+5. If there is any opportunity to format any partitions, ensure they are GPT (not MBR). 
+    1. This will most likely be taken care if BIOS is set to Secure (UEFI) boot. 
+    1. Master Boot Record (MBR) allows utmost 4 primary partitions or 3 primary partitions plus one extended partitions, which can contain unallocated space within it to create unlimited number of Logical partitions.
+    1. Interesting insights about [MBR vs GPT](https://www.makeuseof.com/tag/mbr-vs-gpt/)
+6. Create / resize any swap partitions. Remember to turn them on later. If you not require swap partitions, skip this step
+7. Create a separate small partition (~8 to 10GB) for encrpted storage. Veracrypt could be used on this partition 
+8. Go through the MOK (Machine-Owned Key) enrollment process
 
 # Post re-installation begins here
 
@@ -131,7 +148,8 @@ Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by on
 ## Install PDFTK
 `sudo apt install pdftk`
 
-
+## Install Czkawka
+Install Czkawka from https://xtradeb.net/apps/czkawka/ from AptURL as found on https://qarmin.github.io/czkawka/instructions/Installation.html for PPA - Debian / Ubuntu (unofficial)
 
 ## Clean up all lint
 Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all lint
