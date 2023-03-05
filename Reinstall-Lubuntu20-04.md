@@ -105,8 +105,7 @@ Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 2. `echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |sudo tee -a /etc/apt/sources.list.d/signal-xenial.list`
 3. `sudo apt update && sudo apt install signal-desktop`
 
- 
- 
+
 ## Create the second user
 ### Use the same username as the previous installation 
 1. `useradd seconduser`
@@ -149,13 +148,18 @@ Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by on
 `sudo apt install pdftk`
 
 ## Install Czkawka
-Install Czkawka from https://xtradeb.net/apps/czkawka/ from AptURL as found on https://qarmin.github.io/czkawka/instructions/Installation.html for PPA - Debian / Ubuntu (unofficial)
+Install Czkawka 
+1. from https://xtradeb.net/apps/czkawka/ from AptURL as found on https://qarmin.github.io/czkawka/instructions/Installation.html 
+2. or using PPA - Debian / Ubuntu (unofficial) - also found on https://qarmin.github.io/czkawka/instructions/Installation.html 
+
+```
+    sudo add-apt-repository ppa:xtradeb/apps
+    sudo apt-get update
+    sudo apt-get install czkawka
+```
 
 ## Clean up all lint
 Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all lint
-
-
-
 
 ## Do a hard restart and check the time taken
 
