@@ -119,8 +119,8 @@ Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 ## Bluetooth applet that supports receiving files
 1. `sudo apt-get remove bluedevil`
 2. `sudo apt-get install blueman`
-3. Refer "blueman gtk_icon_theme_get_for_screen warnings" in [Read Me](Readme.md)
-4. Add the second user to netdev group to avoid blueman authentication prompts if seen. `sudo gpasswd -a seconduser netdev`. Refer "blueman prompt / error requiring every user to authenticate with sudo privilleges upon login" in [Read Me](Readme.md)
+3. Refer "blueman gtk_icon_theme_get_for_screen warnings" in [Bluetooth](bluetooth.md)
+4. Add the second user to netdev group to avoid blueman authentication prompts if seen. `sudo gpasswd -a seconduser netdev`. Refer "blueman prompt / error requiring every user to authenticate with sudo privilleges upon login" in [Bluetooth](bluetooth.md)
 
  
 ## Preferred PDF viewer
