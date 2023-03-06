@@ -114,11 +114,12 @@ Reference [How to Install Flatpak & Flathub on Ubuntu (Complete Guide)](https://
 
 Query and check the installation
 
-4.  `flatpak list` 
-5.  `flatpak --version`
-6.  `flatpak search postman`
-7.  `flatpak search telegram`
-8.  `flatpak search libreoffice`
+4.  `echo $XDG_DATA_DIRS`
+5.  `flatpak list` 
+6.  `flatpak --version`
+7.  `flatpak search postman`
+8.  `flatpak search telegram`
+9.  `flatpak search libreoffice`
 
 Install flatpak apps from the **Software app** GUI
 
