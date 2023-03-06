@@ -147,7 +147,7 @@ Install flatpak apps from the **Software app** GUI
 2. `sudo apt-get purge qpdfview`
 
 ## Games
-Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with
+Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with 
 
 `sudo apt-get install ksudoku kpat kmahjongg knights`
 
@@ -155,7 +155,7 @@ Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with
 Use the commands in the script [Install JBIG2ENC](install-jbig2enc.sh) one by one. Install git before that with `sudo apt install git` if it is not already installed
 
 ## ocrmypdf 
-Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by one
+Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by one. Install pip before that with `sudo apt install python3-pip` if it is not already installed
 
 ## Install the latest JRE for all purposes. 
 
@@ -178,6 +178,11 @@ sudo add-apt-repository ppa:xtradeb/apps
 sudo apt-get update
 sudo apt-get install czkawka
 ```
+
+## Install gparted
+Install gparted with
+
+`sudo apt install gparted`
 
 ## Clean up all lint
 Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all lint
