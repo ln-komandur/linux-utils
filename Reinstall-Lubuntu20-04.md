@@ -50,8 +50,10 @@ Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and 
     1. This will most likely be taken care if BIOS is set to Secure (UEFI) boot. 
     1. Master Boot Record (MBR) allows utmost 4 primary partitions or 3 primary partitions plus one extended partitions, which can contain unallocated space within it to create unlimited number of Logical partitions.
     1. Interesting insights about [MBR vs GPT](https://www.makeuseof.com/tag/mbr-vs-gpt/)
+    2. Reference - [GParted: Create GPT Partition Step by Step](https://www.diskpart.com/gpt-mbr/gparted-create-gpt-partition-7201.html)
+    3. Reference - [No EFI System Partition...](https://askubuntu.com/questions/1128810/no-efi-system-partition-option-for-ubuntu-18-10)
 6. Create / resize any swap partitions. Remember to turn them on later. If you not require swap partitions, skip this step
-7. Create a separate small partition (~8 to 10GB) for encrpted storage. Veracrypt could be used on this partition 
+7. Create a separate small partition (could be ~8 to 10GB) for encrpted storage. Veracrypt could be used on this partition 
 8. Go through the MOK (Machine-Owned Key) enrollment process
 
 # Post re-installation begins here
