@@ -79,8 +79,8 @@ Refer "Speeding up the boot process" in [Read Me](Readme.md)
 ## Fix udisks2 raid warnings
 Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 
-## Remove NVIDIA Splash logo
-`sudo nvidia-xconfig --no-logo`
+## NVIDIA graphics cards
+If using NVIDIA graphics cards [Remove NVIDIA Splash logo / Disable NVIDIA Splash screen](./Inspiron-1720-NVIDIA-G86M.md)
 
 ## Update grub to avoid splash, suppress NVRM VGA dmesg warnings and then use audio from USB webcam 
 1. `sudo nano /etc/default/grub #edit GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1" GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"`
@@ -157,13 +157,15 @@ Use the commands in the script [Install JBIG2ENC](install-jbig2enc.sh) one by on
 ## ocrmypdf 
 Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by one
 
-## Install JRE 16 for all purposes. And also install pdftk ======================
- 
-1. `sudo apt install openjdk-16-jre-headless`
-2. `java -version # Check the installed / active version`
-3. `update-alternatives --list java # Remove any versions other than 16 if present`
+## Install the latest JRE for all purposes. 
 
-## Install PDFTK
+If java is not already installed, executing `java -version` will output all versions avalable to install. Pick the latest
+
+1. `sudo apt install openjdk-16-jre-headless` or`sudo apt install openjdk-19-jre-headless`
+2. `java -version # Check the installed / active version`
+3. `update-alternatives --list java # Remove any versions other than the latest if present`
+
+## Install PDFTK (after JRE)
 `sudo apt install pdftk`
 
 ## Install Czkawka
@@ -172,9 +174,9 @@ Install Czkawka
 2. or using PPA - Debian / Ubuntu (unofficial) - also found on https://qarmin.github.io/czkawka/instructions/Installation.html 
 
 ```
-    sudo add-apt-repository ppa:xtradeb/apps
-    sudo apt-get update
-    sudo apt-get install czkawka
+sudo add-apt-repository ppa:xtradeb/apps
+sudo apt-get update
+sudo apt-get install czkawka
 ```
 
 ## Clean up all lint
