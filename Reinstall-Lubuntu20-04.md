@@ -147,12 +147,12 @@ Install flatpak apps from the **Software app** GUI
 2. `sudo apt-get purge qpdfview`
 
 ## Games
-Install KDE games for Sudoko, Card Games, Mahjongg & Chess with
+Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with
 
 `sudo apt-get install ksudoku kpat kmahjongg knights`
 
 ## jbig2 encoding
-Use the commands in the script [Install JBIG2ENC](install-jbig2enc.sh) one by one
+Use the commands in the script [Install JBIG2ENC](install-jbig2enc.sh) one by one. Install git before that with `sudo apt install git` if it is not already installed
 
 ## ocrmypdf 
 Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by one
