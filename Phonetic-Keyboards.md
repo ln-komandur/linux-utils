@@ -2,11 +2,11 @@
 ## Ubuntu with GNOME
 1. There is **no need to install any language support**
 2. Install ***itrans(m17n)*** keyboards for Tamil and Sanskrit. They are both phonetic
-### Screenshot of settings from Ubuntu 20.04.5 LTS with GNOME 3.36.8
+### Screenshot of Ubuntu 20.04.5 LTS with GNOME 3.36.8 Settings
 ![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2020-04-5.png "Multi-Keyboard support in Ubuntu 20-04-5")
 
-### Screenshot of settings from Ubuntu 22.04.2 LTS with GNOME 3.36.8
-![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2020-04-5.png "Multi-Keyboard support in Ubuntu 20-04-5")
+### Screenshot of Ubuntu 22.04.2 LTS with GNOME 42.5 Settings
+![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2022-04-2.png "Multi-Keyboard support in Ubuntu 20-04-5")
 
 ## Lubuntu 20.04.2 LTS with LxQt 0.14.1
 
