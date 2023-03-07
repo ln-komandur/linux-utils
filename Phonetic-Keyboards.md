@@ -1,5 +1,14 @@
-# The following applies to Lubuntu 20.04.2 LTS with LxQt 0.14.1
-## Installing phonetic Keyboards for Indian languages in addition to the default English Keyboard
+# Installing phonetic Keyboards for Indian languages in addition to the default English Keyboard
+## Ubuntu with GNOME
+1. There is **no need to install any language support**
+2. Install ***itrans(m17n)*** keyboards for Tamil and Sanskrit. They are both phonetic
+### Screenshot of settings from Ubuntu 20.04.5 LTS with GNOME 3.36.8
+![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2020-04-5.png "Multi-Keyboard support in Ubuntu 20-04-5")
+
+### Screenshot of settings from Ubuntu 22.04.2 LTS with GNOME 3.36.8
+![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2020-04-5.png "Multi-Keyboard support in Ubuntu 20-04-5")
+
+## Lubuntu 20.04.2 LTS with LxQt 0.14.1
 
 1. Install IBus if it is not already installed
     1. `sudo apt-get install ibus`
