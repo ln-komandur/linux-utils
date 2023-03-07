@@ -86,7 +86,7 @@ If using NVIDIA graphics cards [Remove NVIDIA Splash logo / Disable NVIDIA Splas
 1. `sudo nano /etc/default/grub #edit GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1" GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"`
 2. `sudo update-grub`
 
-## Upgrade to libreoffice 7-0-6 
+## Upgrade to libreoffice 7-0-6 - Lubuntu 20.04
 1. `sudo add-apt-repository ppa:libreoffice/libreoffice-7-0`
 2. `sudo apt full-upgrade`
 
@@ -127,10 +127,8 @@ Install flatpak apps from the **Software app** GUI
 
 ## Create the second user
 ### Use the same username as the previous installation 
-1. `useradd seconduser`
-2. `sudo useradd seconduser # It might be better to use adduser command. But useradd worked here.`
-3. `sudo passwd seconduser`
-4. `sudo chsh -s /bin/bash seconduser # Set bash as the shell for the second user too`
+1. `sudo adduser seconduser # Provide username, password, Name of User, etc. when prompted`
+2. `sudo chsh -s /bin/bash seconduser # Set bash as the shell for the second user too`
 
 ### Add the second user to group of the first user to share common files
 `sudo gpasswd -a seconduser firstuser` 
@@ -144,7 +142,7 @@ Install flatpak apps from the **Software app** GUI
  
 ## Preferred PDF viewer
 1. `sudo apt-get install okular`
-2. `sudo apt-get purge qpdfview`
+2. `sudo apt-get purge qpdfview` - in Lubuntu
 
 ## Games
 Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with 
