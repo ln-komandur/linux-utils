@@ -58,12 +58,7 @@ UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4
 
 ## Remove snapd
 
-[Instructions to remove snapd](why-not-snapd.md)
- 
-### Install firefox from PPA
-
-[Instructions to install firefox from PPA](Firefox-from-PPA.md)
- 
+**First** [install firefox from PPA](Firefox-from-PPA.md) **and then** [remove snapd completely](why-not-snapd.md)
 
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 
