@@ -9,8 +9,6 @@ Refer
  https://bitcoden.com/answers/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-2204-jammy (solution 4 discusses an interesting aspect)
  
  
-`sudo snap remove firefox` 
-
 `sudo add-apt-repository ppa:mozillateam/ppa`
  
 Alter the Firefox package priority to ensure the PPA/deb/apt version of Firefox is preferred. This can be done using a slither of code from FosTips (copy and paste it whole, not line by line):
@@ -41,7 +39,6 @@ To ensure that unattended upgrades do not reinstall the snap version of Firefox,
  
 `echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox`
 
-Finally, install Firefox via apt by running this command:
+Finally, remove Firefox from snapd and install Firefox via apt in one go by running this command:
 
-`sudo apt install firefox`
- 
+`sudo snap remove firefox && sudo apt install firefox`
