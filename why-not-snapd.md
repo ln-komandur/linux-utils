@@ -28,13 +28,25 @@ Disable snapd services with
 
 `sudo systemctl disable snapd.service snapd.socket snapd.seeded.service`
 
-Remove packages one by one 
+Remove packages one by one beginning with the least dependent ones
  
 `sudo snap remove --purge <each package in the list>`
 
- For e.g. `sudo snap remove --purge firefox` and `sudo snap remove --purge snap-store`
+For e.g. 
+
+`sudo snap remove --purge gnome-3-38-2004`
+
+`sudo snap remove --purge gtk-common-themes` 
+
+`sudo snap remove --purge snap-store` 
+
+`sudo snap remove --purge snapd-desktop-integration` 
+
+`sudo snap remove --purge core20` 
+
+`sudo snap remove --purge bare`
  
-Remove the daemon 
+Remove the daemon with apt
 
 `sudo apt remove --autoremove snapd` or `sudo apt autoremove --purge snapd`
 
