@@ -133,12 +133,15 @@ Install flatpak apps from the **Software app** GUI
 ### Add the second user to group of the first user to share common files
 `sudo gpasswd -a seconduser firstuser` 
 
-## Bluetooth applet that supports receiving files
+## Bluetooth applet that supports receiving files - Lubuntu 20.04
 1. `sudo apt-get remove bluedevil`
 2. `sudo apt-get install blueman`
 3. Refer "blueman gtk_icon_theme_get_for_screen warnings" in [Bluetooth](bluetooth.md)
 4. Add the second user to netdev group to avoid blueman authentication prompts if seen. `sudo gpasswd -a seconduser netdev`. Refer "blueman prompt / error requiring every user to authenticate with sudo privilleges upon login" in [Bluetooth](bluetooth.md)
 
+## Install VLC
+1. Install VLC media player through apt by pasting `apt://vlc` in the browser's address bar. Refer here for [more details](https://www.videolan.org/vlc/download-ubuntu.html)
+2. Remove rhythmbox if installed using `sudo apt-get remove rhythmbox`
  
 ## Preferred PDF viewer
 1. `sudo apt-get install okular`
