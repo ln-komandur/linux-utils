@@ -32,13 +32,15 @@
 Update to the latest version of BIOS released by the manufacturer. 
 1.  For systems that support BIOS updates from within BIOS, e.g. the HP EliteBook 800 G2 DM, connect to the internet via RJ45 and follow the steps from within BIOS
 1.  For systems that can run Windows, follow the manufacturer's instructions 
-2.  For Linux only Dell systems, follow the [Update the Dell BIOS in a Linux or Ubuntu environment](https://www.dell.com/support/kbdoc/en-us/000131486/update-the-dell-bios-in-a-linux-or-ubuntu-environment#UpdateBIOS) instructions that use [FreeDOS](http://www.freedos.org/download/). This method worked with Dell Inspirin 3542 (with UEFI) and Dell Inspiron 1720 (without UEFI)
-4.  For all other Linux only systems **try the approach [described here](https://h30434.www3.hp.com/t5/Notebook-Software-and-How-To-Questions/Update-BIOS-on-EliteBook-8560w-running-Linux-using-FreeDOS/td-p/8322446) using [FreeDOS](http://www.freedos.org/download/) and 7zip** (installed with `sudo apt install p7zip-full p7zip-rar`)
-    1.  Download the BIOS update file for Windows.
-    2.  Extract files from BIOS update exe using 7zip in the terminal with `7z -o/home/user/extracted-bios x path/to/exe-file`
-    3.  Copy folder of extracted files called “extracted-bios” onto the FreeDOS USB
-    4.  Boot from USB. Select "NO" when prompted to install FreeDOS and continue to DOS.
-    5.  At the DOS prompt, list DOS directories with `dir` and change to the directory where the exe file was copied to with `cd extracted-bios`. Execute the .exe file by typing its name on the DOS prompt
+2.  For Linux only systems that **support Legacy boot** (UEFI disabled, Secure boot disbled) use [FreeDOS](http://www.freedos.org/download/)
+    1.   Follow the [Update the Dell BIOS in a Linux or Ubuntu environment](https://www.dell.com/support/kbdoc/en-us/000131486/update-the-dell-bios-in-a-linux-or-ubuntu-environment) instructions that use [FreeDOS](http://www.freedos.org/download/). This method worked with Dell Inspirin 3542 (with UEFI) and Dell Inspiron 1720 (without UEFI)
+    2.  For all other Linux only systems **try the approach [described here](https://h30434.www3.hp.com/t5/Notebook-Software-and-How-To-Questions/Update-BIOS-on-EliteBook-8560w-running-Linux-using-FreeDOS/td-p/8322446)** using [FreeDOS](http://www.freedos.org/download/) and 7zip (installed with `sudo apt install p7zip-full p7zip-rar`)
+        1.  Download the BIOS update file for Windows.
+        2.  Extract files from BIOS update exe using 7zip in the terminal with `7z -o/home/user/extracted-bios x path/to/exe-file`
+        3.  Copy folder of extracted files called “extracted-bios” onto the FreeDOS USB
+        4.  Boot from USB. Select "NO" when prompted to install FreeDOS and continue to DOS.
+        5.  At the DOS prompt, list DOS directories with `dir` and change to the directory where the exe file was copied to with `cd extracted-bios`. Execute the .exe file by typing its name on the DOS prompt
+3. For HP Systems that do not support legacy boot, use a loaner Windows PC to create a USB recovery disk with the BIOS file for the update as described under [Update the BIOS manually from a USB Flash drive (outside of Windows)](https://support.hp.com/gb-en/document/c00042629) and **try**
 
 
 ## Secure boot
