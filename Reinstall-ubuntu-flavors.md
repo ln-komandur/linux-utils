@@ -29,7 +29,10 @@
 # BIOS
 
 ## Latest version
-Update to the latest version of BIOS released by the manufacturer
+Update to the latest version of BIOS released by the manufacturer. 
+1.  For systems that can run Windows, follow the manufacturer's instructions 
+2.  For Linux only Dell systems, follow the [Update the Dell BIOS in a Linux or Ubuntu environment](https://www.dell.com/support/kbdoc/en-us/000131486/update-the-dell-bios-in-a-linux-or-ubuntu-environment#UpdateBIOS) instructions that use [FreeDOS](http://www.freedos.org/download/). This method worked with Dell Inspirin 3542 (with UEFI) and Dell Inspiron 1720 (without UEFI)
+3.  For systems that support BIOS updates from within BIOS, e.g. the HP EliteBook 800 G2 DM, connect to the internet via RJ45 and follow the steps from within BIOS
 
 ## Secure boot
 Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and Secure boot is enabled
