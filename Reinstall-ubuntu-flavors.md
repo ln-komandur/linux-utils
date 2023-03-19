@@ -63,13 +63,12 @@ Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and 
 2. Then perform the update prompted in the GUI soon after restart or with `sudo apt update && sudo apt upgrade`
 
 ## Purge unnecessary packages and disable unnecessary services
-Refer "Speeding up the boot process" in [Read Me](Readme.md)
+Refer "Speeding up the boot process" in [Read Me](Readme.md). Install firefox through apt, and remove snaps too
 
 1. `sudo apt-get purge plymouth snapd` 
 2. `sudo systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service` 
 3. `sudo systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service`
 4. `uname -a # Check distribution and kernel`
-
 
 ## Include swap and other partitions in fstab
 1. Refer "Create common mount points for partitions commonly accessed by all users and include them in fstab." in [Read Me](Readme.md)
@@ -92,6 +91,10 @@ If using NVIDIA graphics cards [Remove NVIDIA Splash logo / Disable NVIDIA Splas
 
 ## Support for typing in multiple languages if needed
 1. Refer [Installing Phonetic Keyboards](Phonetic-Keyboards.md) 
+
+## Install chrome brower through .deb if needed
+1. `wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`  - refer [this link](https://www.wikihow.com/Install-Google-Chrome-Using-Terminal-on-Linux)
+2. `sudo dpkg -i google-chrome-stable_current_amd64.deb` - This command will also add the _https://dl.google.com/linux/chrome/deb/_ PPA to Other software 
 
 ## Install zoom if needed
 1. `sudo dpkg -i ./Downloads/zoom_amd64.deb`
