@@ -42,11 +42,11 @@ Create and open a configuration file with `sudo gedit /etc/apt/preferences.d/nos
 
 Paste the following lines in the file to prevent the package installation from any repository:
 ```
-    # Prevent repository packages from triggering the installation of snap,
-    # Forbids snapd from being installed by APT by using  Pin-Priority: -10
+# Prevent repository packages from triggering the installation of snap,
+# Forbids snapd from being installed by APT by using  Pin-Priority: -10
 
-    Package: snapd
-    Pin: release a=*
-    Pin-Priority: -10
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
 ```
 Save the file and refresh package cache with `sudo apt update`
