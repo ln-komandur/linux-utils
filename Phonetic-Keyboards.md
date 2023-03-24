@@ -1,6 +1,6 @@
 # Installing phonetic Keyboards for Indian languages in addition to the default English Keyboard
 ## Ubuntu with GNOME
-1. There is **no need to install any language support**
+1. There is **no need to install any language support** . But on a fresh installation, language packages may not be installed fully. You will be prompted when you go to Settings -> Region & Language. Install it and then `reboot` the PC (or logout and login) before proceeding to the next step
 2. Install ***itrans(m17n)*** keyboards for Tamil and Sanskrit. They are both phonetic
 ### Settings in Ubuntu 20.04.5 LTS with GNOME 3.36.8
 ![Alt text](Multi-Keyboard%20support%20in%20Ubuntu%2020-04-5.png "Multi-Keyboard support in Ubuntu 20-04-5")
