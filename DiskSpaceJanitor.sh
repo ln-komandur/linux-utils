@@ -59,27 +59,44 @@ echo "------------------------------------------------------------------------"
 find /var/log -type f -name "*.1" -exec rm -f {} \;
 
 
-echo
-echo
-echo "---------------------------------------------------------------------------------------------------"
-echo "Remove disabled snaps"
-echo "------------------------------------------------------------------------"
-#!/bin/bash
-set -eu
+if snap list --all; then 
+    snap list --all | awk '/disabled/{print $1, $3}' |
+        while read disabledsnapname revision; do
+	    echo
+	    echo
+	    echo "---------------------------------------------------------------------------------------------------"
+	    echo "Remove disabled snaps"
+	    echo "------------------------------------------------------------------------"
+	    #!/bin/bash
+	    set -eu
+            sudo snap remove "$disabledsnapname" --revision="$revision"
+        done
+else
+    echo
+    echo "---------------------------------------------------------------------------------------------------"
+    echo "**********snap is not installed. Therefore disabled snaps are not removed**********"
+    echo "---------------------------------------------------------------------------------------------------"
+    echo
+fi
 
-snap list --all | awk '/disabled/{print $1, $3}' |
-    while read disabledsnapname revision; do
-        sudo snap remove "$disabledsnapname" --revision="$revision"
-    done
-
-echo
-echo
-echo "---------------------------------------------------------------------------------------------------"
-echo "Remove unused flatpaks and cache files"
-echo "------------------------------------------------------------------------"
-
-flatpak uninstall --unused #Uninstall flatpak packages that are not in use
-sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
+if flatpak list; then
+    echo
+    echo
+    echo "---------------------------------------------------------------------------------------------------"
+    echo "Remove unused flatpaks and cache files"
+    echo "------------------------------------------------------------------------"
+    flatpak uninstall --unused #Uninstall flatpak packages that are not in use
+    sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
+else
+    echo
+    echo "---------------------------------------------------------------------------------------------------"
+    echo "**********flatpak is not installed. Therefore unused packages and cache are not removed**********"
+    echo "---------------------------------------------------------------------------------------------------"
+    echo
+fi
+    
+#flatpak uninstall --unused #Uninstall flatpak packages that are not in use
+#sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
 
 echo "---------------------------------------------------------------------------------------------------"
 echo "Fixing broken packages"
