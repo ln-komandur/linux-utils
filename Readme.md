@@ -23,7 +23,7 @@ Restart udisks2 and check its status to see if the warnings are gone
 
 ## Bluetooth
 
-[Blueman related](bluetooth.md)
+[Blueman related](bluetooth.md) - if blueman prompts every user to authenticate with sudo privilleges upon login
 
 ## Allow multicast incoming pings / packets from your router if you use UFW
 
