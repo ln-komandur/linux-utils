@@ -12,7 +12,7 @@ if (($EUID != 0)); then
   fi
   exit
 fi
-echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps if any."
+echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps, and unused flatpaks if any."
 echo "It provides INFORMATION on old kernels that can be deleted manually through other means."
 echo "AUTHENTICATION SUCCESSFUL. You are executing the script as" $USER
 echo
@@ -72,6 +72,14 @@ snap list --all | awk '/disabled/{print $1, $3}' |
         sudo snap remove "$disabledsnapname" --revision="$revision"
     done
 
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Remove unused flatpaks and cache files"
+echo "------------------------------------------------------------------------"
+
+flatpak uninstall --unused #Uninstall flatpak packages that are not in use
+sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
 
 echo "---------------------------------------------------------------------------------------------------"
 echo "Fixing broken packages"
