@@ -93,9 +93,19 @@ Refer "udisks2 raid warnings" in [Read Me](Readme.md)
 ## NVIDIA graphics cards
 If using NVIDIA graphics cards [Remove NVIDIA Splash logo / Disable NVIDIA Splash screen](./Inspiron-1720-NVIDIA-G86M.md)
 
-## Update grub to avoid splash, suppress NVRM VGA dmesg warnings and then use audio from USB webcam 
-1. `sudo nano /etc/default/grub #edit GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1" GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"`
-2. `sudo update-grub`
+## Update grub to suppress NVRM VGA dmesg warnings 
+Refer [Disabling the conflicting vesafb driver](https://newton.freehostia.com/comp/ubstuff.html)
+1. `sudo nano /etc/default/grub` 
+2. Edit `GRUB_CMDLINE_LINUX=""` to be `GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"`
+3. And run `sudo update-grub`
+
+## Use USB (usually 2.0) webcam audio (mic)
+
+1. `sudo nano /etc/default/grub` 
+2. Uncomment this line `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`, and add `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work. 
+   1.   i.e. `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`. In this example, note that `splash` is removed too
+3. And run `sudo update-grub`
+
 
 ## Upgrade to libreoffice 7-0-6 - Lubuntu 20.04
 1. `sudo add-apt-repository ppa:libreoffice/libreoffice-7-0`
