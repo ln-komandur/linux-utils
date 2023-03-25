@@ -1,9 +1,9 @@
 # Speeding up the boot process
 Run [DisableUnnecessaryServices.sh](DisableUnnecessaryServices.sh) to disable `NetworkManager-wait-online.service` , `plymouth-quit-wait.service` , `ModemManager.service` , `ofono.service` & `dundee.service` (IF ofono is installed). Instead of disabling `plymouth-quit-wait.service`, it's even better to purge plymouth with `sudo apt-get purge plymouth`
 
-Remove `splash` in this line in `/etc/default/grub` and add `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work. i.e.
-
-`#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`and run `sudo update-grub`
+1.  `sudo nano /etc/default/grub`
+2.  Uncomment this line and remove `splash`. i.e. `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet"` 
+3.  And run `sudo update-grub`
 
 ## udisks2 raid warnings
 
