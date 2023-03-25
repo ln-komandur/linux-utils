@@ -27,9 +27,9 @@ Restart udisks2 and check its status to see if the warnings are gone
 
 ## Allow multicast incoming pings / packets from your router if you use UFW
 
-Add the following rule where `192.168.254.1` is an example of your router's IP address
+Add the following rules. `192.168.254.1` is an example of the router's IP address
 
-`sudo ufw allow in from 192.168.254.1 to 224.0.0.0/24` - Refer - https://bbs.archlinux.org/viewtopic.php?id=212452 or https://forums.linuxmint.com/viewtopic.php?t=111630
+`sudo ufw allow in from 192.168.254.1 to 224.0.0.0/24` - Refer - [UFW BLOCK messages in dmesg - trouble figuring them out](https://bbs.archlinux.org/viewtopic.php?id=212452) or [Avoid filling up syslog with useless firewall messages](https://forums.linuxmint.com/viewtopic.php?t=111630) or [ufw is blocking mDNS (Bonjour)](https://forums.linuxmint.com/viewtopic.php?t=219396)
 
 Then reload the firewall
 
