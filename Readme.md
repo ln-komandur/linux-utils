@@ -51,7 +51,7 @@ This will help prevent `journalctl -u udisks2` warnings from appearing anytime a
 `sudo nano /etc/fstab` opens fstab to put the mount point against the UUID
  
  ```
-# The below line is added so that the path to the CommonData partition is common for all users
+# The below lines help to have common paths for these partitions for all users
 # Change between auto and noauto based on whether to mount this partition automatically at boot
 UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
 ```
