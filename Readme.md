@@ -40,22 +40,9 @@ and check the status
 `sudo ufw status verbose`
 
 
-## Create common mount points for partitions commonly accessed by all users and include them in fstab.
+## Create account agnostic mount points
 
-This will help prevent `journalctl -u udisks2` warnings from appearing anytime a super user who mounted these partitions reboots, as the boot process would try to re-mount those partitions using the super user's paths but be unable to do so because the user is not logged in at that time. This warning will look like `udisksd[695]: mountpoint /media/<super-user-name>/<partition-name> is invalid, cannot recover the canonical path`
- 
-`sudo mkdir /media/all-users-<partition-name>` creates a common mount point for all users
-
-`sudo blkid | grep UUID=` gets the UUID of those partitions
-
-`sudo nano /etc/fstab` opens fstab to put the mount point against the UUID
- 
- ```
-# The below lines help to have common paths for these partitions for all users
-# Change between auto and noauto based on whether to mount this partition automatically at boot
-UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
-```
-`sudo mount -a # Check if the mount points are good per the edits made in fstab`
+Follow the steps in [Create common mount points for partitions shared by all users and include them in fstab](common-mountpoints.md)
 
 ## Remove snapd
 
