@@ -59,7 +59,7 @@ Follow the steps in [Create common mount points for partitions shared by all use
  
  
 # Regular Cleanup
-Periodically run the `DiskSpaceJanitor.sh` (formerly `CleanCacheAndLogs.sh` & `CleanCacheLogsSnaps.sh`) as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
+Periodically run the [DiskSpaceJanitor.sh](DiskSpaceJanitor.sh) (formerly `CleanCacheAndLogs.sh` & `CleanCacheLogsSnaps.sh`) as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
 Not having enough space for root may even stop your system from booting up (will not load X)
 
 ![Alt text](low_root_disk_space_popup_gnome.png "Example message from gnome UI")
