@@ -133,22 +133,8 @@ Refer [Disabling the conflicting vesafb driver](https://newton.freehostia.com/co
 3. `sudo apt update && sudo apt install signal-desktop`
 
 ## Install flatpak, if you like to
-Reference [How to Install Flatpak & Flathub on Ubuntu (Complete Guide)](https://www.omgubuntu.co.uk/how-to-install-flatpak-on-ubuntu)
 
-1.  `sudo apt install flatpak gnome-software-plugin-flatpak gnome-software`
-2.  `flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
-3.  `reboot`
-
-Query and check the installation
-
-4.  `echo $XDG_DATA_DIRS`
-5.  `flatpak list` 
-6.  `flatpak --version`
-7.  `flatpak search postman`
-8.  `flatpak search telegram`
-9.  `flatpak search libreoffice`
-
-Install flatpak apps from the **Software app** GUI
+Refer [Managing flatpak apps](flatpak-apps.md)
 
 ## Create the second user
 ### Use the same username as the previous installation 
