@@ -1,4 +1,4 @@
-## Create common mount points for partitions commonly accessed by all users and include them in fstab
+## Create common mount points for partitions shared by all users and include them in fstab
 
 ### This will help 
 1. prevent `journalctl -u udisks2` warnings from appearing anytime a super user who mounted these partitions reboots, as the boot process would try to re-mount those partitions using the super user's paths but be unable to do so because the user is not logged in at that time. This warning will look like `udisksd[695]: mountpoint /media/<super-user-name>/<partition-name> is invalid, cannot recover the canonical path`
