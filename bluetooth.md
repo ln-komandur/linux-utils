@@ -1,5 +1,7 @@
 ## blueman prompt / error requiring every user to authenticate with sudo privilleges upon login
 
+Refer [this link](https://gitlab.apertis.org/infrastructure/apertis-image-recipes/-/merge_requests/358)
+
 View `blueman.rules` with
 
 `cat /usr/share/polkit-1/rules.d/blueman.rules`
@@ -25,7 +27,7 @@ Confirm if the logged in user belongs to `netdev` group by executing
 
 If not, include them in `netdev` group by executing
 
-`sudo gpasswd -a ${USER} netdev` and check again by executing `groups`
+`sudo gpasswd -a ${USER} netdev` and check again by executing `groups` or `id ${USER}`
 
 ### blueman gtk_icon_theme_get_for_screen warnings
 1. Check for "gtk_icon_theme_get_for_screen: assertion 'GDK_IS_SCREEN (screen)' failed". Note: The service might have already failed to start. `systemctl status blueman-mechanism.service`
