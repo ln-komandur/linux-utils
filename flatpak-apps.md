@@ -56,4 +56,4 @@ Reference [How to Clean Up Flatpak Apps to Clear Disk Space](https://www.debugpo
 1.   `flatpak uninstall --unused` #Uninstall flatpak packages that are not in use
 2.   `flatpak uninstall <application ID>` #Uninstall a specific Flatpak app
 3.   `flatpak uninstall --all` #removes all flatpak apps from the system. Risk: may break the system, depending on the configuration
-4.   `sudo rm -rfv /var/tmp/flatpak-cache-*`#Remove flatpak cache files
+4.   `sudo rm -rfv /var/tmp/flatpak-cache-*` #Remove flatpak cache files
