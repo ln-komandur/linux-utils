@@ -197,7 +197,7 @@ Install gparted with
 `sudo apt install gparted`
 
 ## Clean up all lint
-Use the script [CleanCacheLogsSnaps.sh](CleanCacheLogsSnaps.sh) to clean up all lint
+Use the script [DiskSpaceJanitor.sh](DiskSpaceJanitor.sh) (formerly `CleanCacheAndLogs.sh` & `CleanCacheLogsSnaps.sh`) as root to clean up all lint
 
 ## Do a hard restart and check the time taken
 
