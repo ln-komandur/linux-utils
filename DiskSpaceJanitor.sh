@@ -69,12 +69,12 @@ if snap list --all; then
 	    echo "------------------------------------------------------------------------"
 	    #!/bin/bash
 	    set -eu
-            sudo snap remove "$disabledsnapname" --revision="$revision"
+            snap remove "$disabledsnapname" --revision="$revision"
         done
 else
     echo
     echo "---------------------------------------------------------------------------------------------------"
-    echo "**********snap is not installed. Therefore disabled snaps are not removed**********"
+    echo "********** snap is not installed. No disabled snaps to remove **********"
     echo "---------------------------------------------------------------------------------------------------"
     echo
 fi
@@ -86,17 +86,15 @@ if flatpak list; then
     echo "Remove unused flatpaks and cache files"
     echo "------------------------------------------------------------------------"
     flatpak uninstall --unused #Uninstall flatpak packages that are not in use
-    sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
+    rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
 else
     echo
     echo "---------------------------------------------------------------------------------------------------"
-    echo "**********flatpak is not installed. Therefore unused packages and cache are not removed**********"
+    echo "********** flatpak is not installed. No unused flakpak packages or cache to remove **********"
     echo "---------------------------------------------------------------------------------------------------"
     echo
 fi
-    
-#flatpak uninstall --unused #Uninstall flatpak packages that are not in use
-#sudo rm -rfv /var/tmp/flatpak-cache-* #Remove flatpak cache files
+
 
 echo "---------------------------------------------------------------------------------------------------"
 echo "Fixing broken packages"
