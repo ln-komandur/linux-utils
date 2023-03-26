@@ -20,19 +20,19 @@ https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu
  
 ### Remove each app installed by snap
 
-List all installed snap applications:
+List all installed snap applications. Remember to install them packages as needed after removing snap using deb or apt
 
-`snap list` - Remember to install these packages as needed after removing snap using deb or apt
+`snap list` #Display the list of snaps
 
-Remove the daemon with apt
+or
 
-`sudo apt-get purge snapd`
+`snap list >> ListOfInstalledSnaps.txt` #Saves the list of snaps in a text file ListOfInstalledSnaps.txt
 
-Delete any leftover cache from Snap with
+`sudo apt-get purge snapd` #Remove the daemon with apt and remove all apps in one go
 
-`sudo rm -rf /var/cache/snapd/`
+`sudo rm -rf /var/cache/snapd/` #Delete any leftover cache from Snap
 
-`rm -rf ~/snap`
+`rm -rf ~/snap` #Remove snap directory where apps were installed and your personal settings for them stored
 
 ### Prevent ubuntu from installing snap package again
 
