@@ -50,3 +50,7 @@ Pin: release a=*
 Pin-Priority: -10
 ```
 Save the file and refresh package cache with `sudo apt update`
+
+### Install Gnome Software in place of Snap Store (Ubuntu Software) 
+
+`sudo apt install gnome-software` #Do not use any switches like --install-suggests or --install-recommends
