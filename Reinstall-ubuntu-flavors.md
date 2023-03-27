@@ -75,9 +75,9 @@ Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and 
 2. Then perform the update prompted in the GUI soon after restart or with `sudo apt update && sudo apt upgrade`
 
 ## Purge unnecessary packages and disable unnecessary services
-Refer "Speeding up the boot process" in [Read Me](Readme.md). Install firefox through apt, and remove snaps too
+Refer "Speeding up the boot process" in [Read Me](Readme.md). Install [firefox through apt](Firefox-from-PPA.md), and **then** [remove snaps](why-not-snapd.md) too
 
-1. `sudo apt-get purge plymouth snapd` 
+1. `sudo apt-get purge plymouth` 
 2. `sudo systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service` 
 3. `sudo systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service`
 4. `uname -a # Check distribution and kernel`
@@ -105,7 +105,6 @@ Refer [Disabling the conflicting vesafb driver](https://newton.freehostia.com/co
 2. Uncomment this line `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`, and add `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work. 
    1.   i.e. `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`. In this example, note that `splash` is removed too
 3. And run `sudo update-grub`
-
 
 ## Upgrade to libreoffice 7-0-6 - Lubuntu 20.04
 1. `sudo add-apt-repository ppa:libreoffice/libreoffice-7-0`
@@ -173,23 +172,43 @@ Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by on
 
 If java is not already installed, executing `java -version` will output all versions avalable to install. Pick the latest
 
-1. `sudo apt install openjdk-16-jre-headless` or`sudo apt install openjdk-19-jre-headless`
+1. `sudo apt install openjdk-19-jre-headless` # Latest as of March 2023
 2. `java -version # Check the installed / active version`
-3. `update-alternatives --list java # Remove any versions other than the latest if present`
+3. `sudo apt install libreoffice-java-common` # Install the JRE components for libreoffice  
+4. `update-alternatives --list java # Remove any versions other than the latest if present`
+5. `sudo apt install openjdk-1x-jre-headless` # Replace 1x with the real value. Remove the older version of JRE installed by libreoffice-java-common
+6. Select the latest version of JRE in LibreOffice under _"Tools -> Options -> Advanced"_
 
 ## Install PDFTK (after JRE)
 `sudo apt install pdftk`
 
 ## Install Czkawka
-Install Czkawka 
-1. from https://xtradeb.net/apps/czkawka/ from AptURL as found on https://qarmin.github.io/czkawka/instructions/Installation.html 
-2. or using PPA - Debian / Ubuntu (unofficial) - also found on https://qarmin.github.io/czkawka/instructions/Installation.html 
+### Option 1: 
+Click the "Install" button in the table against correct version number of the package at [xtreadeb AptURL](https://xtradeb.net/apps/czkawka/)
+
+### Option 2: 
+Using the xtradeb PPA - Debian / Ubuntu (unofficial) - as [described here](https://qarmin.github.io/czkawka/instructions/Installation.html)
+
+`sudo add-apt-repository ppa:xtradeb/apps` #Add the xtradeb unofficial PPA  
+
+This xtradeb PPA would end up providing firefox updates also. So, retrict it [only to czkawka](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/) with
 
 ```
-sudo add-apt-repository ppa:xtradeb/apps
-sudo apt-get update
-sudo apt-get install czkawka
+sudo tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
+Package: *
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: -10
+
+Package: czkawka
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: 999
+EOF
 ```
+
+`sudo apt-get update` #Update the packages
+
+`sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
+
 
 ## Install gparted
 Install gparted with
