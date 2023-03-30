@@ -106,6 +106,23 @@ Refer [Disabling the conflicting vesafb driver](https://newton.freehostia.com/co
    1.   i.e. `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`. In this example, note that `splash` is removed too
 3. And run `sudo update-grub`
 
+## Install nala
+[nala](https://linuxiac.com/nala-apt-command-frontend/) is an [attractive CLI tool](https://www.omgubuntu.co.uk/2023/01/install-nala-on-ubuntu) to conduct most APT terminal operations
+
+`sudo apt install nala` #Nala is a frontend for APT
+
+## Remove thunderbird
+Helps save space and needless updates for those who dont use this app
+
+`sudo apt remove thunderbird` #Save space and needless updates
+
+## Install guvcview and Remove cheese
+[guvcview](https://www.omgubuntu.co.uk/2011/02/webcam-linux) provides more options and controls than cheese
+
+`sudo apt install guvcview && sudo apt remove cheese` #Replace cheese with guvcview
+
+
+
 ## Upgrade to libreoffice 7-0-6 - Lubuntu 20.04
 1. `sudo add-apt-repository ppa:libreoffice/libreoffice-7-0`
 2. `sudo apt full-upgrade`
