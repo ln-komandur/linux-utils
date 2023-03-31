@@ -99,7 +99,10 @@ fi
 echo "---------------------------------------------------------------------------------------------------"
 echo "Fixing broken packages"
 echo "------------------------------------------------------------------------"
-apt install --fix-broken
+if ! nala install --fix-broken; then
+    apt install --fix-broken
+fi
+
 
 
 echo
