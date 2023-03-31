@@ -9,7 +9,7 @@ References:
 `sudo add-apt-repository ppa:mozillateam/ppa` #Add the mozillateam ppa
 
 ### Alter the Firefox package priority to ensure the PPA/deb/apt version is preferred
-#### Skip this step if you are [removing snap](why-not-snapd.md) entirely
+#### DO NOT SKIP this step EVEN if you are [removing snap](why-not-snapd.md) entirely
 
 This can be done using a [slither of code from FosTips quoted in omgubuntu](https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04) **while logged in as a su** (copy and paste it whole, not line by line):
 ```
