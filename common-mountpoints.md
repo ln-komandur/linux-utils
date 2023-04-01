@@ -38,3 +38,9 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 ### Verify edits
 
 `sudo mount -a` #Check if the fstab edits are good and partitions can be mounted at their new mount points
+
+## Add another user to group of the first user to share common files
+
+`sudo gpasswd -a another-user firstuser-group` #firstuser-group is the group of those mount points
+
+`sudo chmod -R 2775 /media/\<directories\>` #[To set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)
