@@ -18,9 +18,9 @@ https://haydenjames.io/remove-snap-ubuntu-22-04-lts/
 
 https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu-2204
  
-### Remove each app installed by snap
+### List all installed snap applications. 
 
-List all installed snap applications. Remember to install them packages as needed after removing snap using deb or apt
+Remember to install them packages as needed after removing snap using deb or apt
 
 `snap list` #Display the list of snaps
 
@@ -28,7 +28,60 @@ or
 
 `snap list >> ListOfInstalledSnaps.txt` #Saves the list of snaps in a text file ListOfInstalledSnaps.txt
 
+### Try method 1 - Remove all snaps in one go
+
 `sudo apt-get purge snapd` #Remove the daemon with apt and remove all apps in one go
+
+Refer below on **binding mounts** if running into problems. Try method 2 if method 1 still doesn't work. 
+
+### Method 2 - Remove each snap app one by one
+
+Disable snapd services with
+
+`sudo systemctl disable snapd.service snapd.socket snapd.seeded.service`
+
+Remove packages one by one beginning with the least dependent ones
+
+`sudo snap remove --purge <each package in the list>`
+
+For e.g.
+
+`sudo snap remove --purge gnome-3-38-2004`
+
+`sudo snap remove --purge gtk-common-themes`
+
+`sudo snap remove --purge snap-store`
+
+`sudo snap remove --purge snapd-desktop-integration`
+
+`sudo snap remove --purge core20`
+
+`sudo snap remove --purge bare`
+
+Remove the daemon with apt
+
+`sudo apt remove --autoremove snapd or sudo apt autoremove --purge snapd`
+
+Refer below on **binding mounts** if running into problems. You may be required to change the order of commands based on where you are at.
+
+### Running into problems
+#### Binding mounts
+
+Snap might have created a binding mount point  for hunspell for firefox  at root as described [here](https://askubuntu.com/questions/1431815/lsblk-root-partition-mounted-on-and-var-snap-firefox-common-host-hunspell) and [here](https://ubuntuforums.org/showthread.php?t=2479504&page=2&s=e77435414d5c73db7de789c3ec30e7ff). [See kpa's post on 1 Sep 22](https://forum.snapcraft.io/t/sdb5-mounted-on-firefox/31897/2), alluding to _/etc/systemd/system/var-snap-firefox-common-host\x2dhunspell.mount_ as the source of the binding mount, its contents on the where, the what etc.
+
+`cat /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` #View the file that creates the binding mount
+
+`cat /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount >> ./Desktop/mount-file.txt` #Backup the file
+
+`ls -l /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` #Look at its permissions 
+
+`sudo rm -rf /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` Delete the file that creates the binding mount
+
+`sudo umount /var/snap/firefox/common/host-hunspell` #Unmount the mount point
+
+Get back to where you left off in method 1 or 2 above. Reboot if required and check that the binding mount is gone. 
+
+### Clear leftovers and caches
 
 `sudo rm -rf /var/cache/snapd/` #Delete any leftover cache from Snap
 
