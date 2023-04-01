@@ -1,7 +1,8 @@
 # HP Notebook 14-dq1033cl
 ## Handling Hardware Airplane mode issues in Ubuntu 22.04 
 
-### [Add a service for HP keycodes for Fn + F12 key press](https://askubuntu.com/questions/965595/why-does-airplane-mode-keep-toggling-on-my-hp-laptop-in-ubuntu-18-04)
+### Mapping HP keycodes
+#### [Add a service for HP keycodes for Fn + F12 key press](https://askubuntu.com/questions/965595/why-does-airplane-mode-keep-toggling-on-my-hp-laptop-in-ubuntu-18-04)
 
 Create a file to map e057 and e058 scancodes to no operation keycode 240
 
@@ -27,7 +28,9 @@ EOF
 
 `reboot` #if required and check if Fn + F12 key works with key code changes, and if airplane mode doesnt enable on lid close
 
-### Set HandleLidSwitch=ignore to avoid sleeping when closing lid
+#### Power management settings
+
+##### Option 1: Set HandleLidSwitch=ignore to avoid sleeping when closing lid
 
 `cat /etc/systemd/logind.conf | grep ^\#HandleLidSwitch=suspend` #Check if HandleLidSwitch=suspend is commented
 
@@ -35,8 +38,13 @@ EOF
 
 `systemctl restart systemd-logind.service` #Skip this if rebooting
 
+##### Option 2: If using gnome-tweeks
 
-### Undoing changes (Remove HP keycodes and service)
+Switch off _"Suspend when laptop lid is closed"_ under "General"
+
+### Undoing changes
+
+#### Remove HP keycodes and service
 
 `sudo systemctl disable hp-keycodes.service` #disable the service:
 
@@ -44,10 +52,16 @@ EOF
 
 `reboot` #if required to apply changes
 
-### Set HandleLidSwitch=suspend
+#### Power management settings
+
+##### Option 1: Set HandleLidSwitch=suspend
 
 `cat /etc/systemd/logind.conf | grep ^HandleLidSwitch=ignore` #Check if HandleLidSwitch=ignore is uncommented
 
 `sudo sed -i 's/^HandleLidSwitch=ignore/\#HandleLidSwitch=suspend/g' /etc/systemd/logind.conf` #Change to HandleLidSwitch=suspend and disable it
 
 `systemctl restart systemd-logind.service` #Skip this if rebooting
+
+##### Option 2: If using gnome-tweeks
+
+Switch on _"Suspend when laptop lid is closed"_ under "General"
