@@ -14,11 +14,11 @@
 
 1. Get the groups that each user belongs to, as well their UIDs. Copy the outputs of the following commands in a text file for access post reinstallation. This is needed to recreate in them in the same order after reinstallation
 
-`groups firstuser # This is the super user. Output needs to show sudo as a group that this user belongs to`
+`groups firstuser` #This is the super user. Output needs to show sudo as a group that this user belongs to
 
 `id firstuser`
 
-`groups seconduser # This is a non super user. Output does not show sudo as a group that this user belongs to`
+`groups seconduser` #This is a non super user. Output does not show sudo as a group that this user belongs to
 
 `id seconduser`
 
@@ -77,15 +77,15 @@ Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and 
 ## Purge unnecessary packages and disable unnecessary services
 Refer "Speeding up the boot process" in [Read Me](Readme.md). Install [firefox through apt](Firefox-from-PPA.md), and **then** [remove snaps](why-not-snapd.md) too
 
-1. `sudo apt-get purge plymouth` 
+1. `sudo apt-get purge plymouth` #Purge plymouth
 2. `sudo systemctl stop NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service` 
 3. `sudo systemctl disable NetworkManager-wait-online.service ModemManager.service ofono.service dundee.service`
-4. `uname -a # Check distribution and kernel`
+4. `uname -a` #Check distribution and kernel
 
 ## Include swap and other partitions in fstab
-1. Refer "Create common mount points for partitions commonly accessed by all users and include them in fstab." in [Read Me](Readme.md)
+1. Refer [Create common mount points](common-mountpoints.md) for partitions commonly accessed by all users
 2. Remember to include UUID of Swap partition in `/etc/fstab` in the above. Put it after the mount points for "/" (root), "/home" and "tmpfs"
-3. `swapon # Turn on Swap`
+3. `swapon` #Turn on Swap
 
 ## Fix udisks2 raid warnings
 Refer "udisks2 raid warnings" in [Read Me](Readme.md)
@@ -95,16 +95,16 @@ If using NVIDIA graphics cards [Remove NVIDIA Splash logo / Disable NVIDIA Splas
 
 ## Update grub to suppress NVRM VGA dmesg warnings 
 Refer [Disabling the conflicting vesafb driver](https://newton.freehostia.com/comp/ubstuff.html)
-1. `sudo nano /etc/default/grub` 
+1. `sudo nano /etc/default/grub` #Open grub for edit
 2. Edit `GRUB_CMDLINE_LINUX=""` to be `GRUB_CMDLINE_LINUX="video=vesa:off vga=normal"`
-3. And run `sudo update-grub`
+3. `sudo update-grub` #Update grub
 
 ## Use USB (usually 2.0) webcam audio (mic)
 
-1. `sudo nano /etc/default/grub` 
+1. `sudo nano /etc/default/grub` #Open grub for edit 
 2. Uncomment this line `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`, and add `usbcore.autosuspend=-1` to make the mic in the USB Web Cam work. 
    1.   i.e. `#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="quiet usbcore.autosuspend=-1"`. In this example, note that `splash` is removed too
-3. And run `sudo update-grub`
+3. `sudo update-grub` #Update grub
 
 ## Install nala
 [nala](https://linuxiac.com/nala-apt-command-frontend/) is an [attractive CLI tool](https://www.omgubuntu.co.uk/2023/01/install-nala-on-ubuntu) to conduct most APT terminal operations
@@ -136,7 +136,8 @@ Helps save space and needless updates for those who dont use this app
 
 ## Install zoom if needed
 1. `sudo dpkg -i ./Downloads/zoom_amd64.deb`
-2. Use `sudo apt --fix-broken install` to fix the follwing errors and re-execute the above command if needed - refer [this link](https://askubuntu.com/questions/1244720/dependency-errors-while-installing-zoom-on-ubuntu-20-04) 
+2. `sudo apt --fix-broken install` #to fix libgl1-mesa-glx errors and re-execute the above command if needed
+   1. libgl1-mesa-glx errors look like below - refer [this link](https://askubuntu.com/questions/1244720/dependency-errors-while-installing-zoom-on-ubuntu-20-04) 
 ```
         dpkg: dependency problems prevent configuration of zoom:
          zoom depends on libgl1-mesa-glx; however:
@@ -154,11 +155,8 @@ Refer [Managing flatpak apps](flatpak-apps.md)
 
 ## Create the second user
 ### Use the same username as the previous installation 
-1. `sudo adduser seconduser # Provide username, password, Name of User, etc. when prompted`
-2. `sudo chsh -s /bin/bash seconduser # Set bash as the shell for the second user too`
-
-### Add the second user to group of the first user to share common files
-`sudo gpasswd -a seconduser firstuser` 
+1. `sudo adduser seconduser` #Provide username, password, Name of User, etc. when prompted
+2. `sudo chsh -s /bin/bash seconduser` #Set bash as the shell for the second user too
 
 ## Bluetooth applet that supports receiving files - Lubuntu 20.04
 1. `sudo apt-get remove bluedevil`
@@ -168,11 +166,11 @@ Refer [Managing flatpak apps](flatpak-apps.md)
 
 ## Install VLC
 1. Install VLC media player through apt by pasting `apt://vlc` in the browser's address bar. Refer here for [more details](https://www.videolan.org/vlc/download-ubuntu.html)
-2. Remove rhythmbox if installed using `sudo apt-get remove rhythmbox`
+2. `sudo apt-get remove rhythmbox` #Remove rhythmbox if not needed
  
 ## Preferred PDF viewer
 1. `sudo apt-get install okular`
-2. `sudo apt-get purge qpdfview` - in Lubuntu
+2. `sudo apt-get purge qpdfview` #in Lubuntu
 
 ## Games
 Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with 
@@ -189,11 +187,11 @@ Use the commands in the script [Install OCRMYPDF](install-ocrmypdf.sh) one by on
 
 If java is not already installed, executing `java -version` will output all versions avalable to install. Pick the latest
 
-1. `sudo apt install openjdk-19-jre-headless` # Latest as of March 2023
-2. `java -version # Check the installed / active version`
-3. `sudo apt install libreoffice-java-common` # Install the JRE components for libreoffice  
-4. `update-alternatives --list java # Remove any versions other than the latest if present`
-5. `sudo apt install openjdk-1x-jre-headless` # Replace 1x with the real value. Remove the older version of JRE installed by libreoffice-java-common
+1. `sudo apt install openjdk-19-jre-headless` #Latest as of March 2023
+2. `java -version` #Check the installed / active version
+3. `sudo apt install libreoffice-java-common` #Install the JRE components for libreoffice  
+4. `update-alternatives --list java` #Remove any versions other than the latest if present
+5. `sudo apt install openjdk-1x-jre-headless` #Replace 1x with the real value. Remove the older version of JRE installed by libreoffice-java-common
 6. Select the latest version of JRE in LibreOffice under _"Tools -> Options -> Advanced"_
 
 ## Install PDFTK (after JRE)
