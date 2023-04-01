@@ -1,7 +1,7 @@
 # HP Notebook 14-dq1033cl
 ## Handling Hardware Airplane mode issues in Ubuntu 22.04 
 
-### [Add a service for HP keycodes](https://ubuntuhandbook.org/index.php/2022/04/disable-automatic-airplane-mode-ubuntu/)
+### [Add a service for HP keycodes](https://askubuntu.com/questions/965595/why-does-airplane-mode-keep-toggling-on-my-hp-laptop-in-ubuntu-18-04)
 
 Create a file to map e057 and e058 scancodes to no operation keycode 240
 
