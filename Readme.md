@@ -56,7 +56,9 @@ Follow the steps in [Create common mount points for partitions shared by all use
 ## Only for Dell Inspiron 3542 
 [Dell Inspiron 3542](Inspiron-3542.md)
 
- 
+## Only for HP Notebook 14-dq1033cl
+
+[HP Notebook 14-dq1033cl](HP-Notebook-14-dq1033cl.md)
  
 # Regular Cleanup
 Periodically run the [DiskSpaceJanitor.sh](DiskSpaceJanitor.sh) (formerly `CleanCacheAndLogs.sh` & `CleanCacheLogsSnaps.sh`) as root if you have low root disk space popup appearing in ubuntu (Unity) or gnome. See example images for these pop-up.
