@@ -25,7 +25,13 @@ EOF
 
 `sudo systemctl daemon-reload && sudo systemctl enable hp-keycodes.service` #Reload the daemon and enable the service
 
-`reboot` #if required and check if Fn + F12 key works
+`cat /etc/systemd/logind.conf | grep \#HandleLidSwitch=suspend` # Check if HandleLidSwitch=suspend is commented
+
+`sudo sed -i 's/\#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf` #[Change to HandleLidSwitch=ignore and enable it](https://tipsonubuntu.com/2018/04/28/change-lid-close-action-ubuntu-18-04-lts/)
+
+`systemctl restart systemd-logind.service` #Skip this if rebooting
+
+`reboot` #if required and check if Fn + F12 key works with key code changes, and if airplane mode doesnt enable on lid close
 
 ## Undoing changes:
 
@@ -34,3 +40,5 @@ EOF
 `sudo rm /etc/systemd/system/hp-keycodes.service` #Remove the file
 
 `reboot` #if required to apply changes
+
+
