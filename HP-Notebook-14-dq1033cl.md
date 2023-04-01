@@ -25,9 +25,9 @@ EOF
 
 `sudo systemctl daemon-reload && sudo systemctl enable hp-keycodes.service` #Reload the daemon and enable the service
 
-`cat /etc/systemd/logind.conf | grep \#HandleLidSwitch=suspend` # Check if HandleLidSwitch=suspend is commented
+`cat /etc/systemd/logind.conf | grep ^\#HandleLidSwitch=suspend` #Check if HandleLidSwitch=suspend is commented
 
-`sudo sed -i 's/\#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf` #[Change to HandleLidSwitch=ignore and enable it](https://tipsonubuntu.com/2018/04/28/change-lid-close-action-ubuntu-18-04-lts/)
+`sudo sed -i 's/^\#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf` #[Change to HandleLidSwitch=ignore and enable it](https://tipsonubuntu.com/2018/04/28/change-lid-close-action-ubuntu-18-04-lts/)
 
 `systemctl restart systemd-logind.service` #Skip this if rebooting
 
@@ -39,6 +39,10 @@ EOF
 
 `sudo rm /etc/systemd/system/hp-keycodes.service` #Remove the file
 
+`cat /etc/systemd/logind.conf | grep ^HandleLidSwitch=ignore` #Check if HandleLidSwitch=ignore is uncommented
+
+`sudo sed -i 's/^HandleLidSwitch=ignore/\#HandleLidSwitch=suspend/g' /etc/systemd/logind.conf` #Change to HandleLidSwitch=suspend and disable it
+
+`systemctl restart systemd-logind.service` #Skip this if rebooting
+
 `reboot` #if required to apply changes
-
-
