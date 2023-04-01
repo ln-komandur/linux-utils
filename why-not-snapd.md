@@ -36,9 +36,7 @@ Refer below on **binding mounts** if running into problems. Try method 2 if meth
 
 ### Method 2 - Remove each snap app one by one
 
-Disable snapd services with
-
-`sudo systemctl disable snapd.service snapd.socket snapd.seeded.service`
+`sudo systemctl disable snapd.service snapd.socket snapd.seeded.service` **#Disable snapd services**
 
 Remove packages one by one beginning with the least dependent ones
 
@@ -58,9 +56,7 @@ For e.g.
 
 `sudo snap remove --purge bare`
 
-Remove the daemon with apt
-
-`sudo apt remove --autoremove snapd or sudo apt autoremove --purge snapd`
+`sudo apt remove --autoremove snapd or sudo apt autoremove --purge snapd` **#Remove the daemon with apt**
 
 Refer below on **binding mounts** if running into problems. You may be required to change the order of commands based on where you are at.
 
@@ -75,11 +71,11 @@ Snap might have created a binding mount point  for hunspell for firefox  at root
 
 `ls -l /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` #Look at its permissions 
 
-`sudo rm -rf /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` Delete the file that creates the binding mount
+`sudo rm -rf /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount` #Delete the file that creates the binding mount
 
 `sudo umount /var/snap/firefox/common/host-hunspell` #Unmount the mount point
 
-Get back to where you left off in method 1 or 2 above. Reboot if required and check that the binding mount is gone. 
+Get back to where you left off in method 1 or 2 above. `reboot` #if required and check that the binding mount is gone. 
 
 ### Clear leftovers and caches
 
