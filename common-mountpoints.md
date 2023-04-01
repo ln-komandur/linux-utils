@@ -4,7 +4,9 @@
 1. prevent `journalctl -u udisks2` warnings from appearing anytime a super user who mounted these partitions reboots, as the boot process would try to re-mount those partitions using the super user's paths but be unable to do so because the user is not logged in at that time. This warning will look like `udisksd[695]: mountpoint /media/<super-user-name>/<partition-name> is invalid, cannot recover the canonical path`
 2. account agnostic directories to mount partitions common to all _user_ and _service_ accounts
  
-`sudo mkdir /media/all-users-<partition-name>` #create a directory as a common mount point for all users
+`mkdir /media/all-users-<partition-name>` #create a directory as a common mount point for all users
+
+**Note:** Do not use `sudo` to create directories as it will make the root user and group as their owner
 
 ### Get the UUIDs of partitions at their current mount points 
 
