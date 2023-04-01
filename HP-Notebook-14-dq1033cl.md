@@ -8,7 +8,7 @@ Create a file to map e057 and e058 scancodes to no operation keycode 240
 ```
 sudo tee -a /etc/systemd/system/hp-keycodes.service <<EOF
 [Unit]
-Description=Fix for HP Hardware-Airplane-Mode key codes
+Description=Map HP Hardware Airplane Mode key codes
 
 [Service]
 Type=oneshot
