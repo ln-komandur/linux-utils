@@ -83,7 +83,7 @@ Refer "Speeding up the boot process" in [Read Me](Readme.md). Install [firefox t
 4. `uname -a` #Check distribution and kernel
 
 ## Include swap and other partitions in fstab
-1. Refer [Create common mount points](common-mountpoints.md) for partitions commonly accessed by all users
+1. Refer [Create common mount points](common-mountpoints.md) for partitions commonly accessed by all users and to set write permission to multiple users to access files in those partitions
 2. Remember to include UUID of Swap partition in `/etc/fstab` in the above. Put it after the mount points for "/" (root), "/home" and "tmpfs"
 3. `swapon` #Turn on Swap
 
