@@ -39,10 +39,9 @@ and check the status
 
 `sudo ufw status verbose`
 
-
 ## Create account agnostic mount points
 
-Follow the steps in [Create common mount points for partitions shared by all users and include them in fstab](common-mountpoints.md)
+Follow the steps in [Create common mount points for partitions shared by all users and include them in fstab](common-mountpoints.md) and to set write permission to multiple users to access files in those partitions.
 
 ## Remove snapd
 
@@ -51,7 +50,6 @@ Follow the steps in [Create common mount points for partitions shared by all use
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 
 [Handling NVIDIA G86M on Dell Inspiron 1720](Inspiron-1720-NVIDIA-G86M.md)
- 
  
 ## Only for Dell Inspiron 3542 
 [Dell Inspiron 3542](Inspiron-3542.md)
