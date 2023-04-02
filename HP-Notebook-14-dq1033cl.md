@@ -9,7 +9,7 @@
 #Default is below
 #GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
-#Works - Fn keys, Suspend on close, Locked on Open, Airplane mode toggle. Touchpad made to work with 'i8042.nopnp=1 pci=nocrs'
+#Works - Fn keys, Suspend on close, Locked on Open, Airplane mode toggle. Touchpad made to work with 'i8042.nopnp=1'
 #Does not work - Wifi on boot (i.e. boots in Airplane mode). Bluetooth. 'rfkill.default_state=1' did not help either of them. 
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi=! i8042.nopnp=1"
 ```
