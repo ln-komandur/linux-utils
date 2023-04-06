@@ -53,3 +53,18 @@ Also refer [Back up and restore information in Firefox profiles](https://support
 - Applications
   - Choose how Firefox handles the files you download from the web or the applications you use while browsing.
     - "Use system defaults" where needed  
+
+- Digital Rights Management (DRM) Content
+  - Play DRM-controlled content  
+
+- Firefox Home Content
+  - Shortcuts
+    - Sponsored Shortcuts  
+  - Recommended by Pocket - Uncheck
+    - Sponsored stories - Uncheck
+  - Recent activity - Uncheck
+    - Visited Pages - Uncheck
+    - Bookmarks - Uncheck
+    - Most Recent Download - Uncheck
+    - Pages Saved to Pocket - Uncheck
+  - Snippets - Uncheck
