@@ -1,25 +1,27 @@
-Type `about:profiles` in the address bar and view the location of the profiles
+Type [`about:profiles`](about:profiles) in the address bar and view the location of the profiles
 
-Type `about:preferences`  in the address bar to edit the following settings
+Type [`about:preferences`](about:preferences)  in the address bar to edit the following settings
 
 Also refer [Back up and restore information in Firefox profiles](https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
-
-Do no track signal 
-  - Select
-    - Always
 
 - Forms and Autofill
   - Uncheck
     - Autofill credit cards
     - Autofill addresses
 
-- Address Bar 
-  - Suggest 
-    - Browsing history, 
-    - book marks, 
-    - open tabs, 
-    - top sites
-    - search engine
+- Search Bar - Add search bar in toolbar
+
+- Do no track signal 
+  - Select
+    - Always
+    - 
+- Address Bar - Firefox Suggest 
+  - Check
+    - Browsing history 
+    - Bookmarks
+    - Open tabs 
+    - Top sites
+    - Search engine
   - Uncheck
     - Suggestion from the web
     - Suggestions from sponsors
@@ -39,17 +41,17 @@ Do no track signal
 
 - Search engines - and Default Search Engine
 
-- Search Bar - Add search bar in toolbar
+
 
 - Search suggestions - provide search suggestions
 
 - History - Custom settings 
   - Check
     - Always use private browsing mode 
+  - Uncheck (Automatically done for private browsing mode)
+    - Remember search and form history
     - Remember browsing and download history
     - Clear history when Firefox closes
-  - Uncheck
-    - Remember search and form history
 
 
 - Permissions
