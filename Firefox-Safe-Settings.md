@@ -63,7 +63,7 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
 - Cookies - Standard
   - Delete cookies when firefox is closed
 
-- Login & Passwords - No autofill 
+- Login & Passwords 
   - Check
     - Show alerts about passwords for breached websites
   - Uncheck
@@ -71,7 +71,7 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
     - Autofill logins and passwords
     - Suggest and generate strong passwords
     - Enable Firefox Relay in your Firefox password manager
-
+    - Use a Primary Password
 
 - Forms and Autofill
   - Uncheck
