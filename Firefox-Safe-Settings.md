@@ -1,17 +1,38 @@
 Type `about:profiles` in the address bar and view the location of the profiles
 
+Type `about:preferences`  in the address bar to edit the following settings
+
 Also refer [Back up and restore information in Firefox profiles](https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
 
-- Do no track signal - Always
+Do no track signal 
+  - Select
+    - Always
 
-- Credit cards - No autofill
+- Forms and Autofill
+  - Uncheck
+    - Autofill credit cards
+    - Autofill addresses
 
-- Addresses - No autofill
-
-- Address Bar - Suggest - Browsing history, book marks, open tabs, top sites
+- Address Bar 
+  - Suggest 
+    - Browsing history, 
+    - book marks, 
+    - open tabs, 
+    - top sites
+    - search engine
+  - Uncheck
+    - Suggestion from the web
+    - Suggestions from sponsors
+    - Improve the firefox experience
 
 - Login & Passwords - No autofill 
-  - Show alerts about passwords for breached websites - Yes
+  - Check
+    - Show alerts about passwords for breached websites
+  - Uncheck
+    - Ask to save logins and password for websites
+    - Autofill logins and passwords
+    - Suggest and generate strong passwords
+    - Enable Firefox Relay in your Firefox password manager
 
 - Cookies - Standard
   - Delete cookies when firefox is closed
@@ -22,27 +43,34 @@ Also refer [Back up and restore information in Firefox profiles](https://support
 
 - Search suggestions - provide search suggestions
 
-- History
-  - Custom settings -> Always use private browsing mode (dont remember browsing, download, search, form)
+- History - Custom settings 
+  - Check
+    - Always use private browsing mode 
+    - Remember browsing and download history
+    - Clear history when Firefox closes
+  - Uncheck
+    - Remember search and form history
+
 
 - Permissions
   - Block
     - Locations
     - Notifications
     - Virtual reality
+    - Autoplay - Block audio and video
+    - Check
+      - Block popups
+      - Warn when sites try to install add ons
 
-- Autoplay - Block audio and video
-
-- Block popups
-  - Warn when sites try to install add ons
-
-- Firefox data collection
-  - Do not allow anything, including grey ones
+- Firefox Data Collection and Use
+  - Uncheck - All setting - Do not allow anything, including grey ones
 
 - Certificates
   - Ask everytime - Query OCSP
 
-- HTTPS mode only - Enable in all windows
+- HTTPS-Only mode 
+  - Select
+    - Enable HTTPS-Only Mode in all windows
 
 - Deceptive Content and Dangerous Software Protection
   - Block Dangerous and Deceptive Content
@@ -52,7 +80,9 @@ Also refer [Back up and restore information in Firefox profiles](https://support
 
 - Applications
   - Choose how Firefox handles the files you download from the web or the applications you use while browsing.
-    - "Use system defaults" where needed  
+    - "Use system defaults" where needed
+  - What should Firefox do with other files?
+    - Ask whether to open or save files  
 
 - Digital Rights Management (DRM) Content
   - Play DRM-controlled content  
@@ -68,3 +98,10 @@ Also refer [Back up and restore information in Firefox profiles](https://support
     - Most Recent Download - Uncheck
     - Pages Saved to Pocket - Uncheck
   - Snippets - Uncheck
+
+
+
+- Performance
+  - Check
+    - Use recommended performance settings  
+
