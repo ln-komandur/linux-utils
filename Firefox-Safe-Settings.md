@@ -1,3 +1,5 @@
+Type `about:profiles` in the address bar and view the location of the profiles
+
 Also refer [Back up and restore information in Firefox profiles](https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
 
 - Do no track signal - Always
