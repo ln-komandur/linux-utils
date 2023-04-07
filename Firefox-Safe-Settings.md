@@ -107,9 +107,9 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
     - Notifications
     - Virtual reality
     - Autoplay - Block audio and video
-    - Check
-      - Block popups
-      - Warn when sites try to install add ons
+  - Check
+    - Block popups
+    - Warn when sites try to install add ons
 
 - Firefox Data Collection and Use
   - Uncheck - All setting - Do not allow anything, including grey ones
