@@ -55,12 +55,14 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
 
 **Type [`about:preferences#privacy`](about:preferences#privacy)**  in the address bar to edit **Privacy** settings
 
+- Enhanced Tracking Protection
+  - Standard
 
 - "Do no track" signal 
   - Select
     - Always
 
-- Cookies - Standard
+- Cookies and Site Data 
   - Delete cookies when firefox is closed
 
 - Login & Passwords 
