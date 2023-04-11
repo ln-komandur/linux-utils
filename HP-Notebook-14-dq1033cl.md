@@ -1,22 +1,5 @@
 # HP Notebook 14-dq1033cl
-## Handling Hardware Airplane mode issues in Ubuntu 22.04 
 
-### Edit grub and include kernel parameters
+[Intel Dual Band Wireless AX200NGW - WiFi 6 AX200 WiFi Adapter - 2.4GHz 574Mbps/5GHz 2.4Gbps - 802.11AX Network Card - Bluetooth5.0 Wireless Network Adapter For Windows 10 64Bit/Google Chrome OS/Linux ](https://www.amazon.com/Intel-Dual-Band-Wireless-AX200NGW/dp/B07V9N9XVJ/ref=sr_1_4?crid=2L8T86SQVRCA1&keywords=ax200+wifi+card&qid=1681179252&sprefix=ax200%2Caps%2C321&sr=8-4)
 
-`sudo nano /etc/default/grub` #Open grub for edit and include kernelt parameters in GRUB_CMDLINE_LINUX_DEFAULT=
-
-```
-#Default is below
-#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
-
-#Works - Fn keys, Suspend on close, Locked on Open, Airplane mode toggle. Touchpad made to work with 'i8042.nopnp=1'
-#Does not work - Wifi on boot (i.e. boots in Airplane mode). Bluetooth. 'rfkill.default_state=1' did not help either of them. 
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi=! i8042.nopnp=1"
-```
-
-`sudo update-grub` #Update grub and reboot
-
-**Note:** 
-1.  The system will boot only with airplane mode turned on. Press Fn+f12 twice leaving a gap of a few seconds for Wifi to turn on. 
-2.  When the lid is closed, and opened, the screen will be locked, but airplane mode will be on. Press Fn+f12 twice leaving a gap of a few seconds for Wifi to turn on
-3.  Bluetooth will not turn on
+This card when installed in HP Notebook 14-dq1033cl with Ubuntu 22.04 would connect to Wi-fi, and BT just fine upon cold boot. But whenever the laptop suspended (due to inactivity or a closed lid) and resumed, it would automatically go into "Hardware Airplane mode". The key strokes Fn+F12 (with the airplane icon on F12) could never get it out of it. This key combination would work just fine for normal "Airplane Mode" before the laptop ever went to suspend though. There is no Hardware Airplane switch on this laptop to mechanically turn off that mode like I see in various forums for other laptops. The only option to switch off from "Hardware Airplane mode" and resume any kind of connectivity was to reboot the laptop, which was obviously the worst option. Any changes to several settings (key maps, gnome-tweaks, kernel parameters in grub) never helped. In fact they introduced new issues with Touchpad etc. The earlier Wi-fi card on this laptop was RTL8822CE, which never had this issue. When the AX200 worked (before ever suspending and resuming), it did seems like a great card. Just  wish this "Hardware Airplane mode" issue wasn't there to make it a **show stopper**.
