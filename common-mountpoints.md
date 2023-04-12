@@ -6,7 +6,7 @@
  
 `mkdir /media/all-users-<partition-name>` #create a directory as a common mount point for all users
 
-**Note:** Do not use `sudo` to create directories as it will make the root user and group as their owner
+**Note:** Do not use `sudo` to create directories as it will make the root user as their owner and group 
 
 ### Get the UUIDs of partitions at their current mount points 
 
