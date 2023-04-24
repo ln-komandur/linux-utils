@@ -15,6 +15,7 @@ fi
 echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps, and unused flatpaks if any."
 echo "It provides INFORMATION on old kernels that can be deleted manually through other means."
 echo "AUTHENTICATION SUCCESSFUL. You are executing the script as" $USER
+echo "This script version is dated April-24-2023"
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
@@ -97,12 +98,13 @@ fi
 
 
 echo "---------------------------------------------------------------------------------------------------"
-echo "Fixing broken packages"
+echo "Fixing broken packages with nala / apt install --fix-broken; dpkg --configure -a"
 echo "------------------------------------------------------------------------"
 if ! nala install --fix-broken; then
     apt install --fix-broken
 fi
 
+dpkg --configure -a
 
 
 echo
