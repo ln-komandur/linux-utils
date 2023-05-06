@@ -56,11 +56,10 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
 **Type [`about:preferences#privacy`](about:preferences#privacy)**  in the address bar to edit **Privacy** settings
 
 - Enhanced Tracking Protection
-  - Standard
+  - Select - Standard
 
 - "Do no track" signal 
-  - Select
-    - Always
+  - Select - Always
 
 - Cookies and Site Data 
   - Delete cookies when firefox is closed
@@ -115,12 +114,13 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
   - Uncheck - All setting - Do not allow anything, including grey ones
 
 - Security 
-  - Deceptive Content and Dangerous Software Protection
-    - Block Dangerous and Deceptive Content
-      - Block Dangerous Downloads
-      - Warn you about unwanted and uncommon software   
-  - Certificates
-    - Ask everytime - Query OCSP
-  - HTTPS-Only mode 
-    - Select
+  - Check
+    - Deceptive Content and Dangerous Software Protection
+      - Block Dangerous and Deceptive Content
+        - Block Dangerous Downloads
+        - Warn you about unwanted and uncommon software   
+    - Certificates
+      - Ask everytime - Query OCSP
+  - Select
+    - HTTPS-Only mode 
       - Enable HTTPS-Only Mode in all windows
