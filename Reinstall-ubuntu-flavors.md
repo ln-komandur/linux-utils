@@ -68,7 +68,7 @@ Ensure that Legacy boot is disabled (as opposed to UEFI or other EFI boots) and 
 7. Create a separate small partition (could be ~8 to 10GB) for encrpted storage. Veracrypt could be used on this partition 
 8. Go through the MOK (Machine-Owned Key) enrollment process
 
-# Post re-installation begins here
+# Post re-installation
 
 ## FIRST and FOREMOST
 1. Update all drivers from GUI or with `sudo ubuntu-drivers autoinstall`
@@ -301,3 +301,7 @@ $ systemd-analyze blame
  159ms dev-mqueue.mount              
 
 ```
+
+## Appendix - Creating Windows 10 bootable USB from within Ubuntu
+
+Format a USB pendrive as exFat and install Windows 10 installable using [WoeUSB-ng](https://github.com/WoeUSB/WoeUSB-ng) as described in method 1 [here](https://itsfoss.com/install-woeusb-ubuntu/) 
