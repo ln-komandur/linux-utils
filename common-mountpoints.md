@@ -4,11 +4,11 @@
 1. prevent `journalctl -u udisks2` warnings from appearing anytime a super user who mounted these partitions reboots, as the boot process would try to re-mount those partitions using the super user's paths but be unable to do so because the user is not logged in at that time. This warning will look like `udisksd[695]: mountpoint /media/<super-user-name>/<partition-name> is invalid, cannot recover the canonical path`
 2. account agnostic directories to mount partitions common to all _user_ and _service_ accounts
  
-`sudo mkdir /media/all-users-<partition-name>` #create a directory as a common mount point for all users
+`sudo mkdir /media/all-users-<partition-name>` # *Create a directory as a common mount point for all users*
 
 **Note:** Using `sudo` creates directories with the root user as their owner and group 
 
-`sudo chown -R <sudo_user>:<sudo_users_group> /media/all-users-<partition-name>` #Change the owner and group to the user who is a super-user 
+`sudo chown -R <sudo_user>:<sudo_users_group> /media/all-users-<partition-name>` # *Change the owner and group to the user who is a super-user*
 
 **Note:** Add other non -sudo users to <sudo_users_group> so that they can access this mount point as a member of the group, but without needing `sudo` privilleges
 
@@ -17,15 +17,15 @@
 
 Use one of the below commands
 
-`sudo blkid | grep UUID=` #Get the UUID of partitions at their current mount points
+`sudo blkid | grep UUID=` # *Get the UUID of partitions at their current mount points*
 
 or
 
-`ls -l /media/` #Get the UUID of partitions at their current mount points
+`ls -l /media/` # *Get the UUID of partitions at their current mount points*
 
 ### Edit the fstab file
 
-`sudo nano /etc/fstab` #open fstab to add entries for the mount point with /media/\<directories\> against their UUIDs
+`sudo nano /etc/fstab` # *Open fstab to add entries for the mount point with /media/\<directories\> against their UUIDs*
  
  ```
 # The below lines help to have common paths for these partitions for all users
@@ -42,10 +42,10 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 ### Verify edits
 
-`sudo mount -a` #Check if the fstab edits are good and partitions can be mounted at their new mount points
+`sudo mount -a` # *Check if the fstab edits are good and partitions can be mounted at their new mount points*
 
 ## Add another user to group of the first user to share common files
 
-`sudo gpasswd -a another-user firstuser-group` #firstuser-group is the group of those mount points
+`sudo gpasswd -a another-user firstuser-group` # *Firstuser-group is the group of those mount points*
 
-`sudo chmod -R 2775 /media/\<directories\>` #[To set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)
+`sudo chmod -R 2775 /media/\<directories\>` # *[To set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
