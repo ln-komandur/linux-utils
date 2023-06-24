@@ -9,17 +9,19 @@ Run [DisableUnnecessaryServices.sh](DisableUnnecessaryServices.sh) to disable `N
 
 Check if there are any warnings (or error messages) from udisks2 about raid (such as here https://bugs.launchpad.net/ubuntu/+source/udisks2/+bug/1811724) by executing
 
- `journalctl -b | grep udisks` or `sudo systemctl status udisks2`
+ `journalctl -b | grep udisks` # *Will show warnings from the past too*
+ 
+ or 
+ 
+ `sudo systemctl status udisks2` # *Check status to see if warnings are there NOW or gone*
 
 If there are messages like "failed to load module mdraid: libbd_mdraid.so.2: cannot open shared object file: No such file or directory" or "Failed to load the 'mdraid' libblockdev plugin", then install the 2 missing packages
  
 `sudo apt-get install libblockdev-crypto2 libblockdev-mdraid2`
  
-Restart udisks2 and check its status to see if the warnings are gone
+`sudo systemctl restart udisks2`# *Restart udisks2*
  
-`sudo systemctl restart udisks2`
- 
-`journalctl -b | grep udisks` or `sudo systemctl status udisks2`
+`sudo systemctl status udisks2` # *Check status to see if warnings are there NOW or gone*
 
 ## Bluetooth
 
@@ -50,6 +52,12 @@ Follow the steps in [Create common mount points for partitions shared by all use
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
 
 [Handling NVIDIA G86M on Dell Inspiron 1720](Inspiron-1720-NVIDIA-G86M.md)
+
+## Cosmetics
+
+### Customize the bash shell prompt
+
+[Change the prompt color](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/) in $HOME/.bash_profile. Use red for sudo users and green for non-sudo users
  
 ## Only for Dell Inspiron 3542 
 [Dell Inspiron 3542](Inspiron-3542.md)
