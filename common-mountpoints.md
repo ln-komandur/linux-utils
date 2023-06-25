@@ -8,7 +8,7 @@
 
 **Note:** Using `sudo` creates directories with the root user as their owner and group 
 
-`sudo chown -R <sudo_user>:<sudo_users_group> /media/all-users-<partition-name>` # *Change the owner and group to the user who is a super-user*
+`sudo chown -R <non_sudo_user>:<non_sudo_users_group> /media/all-users-<partition-name>` # *Change the owner and group to the user who is NOT a super-user*
 
 **Note:** Add other non -sudo users to <sudo_users_group> so that they can access this mount point as a member of the group, but without needing `sudo` privilleges
 
