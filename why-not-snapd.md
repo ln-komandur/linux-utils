@@ -75,6 +75,10 @@ Snap might have created a binding mount point  for hunspell for firefox  at root
 
 `sudo umount /var/snap/firefox/common/host-hunspell` #Unmount the mount point
 
+`sudo rm -i /etc/systemd/system/snapd.mounts.target.wants/var-snap-firefox-common-host\\x2dhunspell.mount` #Delete a lingering link. This step may need to be done after the snap purge (not sure).
+   
+`sudo rmdir /etc/systemd/system/snapd.mounts.target.wants/` #Delete the folder with the lingering link. This step may need to be done after the snap purge (not sure).
+
 Get back to where you left off in method 1 or 2 above. `reboot` #if required and check that the binding mount is gone. 
 
 ### Clear leftovers and caches
@@ -85,20 +89,21 @@ Get back to where you left off in method 1 or 2 above. `reboot` #if required and
 
 ### Prevent ubuntu from installing snap package again
 
-After completely removing snap packages, set a low priority for the snapd package to prevent Ubuntu from reinstalling it
+After completely removing snap packages, set a low priority for the snapd package to prevent Ubuntu from reinstalling it.
 
-Create and open a configuration file with `sudo gedit /etc/apt/preferences.d/nosnap.pref`
-
-Paste the following lines in the file to prevent the package installation from any repository:
+Copy and Paste the following lines as a whole, not line by line
 ```
+echo '
 # Prevent repository packages from triggering the installation of snap,
 # Forbids snapd from being installed by APT by using  Pin-Priority: -10
 
 Package: snapd
 Pin: release a=*
 Pin-Priority: -10
+' sudo tee /etc/apt/preferences.d/nosnap.pref
 ```
-Save the file and refresh package cache with `sudo apt update`
+
+`sudo apt update` #Refresh package cache
 
 ### Install Gnome Software in place of Snap Store (Ubuntu Software) 
 
