@@ -17,7 +17,11 @@ https://www.debugpoint.com/remove-snap-ubuntu/
 https://haydenjames.io/remove-snap-ubuntu-22-04-lts/
 
 https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu-2204
- 
+
+## Happy Scenario
+Download and execute [Purge-snapd-install-apt-equivalents.sh](Purge-snapd-install-apt-equivalents.sh) to purge snapd completely along with all installed snaps, and install Gnome software and Firefox from apt.
+
+##  Alternative Scenarios
 ### List all installed snap applications. 
 
 Remember to install them packages as needed after removing snap using deb or apt
