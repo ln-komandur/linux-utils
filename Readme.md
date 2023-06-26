@@ -47,6 +47,10 @@ Follow the steps in [Create common mount points for partitions shared by all use
 
 ## Remove snapd
 
+### Happy Scenario
+Download and execute [Purge-snapd-install-apt-equivalents.sh](Purge-snapd-install-apt-equivalents.sh) to purge snapd completely along with all installed snaps, and install Gnome software and Firefox from apt.
+
+###  Alternative Scenarios
 **First** [install firefox from PPA](Firefox-from-PPA.md) **and then** [remove snapd completely](why-not-snapd.md)
 
 ## Only for Dell Inspiron 1720 with NVIDIA G86M [GeForce 840M GS] Graphics card
