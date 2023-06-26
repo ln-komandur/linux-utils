@@ -12,7 +12,7 @@ if (($EUID != 0)); then
   fi
   exit
 fi
-echo "This script purges snapd completely along with all installed snaps and installs Gnone software and Firefox from apt."
+echo "This script purges snapd completely along with all installed snaps and installs Gnome software and Firefox from apt."
 echo
 echo
 
