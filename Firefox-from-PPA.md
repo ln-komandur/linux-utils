@@ -4,6 +4,10 @@ References:
 1.   [How to Install Firefox as a .Deb on Ubuntu 22.04 (Not a Snap)](https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04)
 2.   [How to install Firefox as a traditional deb package (without snap) in Ubuntu 22.04 or later versions?](https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22)
 
+## Happy Scenario
+Download and execute [Purge-snapd-install-apt-equivalents.sh](Purge-snapd-install-apt-equivalents.sh) to purge snapd completely along with all installed snaps, and install Gnome software and Firefox from apt.
+
+##  Alternative Scenarios
 ### Add mozillateam ppa
  
 `sudo add-apt-repository ppa:mozillateam/ppa` #Add the mozillateam ppa
