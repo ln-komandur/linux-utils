@@ -28,6 +28,7 @@ rm -rf /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount #Dele
 umount /var/snap/firefox/common/host-hunspell #Unmount the mount point
 rm -i /etc/systemd/system/snapd.mounts.target.wants/var-snap-firefox-common-host\\x2dhunspell.mount #Delete a lingering link. This step may need to be done after the snap purge (not sure)
 rmdir /etc/systemd/system/snapd.mounts.target.wants/ #Delete the folder with the lingering link. This step may need to be done after the snap purge (not sure)
+rm /etc/systemd/system/multi-user.target.wants/var-snap-firefox-common-host\\x2dhunspell.mount #Delete a lingering link.
 
 #Purge the snap daemon with apt and remove all snap apps in one go
 echo
