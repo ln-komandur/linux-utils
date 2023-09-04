@@ -112,3 +112,4 @@ Pin-Priority: -10
 ### Install Gnome Software in place of Snap Store (Ubuntu Software) 
 
 `sudo apt install gnome-software` #Do not use any switches like --install-suggests or --install-recommends
+`sudo apt remove gnome-software-plugin-snap` #Remove Snap App Index from gnome-software
