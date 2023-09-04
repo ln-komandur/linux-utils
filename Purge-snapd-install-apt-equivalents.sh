@@ -82,5 +82,5 @@ echo
 echo
 apt update
 apt install gnome-software #Do not use any switches like --install-suggests or --install-recommends
-apt remove gnome-software-plugin-snap #Remove Snap App Index from gnome-software
+apt purge snapd #Purge snapd again, and the Snap App Index gnome-software-plugin-snap for gnome-software
 apt install firefox
