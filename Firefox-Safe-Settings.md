@@ -83,7 +83,7 @@ Type [`about:profiles`](about:profiles) in the address bar and view the location
 - History - Custom settings 
   - Check
     - Always use private browsing mode
-       - ***This may cause problems with gmail asking for verification code to login every time***
+       - ***This may cause problems with gmail asking for verification code to login every time. [Refer support question](https://support.mozilla.org/en-US/questions/1358487) only for this aspect*** 
   - Uncheck (Automatically done for private browsing mode)
     - Remember search and form history
     - Remember browsing and download history
