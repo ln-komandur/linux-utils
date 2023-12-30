@@ -11,9 +11,9 @@ Can also try `pdftoppm -mono` or `pdftoppm -png` if those gives better outputs. 
 ### Split the double-page-images into 2 separate single page images
 `cd double-page-images/`
 
-Remember to use the right file extn i.e. `.ppm / .pgm / .png` etc. in the command below
+Remember to use the right file extn i.e. `.ppm / .pgm / .png` etc. in the command below .  --no-grayfilter helps to avoid white patches in color images
 
-`unpaper --layout double --output-pages 2  R-and-L-page-%02d.pgm single-page%02d.pgm`
+`unpaper --no-grayfilter --layout double --output-pages 2  R-and-L-page-%02d.pgm single-page%02d.pgm`
  
 #### Rename all ppm / pgm / png files with numbering that orders them as pages when using img2pdf command later
 `rename 's/single-page(\d\d)\.p(.+)/single-page-0$1.p$2/g' *`
@@ -63,7 +63,7 @@ It is a good idea to add color cover pages as the last step (after OCR) by addin
 ### Make a PDF book again from png files which have white/no background
 `cd whitebkgnd/`
 
-`img2pdf PageNo*.* -o Book-v2-nobkgnd.pdf`
+`img2pdf PageNo*.* -o Book-v2-nobkgnd.pdf` or `img2pdf single-page*.* -o Book-v2-nobkgnd.pdf`
 
 Use any other options to define page size and include page borders too. For e.g.
 
