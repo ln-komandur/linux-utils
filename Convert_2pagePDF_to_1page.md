@@ -23,6 +23,8 @@ Remember to use the right file extn i.e. `.ppm / .pgm / .png` etc. in the comman
 
 #### Resize or Crop pages to constant size
 
+Refer [Ghost script based approach to cropping an entire pdf document](https://askubuntu.com/questions/124692/command-line-tool-to-crop-pdf-files)
+
 `mkdir resized #Create a directory to store resized images`
 
 Remember to use the right file extn i.e. `.ppm / .pgm / .png` etc. in the command below 
