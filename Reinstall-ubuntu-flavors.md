@@ -236,6 +236,14 @@ EOF
 
 `sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
 
+## Install Master PDF Editor - Free - version 4.3.89
+Download [master-pdf-editor-4.3.89_qt5.amd64.deb](http://code-industry.net/public/master-pdf-editor-4.3.89_qt5.amd64.deb) as described in [linuxuprising](https://www.linuxuprising.com/2019/04/download-master-pdf-editor-4-for-linux.html?m=1) and [antixforum](https://www.antixforum.com/forums/topic/master-pdf-editor-free-version-still-available/). This deb is very old. That's intentional as it is free and produces PDFs without watermarks.
+
+Install with 
+
+`sudo nala install master-pdf-editor-4.3.89_qt5.amd64.deb`
+
+
 
 ## Install gparted
 Install gparted with
