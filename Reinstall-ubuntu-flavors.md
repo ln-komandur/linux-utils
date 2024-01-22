@@ -117,7 +117,7 @@ Helps save space and needless updates for those who dont use this app
 `sudo apt remove thunderbird` #Save space and needless updates
 
 ## Install guvcview and Remove cheese
-[guvcview](https://www.omgubuntu.co.uk/2011/02/webcam-linux) provides more options and controls than cheese
+[guvcview](https://www.omgubuntu.co.uk/2011/02/webcam-linux) provides more options and controls than cheese for the USB webcam
 
 `sudo apt install guvcview && sudo apt remove cheese` #Replace cheese with guvcview
 
