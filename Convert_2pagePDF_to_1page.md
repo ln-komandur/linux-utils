@@ -79,6 +79,7 @@ for file in *.png
 do
     echo "Removing background on - " $file
     convert "$file" -transparent white -alpha remove -alpha off "./whitebkgnd/$file"
+    convert "$file" -threshold 80% "./whitebkgnd/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
     # convert "$file" -background white -alpha remove -alpha off "./whitebkgnd/$file"    
 done
 ```
