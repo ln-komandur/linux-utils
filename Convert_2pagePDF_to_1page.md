@@ -73,14 +73,22 @@ Create a directory to store images without background / white background
 ```
 #This shell script contains the below
 
-# Example in the line below is with too many parameters: Pick whatever produces the least file size 
-# convert Test.png -transparent white -background white -alpha remove -alpha off Transparent.png
+
+if [ $# -le 1 ]
+then
+    echo "Usage: removebkgnd <threshold>% <destination-folder-name>"
+    echo "Provide the % threshold to use to whiten page backgrounds without the % symbol, followed by the folder to place this images in."
+    echo "Exiting"
+    exit 1
+fi
+
+mkdir -p $2
+echo "Made sub-directory " $2 " to place output files "
+
 for file in *.png
 do
     echo "Removing background on - " $file
-    convert "$file" -transparent white -alpha remove -alpha off "./whitebkgnd/$file"
-    convert "$file" -threshold 80% "./whitebkgnd/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
-    # convert "$file" -background white -alpha remove -alpha off "./whitebkgnd/$file"    
+    convert "$file" -threshold $1% "./$2/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
 done
 ```
 Also use any other means to enhance these png images now to crop, enhance images. e.g. using shotwell, gimp etc.
