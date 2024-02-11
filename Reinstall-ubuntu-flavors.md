@@ -134,6 +134,28 @@ Helps save space and needless updates for those who dont use this app
 1. `wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`  - refer [this link](https://www.wikihow.com/Install-Google-Chrome-Using-Terminal-on-Linux)
 2. `sudo dpkg -i google-chrome-stable_current_amd64.deb` - This command will also add the _https://dl.google.com/linux/chrome/deb/_ PPA to Other software 
 
+## Install chromium brower from Linux Mint repositories if needed
+Refer [this link](https://askubuntu.com/questions/1386738/how-to-install-chromium-from-the-linux-mint-repositories-in-ubuntu)
+1. `sudo apt purge chromium-browser` #Remove chromium snap package if present
+2. Create an apt source file for the Mint repository:
+   1. `echo "deb http://packages.linuxmint.com una upstream" | sudo tee /etc/apt/sources.list.d/mint-una.list` #For Ubuntu **20.04**
+   2. `echo "deb http://packages.linuxmint.com victoria upstream" | sudo tee /etc/apt/sources.list.d/mint-victoria.list` #For Ubuntu **22.04 (and newer)**
+3. `sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com A1715D88E1DF1F24 40976EAF437D05B5 3B4FE6ACC0B21F32 A6616109451BBBF2` #Add the GPG key to prevent NO_PUBKEY
+4. `sudo apt update` #Update package lists
+5. Prevent installation of other Linux mint packages by pin-file:
+```
+cat <<EOF | sudo tee /etc/apt/preferences.d/pin-chromium
+Package: *
+Pin: release o=linuxmint
+Pin-Priority: -1
+
+Package: chromium
+Pin: release o=linuxmint
+Pin-Priority: 1000
+EOF
+```
+6. `sudo apt install chromium` #Install chromium
+
 ## Install zoom if needed
 1. `sudo dpkg -i ./Downloads/zoom_amd64.deb`
 2. `sudo apt --fix-broken install` #to fix libgl1-mesa-glx errors and re-execute the above command if needed
