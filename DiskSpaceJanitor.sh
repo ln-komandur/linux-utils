@@ -15,7 +15,7 @@ fi
 echo "This script frees up diskspace by cleaning cache, old-logs and disabled snaps, and unused flatpaks if any."
 echo "It provides INFORMATION on old kernels that can be deleted manually through other means."
 echo "AUTHENTICATION SUCCESSFUL. You are executing the script as" $USER
-echo "This script version is dated April-24-2023"
+echo "This script version is dated February-11-2024"
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
@@ -59,8 +59,20 @@ echo "Deleting *.1 files in /var/log/ folder"
 echo "------------------------------------------------------------------------"
 find /var/log -type f -name "*.1" -exec rm -f {} \;
 
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Deleting \"Other Software\" sources that do not point anywhere"
+echo "------------------------------------------------------------------------"
+find /etc/apt/sources.list.d/ -size 0c -delete
 
-if snap list --all; then 
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Dealing with snaps"
+echo "------------------------------------------------------------------------"
+
+if snap list --all; then
     snap list --all | awk '/disabled/{print $1, $3}' |
         while read disabledsnapname revision; do
 	    echo
@@ -79,6 +91,12 @@ else
     echo "---------------------------------------------------------------------------------------------------"
     echo
 fi
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Dealing with flatpak"
+echo "------------------------------------------------------------------------"
 
 if flatpak list; then
     echo
@@ -161,12 +179,12 @@ dpkg --list | egrep -i --color 'linux-image|linux-headers'
 echo
 echo
 echo "------------------------------------------------------------------------"
-echo "Current Kernel is as below. DO NOT REMOVE IT." 
+echo "Current Kernel is as below. DO NOT REMOVE IT."
 uname -a
 echo "------------------------------------------------------------------------"
-echo "This script will remove packages including kernel versions that are marked 'rc' in dpkg --list. " 
-echo "If they still linger around, then MANUALLY remove them from the above list using SYNAPTIC or MUON " 
-echo "package manager to address interdependencies. Check disk space usage before and after removal using 'df -H'" 
+echo "This script will remove packages including kernel versions that are marked 'rc' in dpkg --list. "
+echo "If they still linger around, then MANUALLY remove them from the above list using SYNAPTIC or MUON "
+echo "package manager to address interdependencies. Check disk space usage before and after removal using 'df -H'"
 echo "------------------------------------------------------------------------"
 echo
 echo
@@ -186,7 +204,7 @@ else
 fi
 
 
-#Re-installs packages marked ic, if any. 
+#Re-installs packages marked ic, if any.
 
 NO_OF_IC_PACKAGES_TO_REINSTALL="`dpkg --list | grep "^ic" | wc -l`"
 
