@@ -26,7 +26,7 @@ if [ $installed_ver = $hosted_ver ]; then
     exit 1;
 fi
 
-downloaded_file_name=zoom_amd64_$hosted_ver.deb
+deb_destn_path="./Downloads/"zoom_amd64_$hosted_ver.deb
 
 response=Y
 echo -n "Download and install zoom version" $hosted_ver "over" $installed_ver "[Y/n]?"
@@ -35,16 +35,15 @@ echo "Response is " $response
 
 
 if [ $response = Y ] || [ $response == y ] || [ -z $response ] ; then
-   wget -c https://zoom.us/client/latest/zoom_amd64.deb -O ./Downloads/$downloaded_file_name
-   echo "###### Downloaded" $downloaded_file_name ". Installing now ######"
+   wget -c https://zoom.us/client/latest/zoom_amd64.deb -O $deb_destn_path
+   echo "###### Downloaded" $deb_destn_path ". Installing now ######"
 else
    echo "Retaining "$installed_ver". Exiting."
    exit 1;
 fi
 
-
-if ! nala install ./Downloads/$downloaded_file_name; then
-    apt install ./Downloads/$downloaded_file_name
+if ! nala install $deb_destn_path; then
+    apt install $deb_destn_path
 fi
 
 exit
