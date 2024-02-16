@@ -37,8 +37,14 @@ echo "Response is " $response
 if [ $response = Y ] || [ $response == y ] || [ -z $response ] ; then
    wget -c https://zoom.us/client/latest/zoom_amd64.deb -O ./Downloads/$downloaded_file_name
    echo "###### Downloaded" $downloaded_file_name ". Installing now ######"
-   apt install ./Downloads/$downloaded_file_name
 else
    echo "Retaining "$installed_ver". Exiting."
+   exit 1;
 fi
+
+
+if ! nala install ./Downloads/$downloaded_file_name; then
+    apt install ./Downloads/$downloaded_file_name
+fi
+
 exit
