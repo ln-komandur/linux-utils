@@ -9,7 +9,9 @@ if [ "$installed_ver" = "$hosted_ver" ]; then
     exit 1;
 fi
 
-deb_destn_path="./Downloads/"zoom_amd64_${hosted_ver//\./-}.deb #Replace all '.'s with '-'s in the version number
+directory="./Downloads/"
+mkdir -p "$directory"
+deb_destn_path="$directory"zoom_amd64_${hosted_ver//\./-}.deb #Replace all '.'s with '-'s in the version number
 response=Y
 
 if [ -z "$installed_ver" ] ; then
