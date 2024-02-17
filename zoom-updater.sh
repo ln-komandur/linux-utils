@@ -1,20 +1,6 @@
 #!/bin/bash
 #ref: https://community.zoom.com/t5/Meetings/Update-Zoom-in-Debian-Ubuntu/m-p/32820/highlight/true
 
-#ref: https://unix.stackexchange.com/questions/28791/prompt-for-sudo-password-and-programmatically-elevate-privilege-in-bash-script
-#ref: https://askubuntu.com/a/30157/8698
-
-if (($EUID != 0)); then
-  if [[ -t 1 ]]; then
-#https://unix.stackexchange.com/questions/218715/what-does-t-1-do
-    sudo "$0" "$@"
-  else
-    exec 1>output_file
-    gksu "$0 $@"
-  fi
-  exit
-fi
-
 installed_ver=$(cat /opt/zoom/version.txt)
 hosted_ver=$(wget --spider https://zoom.us/client/latest/zoom_amd64.deb 2>&1 | grep Location | sed -e 's/.*prod\/\(.*\)\/.*/\1/')
 echo Installed version: $installed_ver
@@ -39,8 +25,8 @@ else
    exit 1;
 fi
 
-if ! nala install $deb_destn_path; then
-    apt install $deb_destn_path
+if ! sudo nala install $deb_destn_path; then
+    sudo apt install $deb_destn_path
 fi
 
 exit
