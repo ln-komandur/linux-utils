@@ -14,19 +14,24 @@ fi
 deb_destn_path="./Downloads/"zoom_amd64_${hosted_ver//\./-}.deb #Replace all '.'s with '-'s in the version number
 
 response=Y
-echo -n "Download and install zoom version" $hosted_ver "over" $installed_ver "[Y/n]?"
-read response
+
+if [ -z "$installed_ver" ] ; then
+    echo Downloading and installing zoom version $hosted_ver
+else
+    echo Download and install zoom version $hosted_ver over $installed_ver [Y/n]?
+    read response
+fi
 
 if [ "$response" = Y ] || [ "$response" == y ] || [ -z "$response" ] ; then
-   wget -c https://zoom.us/client/latest/zoom_amd64.deb -O $deb_destn_path
-   echo -------- Downloaded $deb_destn_path . Installing now --------
+    wget -c https://zoom.us/client/latest/zoom_amd64.deb -O $deb_destn_path
+    echo -------- Downloaded $deb_destn_path . Installing now --------
 else
-   echo Retaining version: $installed_ver. Exiting.
-   exit 1;
+    echo Retaining version: $installed_ver. Exiting.
+    exit 1;
 fi
 
 if ! sudo nala install $deb_destn_path; then
-    sudo apt install $deb_destn_path
+     sudo apt install $deb_destn_path
 fi
 
 exit
