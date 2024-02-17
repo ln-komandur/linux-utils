@@ -7,7 +7,7 @@ echo Installed version: $installed_ver
 echo Hosted version: $hosted_ver
 
 if [ "$installed_ver" = "$hosted_ver" ]; then
-    echo "You have the latest version"
+    echo You have the latest version
     exit 1;
 fi
 
@@ -19,9 +19,9 @@ read response
 
 if [ "$response" = Y ] || [ "$response" == y ] || [ -z "$response" ] ; then
    wget -c https://zoom.us/client/latest/zoom_amd64.deb -O $deb_destn_path
-   echo "###### Downloaded" $deb_destn_path ". Installing now ######"
+   echo -------- Downloaded" $deb_destn_path ". Installing now --------
 else
-   echo Retaining version: $installed_ver". Exiting."
+   echo Retaining version: $installed_ver. Exiting.
    exit 1;
 fi
 
