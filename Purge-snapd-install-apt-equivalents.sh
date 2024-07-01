@@ -53,7 +53,7 @@ echo '
 Package: snapd
 Pin: release a=*
 Pin-Priority: -10
-' tee /etc/apt/preferences.d/nosnap.pref
+' | tee /etc/apt/preferences.d/nosnap.pref
 
 #Add the mozillateam ppa
 echo
