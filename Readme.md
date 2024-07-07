@@ -61,7 +61,25 @@ Download and execute [Purge-snapd-install-apt-equivalents.sh](Purge-snapd-instal
 
 ### Customize the bash shell prompt
 
-[Change the prompt color](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/) in $HOME/.bash_profile. Use red for sudo users and green for non-sudo users
+[Change the prompt color](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/) in `$HOME/.bashrc` . Keep the default green (`32m`) followed by the directory name in blue (`34m`) for non-super-users
+
+For super-users use red (`31m`) for the prompt followed by the directory name in brown (`33m`),
+
+`su <super-user>`
+
+`sudo nano ~/.bashrc` #edit the 2 colors is the PS1 line 
+
+from
+
+```
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+```
+
+to
+
+```
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+```
  
 ## Only for Dell Inspiron 3542 
 [Dell Inspiron 3542](Inspiron-3542.md)
