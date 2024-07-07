@@ -31,7 +31,7 @@ or
 UUID=99999999-9999-9999-9999-999999999999 /media/all-users-<partition-name> ext4 noauto,nosuid,nodev,noexec,nouser,nofail 0 0
 ```
 fstab takes tabs or spaces in the line entry above. The options at the end of this line mean the following 
-* `noauto` - do not mount this partition at boot time
+* `noauto` - do not mount this partition at boot time. This can be `auto` if the partion is owned by a user who is not a super-user (`<first-user>`) so that it is mounted automatically and without needing to know the super-user's credentials
 * `nosuid` - ignore / disregard the setguid (sticky bit) if set
 * `nodev` - cannot contain special devices as a security precaution
 * `noexec` - binaries cannot be executed in this partition
@@ -48,11 +48,13 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 `groups <another-user>` # Verify the <another-user> has been added to the <first-user's-group>
 
+**Note:** Use `gpasswd --delete <user> <group>` # To delete a user from a group if needed
+
 ## Change the owner and group from root:root to a different user and group, in this case the super-user
 
 `sudo chown -R <first_user>:<first_user's_group> /media/all-users-<partition-name>` # *Change the owner and group from root:root to a different user and group, in this case the super-user*
 
-**Note:** Add other non-super users to <first_user's_group> so that they can access this mount point as a member of the group. If this group is the super-user's group, then all those other users need to authenticate with the super user's credentials
+**Note:** Add other non-super users to <first_user's_group> so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
 
 ## Set write permission to multiple users using setgid and sticky bits
 
