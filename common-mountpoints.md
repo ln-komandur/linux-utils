@@ -58,7 +58,7 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 ## Set write permission to multiple users using setgid and sticky bits
 
-`sudo chmod -R 2775 /media/all-users-<partition-name>` # *[To set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
+`sudo chmod -R 2775 /media/all-users-<partition-name>` # *Do not end the directory name with a '/'. [Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
 
 `ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
 ``
