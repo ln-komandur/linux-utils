@@ -52,13 +52,13 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 ## Change the owner and group from root:root to a different user and group, in this case the super-user
 
-`sudo chown -R <first_user>:<first_user's_group> /media/all-users-<partition-name>` # *Change the owner and group from root:root to a different user and group, in this case the super-user*
+`sudo chown -R <first_user>:<first_user's_group> /media/all-users-<partition-name>` # *Do not end the directory name with a '/'. Change the owner and group from root:root to a different user and group, in this case the super-user*
 
 **Note:** Add other non-super users to <first_user's_group> so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
 
 ## Set write permission to multiple users using setgid and sticky bits
 
-`sudo chmod -R 2775 /media/all-users-<partition-name>` # *Do not end the directory name with a '/'. [Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
+`sudo chmod -R 2775 /media/all-users-<partition-name>` # *[Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
 
 `ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
 ``
