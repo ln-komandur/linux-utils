@@ -38,7 +38,7 @@ Remember to use the right file extn i.e. `.ppm / .pgm / .png` etc. in the comman
 for file in *.png
 do
     echo "Resizing page to 825x1200 - " $file
-    convert "$file" -resize 825x1200 "$file" "./resized/$file"
+    convert "$file" -resize 825x1200 "./resized/$file"
     # convert "$file" -crop 1050x1428+0+50 -resize 1000x1378 "./resized/$file"
     
 done
