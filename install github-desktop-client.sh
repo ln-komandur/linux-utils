@@ -26,4 +26,7 @@ fi
 
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list' # Set-up the APT package feed
 apt update # Update apt
-apt install github-desktop # Install github-desktop
+
+if ! nala install github-desktop; then
+    apt install github-desktop # Install github-desktop
+fi
