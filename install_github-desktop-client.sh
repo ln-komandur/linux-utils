@@ -4,10 +4,11 @@
 # from https://apt.packages.shiftkey.dev/ 
 # also also from https://github.com/shiftkey/desktop under @shiftkey package feed. 
 
-
+echo
 echo "================================================="
-echo "Getting the gpg key from shiftkey"
+echo "Installing the gpg public software signing key from shiftkey"
 echo "================================================="
+echo
 
 wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null # Get the key
 
@@ -27,22 +28,27 @@ if (($EUID != 0)); then
   exit
 fi
 
+echo
 echo "================================================="
-echo "Setting up the APT package feed for shiftkey"
+echo "Adding APT package feed for shiftkey to list of repositories"
 echo "================================================="
+echo
 
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list' # Set-up the APT package feed
 
+echo
 echo "================================================="
-echo "Updating apt"
+echo "Updating the apt package database"
 echo "================================================="
-
+echo
 
 apt update # Update apt
 
+echo
 echo "================================================="
 echo "Installing github-desktop"
 echo "================================================="
+echo
 
 if ! nala install github-desktop; then
     apt install github-desktop # Install github-desktop
