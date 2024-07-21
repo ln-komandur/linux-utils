@@ -3,12 +3,13 @@
 # Instructions from https://signal.org/download/linux/ for using APT package manager to install signal-desktop 
 # and keep it up to date on Debian distributions using the package feed. 
 
-
+echo
 echo "================================================="
-echo "Getting the gpg key from signal"
+echo "Install Signal official public software signing key"
 echo "================================================="
+echo
 
-wget -qO - https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null # Get the key
+wget -qO - https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null # Install Signal official public software signing key
 
 # Check if the user is su
 
@@ -25,23 +26,27 @@ if (($EUID != 0)); then
   fi
   exit
 fi
-
+echo
 echo "================================================="
-echo "Setting up the APT package feed for Signal"
+echo "Add APT package feed for Signal to list of repositories"
 echo "================================================="
-
+echo
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list' # Set-up the APT package feed
 
-echo "================================================="
-echo "Updating apt"
-echo "================================================="
 
+echo
+echo "================================================="
+echo "Updating the apt package database"
+echo "================================================="
+echo
 
 apt update # Update apt
 
+echo
 echo "================================================="
 echo "Installing Signal-desktop"
 echo "================================================="
+echo
 
 if ! nala install signal-desktop; then
     apt install signal-desktop # Install signal-desktop
