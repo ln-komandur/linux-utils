@@ -1,5 +1,5 @@
-# Per https://youtu.be/wotkLCoJ_ks
 #!/bin/bash
+# Per https://youtu.be/wotkLCoJ_ks
 #ref: https://unix.stackexchange.com/questions/28791/prompt-for-sudo-password-and-programmatically-elevate-privilege-in-bash-script
 #ref: https://askubuntu.com/a/30157/8698
 
