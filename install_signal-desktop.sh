@@ -5,7 +5,7 @@
 
 echo
 echo "================================================="
-echo "Install Signal official public software signing key"
+echo "Installing Signal official public software signing key"
 echo "================================================="
 echo
 
@@ -28,7 +28,7 @@ if (($EUID != 0)); then
 fi
 echo
 echo "================================================="
-echo "Add APT package feed for Signal to list of repositories"
+echo "Adding APT package feed for Signal to list of repositories"
 echo "================================================="
 echo
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list' # Set-up the APT package feed
