@@ -5,9 +5,9 @@
 # also from https://github.com/shiftkey/desktop under @shiftkey package feed. 
 
 echo
-echo "================================================="
-echo "Installing the gpg public software signing key from shiftkey"
-echo "================================================="
+echo "======================================================================================"
+echo "Installing the gpg public software signing key for the APT feed from @shiftkey or @mwt"
+echo "======================================================================================"
 echo
 
 # Use only one of the 2 APT package feed options below
