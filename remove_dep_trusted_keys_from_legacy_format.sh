@@ -25,7 +25,7 @@ done
 
 
 # One liner below - commented
-for KEY in $(apt-key --keyring /etc/apt/trusted.gpg list | grep -E "(([ ]{1,2}(([0-9A-F]{4}))){10})" | tr -d " " | grep -E "([0-9A-F]){8}\b" ); do K=${KEY:(-8)}; sudo apt-key --keyring /etc/apt/trusted.gpg del $K; done
+# for KEY in $(apt-key --keyring /etc/apt/trusted.gpg list | grep -E "(([ ]{1,2}(([0-9A-F]{4}))){10})" | tr -d " " | grep -E "([0-9A-F]){8}\b" ); do K=${KEY:(-8)}; sudo apt-key --keyring /etc/apt/trusted.gpg del $K; done
 
 # More readable
 for KEY in $( \ #Cycle through each key suffix, placing the current suffix in the KEY variable
