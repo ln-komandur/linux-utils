@@ -15,7 +15,7 @@ for KEY in $( \
 ); do
     K=${KEY:(-8)} #Assign the last 8 characters to the variable K
     apt-key export $K | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/imported-from-trusted-gpg-$K.gpg #Export the key that matches the signature in K and pass/pipe it to gpg to properly store it
-done
+done #Loop until all keys are processed
 
 
 # More readable
