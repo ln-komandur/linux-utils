@@ -5,13 +5,13 @@ https://itsfoss.com/apt-key-deprecated/ - explains 2 anamolies around apt-key de
  2. Cross referencing keys and how to prevent them
 
 ## Examples
-### 2. GPG file is not mapped to the source. i.e. cross referencing is not address
+### 1. GPG file is not mapped to the source. i.e. cross referencing is not address
 ```
 :~$ cat /etc/apt/sources.list.d/ubuntuhandbook1-ubuntu-audacity-jammy.list 
 deb https://ppa.launchpadcontent.net/ubuntuhandbook1/audacity/ubuntu/ jammy main
 
 ```
-### 1. GPG file is mapped to the source. i.e. cross referencing is address
+### 2. GPG file is mapped to the source. i.e. cross referencing is address
 ```
 :~$ cat /etc/apt/sources.list.d/signal-xenial.list 
 deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main
