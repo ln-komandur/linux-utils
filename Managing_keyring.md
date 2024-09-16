@@ -1,8 +1,12 @@
 # Manage keyring files
 
-https://itsfoss.com/apt-key-deprecated/ - explains 2 anamolies around apt-key deprecation 
- 1. Keyrings and keeping GPG keys in separate files
- 2. Cross referencing keys and how to prevent them
+## Useful references
+
+1.    [Ubuntu’s Repository System](https://itsfoss.com/ubuntu-repository-mechanism/)
+2.    [Handling "apt-key is deprecated"](https://itsfoss.com/apt-key-deprecated/) - explains 2 anamolies
+      1.   Keyrings and keeping GPG keys in separate files
+      2.   Cross referencing keys and how to prevent them
+3.    [Installing Packages From External Repositories](https://itsfoss.com/adding-external-repositories-ubuntu/)
 
 ## Examples
 ### 1. GPG file is not mapped to the source. i.e. cross referencing is not addressed
