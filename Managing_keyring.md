@@ -7,6 +7,9 @@
       1.   Keyrings and keeping GPG keys in separate files
       2.   Cross referencing keys and how to prevent them
 3.    [Installing Packages From External Repositories](https://itsfoss.com/adding-external-repositories-ubuntu/)
+4.    [Using apt Commands in Linux - Ultimate Guide](https://itsfoss.com/apt-command-guide)
+5.    [The Ultimate Guide to PPA in Ubuntu](https://itsfoss.com/ppa-guide/)
+  
 
 ## Examples
 ### 1. GPG file is not mapped to the source. i.e. cross referencing is not addressed
@@ -60,4 +63,6 @@ deb [arch=amd64 signed-by=/..................../] http://mirror.mariadb.org/repo
 
 Or by removing multi-architecture support only if there are no 32 bit applications using the command as below
 
-`sudo dpkg --remove-architecture i386`
+`dpkg --get-selections | grep 386 #Show packages using 32 bit`
+
+`sudo dpkg --remove-architecture i386 #Remove multi architecture - only if you have no 32 bit applications`
