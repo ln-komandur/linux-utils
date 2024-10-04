@@ -29,7 +29,9 @@ https://askubuntu.com/questions/1407632/key-is-stored-in-legacy-trusted-gpg-keyr
 1. [convert_legacy_trusted_keys_to_new_format.sh](convert_legacy_trusted_keys_to_new_format.sh)
 2. [remove_dep_trusted_keys_from_legacy_format.sh](remove_dep_trusted_keys_from_legacy_format.sh) after they have been converted 
 
-[Debian man page](https://manpages.debian.org/bookworm/apt/sources.list.5.en.html) - states "The recommended locations for keyrings are `/usr/share/keyrings` for keyrings managed by packages, and `/etc/apt/keyrings` for keyrings managed by the system operator."
+From a [comment on itsfoss](https://itsfoss.com/apt-key-deprecated/?ht-comment-id=12344336), we learn that the [Debian man page](https://manpages.debian.org/bookworm/apt/sources.list.5.en.html) - states "The recommended locations for keyrings are `/usr/share/keyrings` for keyrings managed by packages, and `/etc/apt/keyrings` for keyrings managed by the system operator." 
+1. [This means](https://forums.whonix.org/t/apt-repository-signing-keys-per-apt-sources-list-signed-by/12302) when using the `signed-by=` clause, APT signing keys (`.gpg` files) should be stored in the  `/usr/share/keyrings/` folder instead of `/etc/apt/trusted.gpg.d` .
+2. Also, when manually editing the `.list` file under `/etc/apt/sources.list.d/` use the `sudo add-apt-repository` command to add a PPA such as `sudo add-apt-repository ppa:nextcloud-devs/client` instead of adding a source via GUI. This will ensure that the edited entry with the `signed-by` clause in the `.list` file under `/etc/apt/sources.list.d/` is kept / retained and a duplicate entry is not added when using the GUI to add a source.
 
 
 ## Handling Errors
@@ -58,7 +60,7 @@ Or
 
 ```
 :~$ cat /etc/apt/sources.list.d/mirror_mariadb_org_repo_10_11_2_ubuntu_-jammy.list
-deb [arch=amd64 signed-by=/..................../] http://mirror.mariadb.org/repo/10.11/ubuntu/ jammy main
+deb [arch=amd64 signed-by=/usr/share/keyrings/<signing-key-file>.gpg] http://mirror.mariadb.org/repo/10.11/ubuntu/ jammy main
 ```
 
 Or by removing multi-architecture support only if there are no 32 bit applications using the command as below
