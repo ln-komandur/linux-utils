@@ -30,8 +30,10 @@ https://askubuntu.com/questions/1407632/key-is-stored-in-legacy-trusted-gpg-keyr
 2. [remove_dep_trusted_keys_from_legacy_format.sh](remove_dep_trusted_keys_from_legacy_format.sh) after they have been converted 
 
 From a [comment on itsfoss](https://itsfoss.com/apt-key-deprecated/?ht-comment-id=12344336), we learn that the [Debian man page](https://manpages.debian.org/bookworm/apt/sources.list.5.en.html) - states "The recommended locations for keyrings are `/usr/share/keyrings` for keyrings managed by packages, and `/etc/apt/keyrings` for keyrings managed by the system operator." 
-1. [This means](https://forums.whonix.org/t/apt-repository-signing-keys-per-apt-sources-list-signed-by/12302) when using the `signed-by=` clause, APT signing keys (`.gpg` files) should be stored in the  `/usr/share/keyrings/` folder instead of `/etc/apt/trusted.gpg.d` .
-2. Also, when manually editing the `.list` file under `/etc/apt/sources.list.d/` use the `sudo add-apt-repository` command to add a PPA such as `sudo add-apt-repository ppa:nextcloud-devs/client` instead of adding a source via GUI. This will ensure that the edited entry with the `signed-by` clause in the `.list` file under `/etc/apt/sources.list.d/` is kept / retained and a duplicate entry is not added when using the GUI to add a source.
+1. [This means](https://forums.whonix.org/t/apt-repository-signing-keys-per-apt-sources-list-signed-by/12302)
+   1.  when keys are placed in `/etc/apt/trusted.gpg.d/`, they are trusted (keyrings managed by the ***system operator***) and therefore do not require a `signed-by=` clause
+   2.  however, for keyrings managed by packages (i.e. not trusted by the system operator), it is better to use the `signed-by=` clause to avoid cross signing. The APT signing keys (`.gpg` files) should then be stored in the  `/usr/share/keyrings/` folder instead of `/etc/apt/trusted.gpg.d/` .
+2. Also, when manually editing the `.list` file under `/etc/apt/sources.list.d/` to include the `signed-by=` clause, use the `sudo add-apt-repository` command to add a PPA such as `sudo add-apt-repository ppa:nextcloud-devs/client` instead of adding a source via GUI. This will ensure that the entry edited with the `signed-by` clause in the `.list` file under `/etc/apt/sources.list.d/` is retained and a duplicate entry without the `signed-by=` clause is not added when using the GUI to add the source.
 
 
 ## Handling Errors
