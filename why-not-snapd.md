@@ -109,6 +109,15 @@ Pin-Priority: -10
 
 `sudo apt update` #Refresh package cache
 
+### Remove the /snap/bin in the PATH variable in the /etc/environment file 
+
+`echo $PATH` #The current PATH variable
+
+`cat /etc/environment` #The PATH variable stored in the /etc/environment file
+
+`sudo sed -i 's/:\/snap\/bin//g' /etc/environment` #Remove /snap/bin from the PATH variable in the /etc/environment file. The $PATH variable will refresh in the next new session
+
+
 ### Install Gnome Software in place of Snap Store (Ubuntu Software) 
 
 `sudo apt install gnome-software` #Do not use any switches like --install-suggests or --install-recommends
