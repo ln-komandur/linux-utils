@@ -55,6 +55,27 @@ Pin: release a=*
 Pin-Priority: -10
 ' | tee /etc/apt/preferences.d/nosnap.pref
 
+#Remove /snap/bin from the PATH variable in the /etc/environment file 
+echo
+echo The PATH variable is currently:
+echo $PATH
+echo
+
+echo
+echo The PATH variable stored in the /etc/environment file is:
+cat /etc/environment
+echo
+
+echo
+echo If the PATH variable in the /etc/environment file has /snap/bin in it, it will be removed now.
+sed -i 's/:\/snap\/bin//g' /etc/environment
+echo
+
+echo
+echo /snap/bin in the PATH variable in the /etc/environment file has now been removed. The PATH variable will refresh in the next new session.
+echo
+
+
 #Add the mozillateam ppa
 echo
 echo Adding the mozillateam ppa
@@ -74,26 +95,6 @@ Package: *
 Pin: release o=LP-PPA-mozillateam
 Pin-Priority: 1001
 ' | tee /etc/apt/preferences.d/mozilla-firefox
-
-#Removing the /snap/bin in the PATH variable in the /etc/environment file 
-echo
-echo The PATH variable is currently:
-echo $PATH
-echo
-
-echo
-echo The PATH variable stored in the /etc/environment file is:
-cat /etc/environment
-echo
-
-echo
-echo If the PATH variable in the /etc/environment file has /snap/bin in it, it will be removed now.
-sed -i 's/:\/snap\/bin//g' /etc/environment
-echo
-
-echo
-echo /snap/bin in the PATH variable in the /etc/environment file has now been removed. The $PATH variable will refresh in the next new session.
-echo
 
 #Refresh the package cache, Install Gnome Software in place of Snap Store (Ubuntu Software), Install firefox from apt
 echo
