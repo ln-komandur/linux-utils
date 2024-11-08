@@ -10,12 +10,12 @@ pa_context_connect() failed: Connection refused
 
 ## Installation
 
-**Reference:** [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install). But do not use this as-is
+**Reference:** [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install). *But do not use this as-is*
 
 ### Install vosk
-`sudo nala install xdotool` #Install xdotools which does not ship default in Ubuntu 22.04
+`sudo nala install xdotool` #Install xdotools as it does not ship default in Ubuntu 22.04
 
-`sudo pip3 install vosk` #Install vosk as super user. This will place it in /usr/ .... Else it will be under the user's home, which is not desirable
+`sudo pip3 install vosk` #Install vosk as super user. This will place it in /usr/ .... rather than under the user's `$HOME` which is not desirable
 
  ### Install nerd-dictation
 
@@ -27,7 +27,7 @@ pa_context_connect() failed: Connection refused
 
 `cd nerd-dictation`
 
-`wget https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip`
+`wget https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip` #Get the basic model
 
 `unzip vosk-model-small-en-us-0.15.zip`
 
@@ -37,7 +37,7 @@ pa_context_connect() failed: Connection refused
  
 `./nerd-dictation begin --vosk-model-dir=./model &` #Run as a background process
 
-Start speaking into any application like Text Editor, LibreOffice writer etc. You will notice the mic icon come on.
+Start speaking into any application like a Text Editor, LibreOffice writer etc. You will notice the mic icon come on and your speech showing up as words on your text editor.
 
 #### [Errno 13] Permission denied: '/tmp/nerd-dictation.cookie'
 
@@ -54,7 +54,7 @@ Traceback (most recent call last):
     with open(path_to_cookie, "w", encoding="utf-8") as fh:
 PermissionError: [Errno 13] Permission denied: '/tmp/nerd-dictation.cookie'
 ```
-it means the `/tmp/nerd-dictation.cookie` file is owned by another user, most likely a non super user because of playing around with it from their login
+it is most likely because the `/tmp/nerd-dictation.cookie` file is owned by another user, most likely a non super user because of playing from their login
 
 `ls -l /tmp/nerd-dictation.cookie` #Check who owns this file
 
@@ -63,6 +63,9 @@ it means the `/tmp/nerd-dictation.cookie` file is owned by another user, most li
 #### Stop the listener
 
 `./nerd-dictation end`
+
+## More instructions
+Once successful, you can try more instructions from [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install)
 
 ## Using Command Menu Gnome Extension
 
