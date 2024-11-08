@@ -3,10 +3,6 @@ echo pip3 install vosk #Install vosk for a regular user. This will place it unde
 pip3 install vosk #Install vosk for a regular user. This will place it under the user's $HOME
 
 echo
-echo . .profile #Set the PATH
-. .profile
-
-echo
 echo PATH
 echo $PATH
 
