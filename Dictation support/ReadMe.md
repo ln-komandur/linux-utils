@@ -58,11 +58,12 @@ Install **Command Menu** from **Extension Manager**
 
 ![Extension Manager.png](Extension%20Manager.png)
 
+Search for **arunk140** to find **Command Menu** and install it and turn it on with its switch
 
-**Edit Commands**, add the following lines, save the file and **Reload** the Command Menu to get the **Nerd Dictation** commands in a sub-menu
+![Command Menu - search extension](Command%20Menu%20-%20search%20extn.png)
 
+*Edit Commands*, add the following lines, save the file and *Reload* the **Command Menu** to get the *Nerd Dictation* commands in a sub-menu. The complete `.commands.json` [file is here](.commands.json)
 
-![Command Menu - edited with Submenu.png](Command%20Menu%20-%20edited%20with%20Submenu.png)
 ``` ,
     {
         "title": "Nerd Dictation",
@@ -96,6 +97,9 @@ Install **Command Menu** from **Extension Manager**
         ]
     }
 ```
+
+![Command Menu - edited with Submenu.png](Command%20Menu%20-%20edited%20with%20Submenu.png)
+
 
 # Uninstalling for one user
 Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dictation.sh) from the said `<user>`'s login
