@@ -11,22 +11,20 @@
 
 **Logout** of `<superuser>` with an `exit`
 
-## Install vosk
-**Login** as the `<user>` who needs `nerd-dictation` installed
+## Install vosk and nerd-dictation
 
-Download, `chmod +x` and then execute this [installation script to install vosk and nerd-dictation](install%20vosk_nerd-dictation.sh) for a single `<user>` who executes it
-
-The `<user>` must login with XOrg for `nerd dictation` to work as this method uses the `xdotool`
+This method uses the `xdotool` for `nerd dictation` to work. **Login** through Xorg as the `<user>` who needs `nerd-dictation` installed
 
 ![Login with Xorg](Login%20with%20Xorg.png)
 
+Download this [installation script to install vosk and nerd-dictation](install%20vosk_nerd-dictation.sh), open the terminal and `chmod +x` it and then execute it with `./install\ vosk_nerd-dictation.sh`
 
 The following warning is expected in this approach. 
 ```
  WARNING: The script vosk-transcriber is installed in '~/.local/bin' which is not on PATH.
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 ```
-It is addressed by ensuring that `~/.local/bin` is prepended to the `$PATH` variable for the `<user>`
+Addressed it by ensuring that `~/.local/bin` is prepended to the `$PATH` variable for the `<user>`
 
 **Note on alternate method:** Follow [these instructions if using ydotool and to be independent of X Server](https://github.com/ideasman42/nerd-dictation/blob/main/readme-ydotool.rst)
 
@@ -37,7 +35,6 @@ It is addressed by ensuring that `~/.local/bin` is prepended to the `$PATH` vari
 `./nerd-dictation begin --vosk-model-dir=./model &` #Run as a background process
 
 Start speaking into any application like a Text Editor, LibreOffice writer etc. You will notice the mic icon come on and your speech showing up as words on your text editor.
-
 
 ### Stopping the listener
 
@@ -101,9 +98,7 @@ Search for **arunk140** to find **Command Menu** and install it and turn it on w
 
 
 # Uninstalling for one user
-Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dictation.sh) from the said `<user>`'s login
-
-
+Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dictation.sh) for the said `<user>` from a terminal they are logged in
 
 # Handling errors
 
