@@ -1,5 +1,28 @@
 # Dictation support using [nerd-dictation](https://github.com/ideasman42/nerd-dictation) and [vosk](https://alphacephei.com/vosk/)
 
+# Installing for one user
+This [installation script for vosk and nerd-dictation](install%20vosk_nerd-dictation.sh) only installs them. For some reason it does not work yet.
+
+## More instructions
+Once successful, you can try more instructions from [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install)
+
+## Using Command Menu Gnome Extension
+
+This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) show how to use the **Command Menu** *Gnome Extension*
+
+# Uninstalling for one user
+Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dictation.sh) from the said user's login
+
+
+
+
+
+
+
+
+# WARNING: DO NOT USE THE SUDO APPROACH BELOW.
+It is only to show that something is working. [Never use sudo to install with pip](https://stackoverflow.com/questions/29310688/sudo-pip-install-vs-pip-install-user)
+
 **Caveat:** This will work well **only in the super user** login. If you start the listener in a terminal where you are logged in as a super user, but where you are logged into Gnome as a non super user, you will most likely get the error below
 
 ```
@@ -63,14 +86,6 @@ it is most likely because the `/tmp/nerd-dictation.cookie` file is owned by anot
 #### Stop the listener
 
 `./nerd-dictation end`
-
-## More instructions
-Once successful, you can try more instructions from [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install)
-
-## Using Command Menu Gnome Extension
-
-This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) show how to use the **Command Menu** *Gnome Extension*
-
 
 ## Uninstallation
 
