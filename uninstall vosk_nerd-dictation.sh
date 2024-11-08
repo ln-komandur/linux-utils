@@ -11,13 +11,5 @@ echo pip3 cache purge
 pip3 cache purge
 
 echo
-echo rm -rf ~/.cache/pip
-rm -rf ~/.cache/pip
-
-echo
 echo rm -rf ~/.config/nerd-dictation/ #Remove the nerd-dictation directory
 rm -rf ~/.config/nerd-dictation/ #Remove the nerd-dictation directory
-
-echo
-echo rm -rf .local/lib/python3.10/
-rm -rf .local/lib/python3.10/
