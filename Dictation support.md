@@ -72,4 +72,17 @@ Once successful, you can try more instructions from [nerd-dictation installation
 This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) show how to use the **Command Menu** *Gnome Extension*
 
 
+## Uninstallation
+
+`sudo pip3 uninstall vosk srt` #Remove vosk and srt
+
+`sudo pip3 cache list` #List the pip3 cache
+
+`sudo pip3 cache purge` #Purge the pip3 cache
+
+`rm -rf ~/.config/nerd-dictation/` #Remove the nerd-dictation directory
+
+`sudo rm /tmp/nerd-dictation.cookie` #Remove the nerd-dictation tmp file
+
+
 
