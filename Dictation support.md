@@ -1,6 +1,6 @@
 # Dictation support using [nerd-dictation](https://github.com/ideasman42/nerd-dictation) and [vosk](https://alphacephei.com/vosk/)
 
-**Caveat:** This will work well **only in the super user** login. If you start the listener as a non super user, you will most likely get the error below
+**Caveat:** This will work well **only in the super user** login. If you start the listener in a terminal where you are logged in as a super user, but where you are logged into Gnome as a non super user, you will most likely get the error below
 
 ```
 XDG_RUNTIME_DIR (/run/user/1001) is not owned by us (uid 1000), but by uid 1001! (This could e.g. happen if you try to connect to a non-root PulseAudio as a root user, over the native protocol. Don't do that.)
