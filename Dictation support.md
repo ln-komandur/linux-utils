@@ -3,6 +3,14 @@
 # Installing for one user
 This [installation script for vosk and nerd-dictation](install%20vosk_nerd-dictation.sh) only installs them. For some reason it does not work yet.
 
+The following warning is expected in this approach. 
+```
+ WARNING: The script vosk-transcriber is installed in '~/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+```
+It is addressed by adding ~/.local/bin to the path by executing `. .profile` within the script
+
+
 ## More instructions
 Once successful, you can try more instructions from [nerd-dictation installation](https://github.com/ideasman42/nerd-dictation?tab=readme-ov-file#install)
 
@@ -22,6 +30,15 @@ Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dic
 
 # WARNING: DO NOT USE THE SUDO APPROACH BELOW.
 It is only to show that something is working. [Never use sudo to install with pip](https://stackoverflow.com/questions/29310688/sudo-pip-install-vs-pip-install-user)
+
+You **WILL** get this **WARNING** when you follow this approach. You are on your own
+```
+WARNING: Running pip as the 'root' user can result in broken permissions and
+conflicting behaviour with the system package manager, possibly rendering
+your system unusable.It is recommended to use a virtual environment
+instead: https://pip.pypa.io/warnings/venv.
+Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+```
 
 **Caveat:** This will work well **only in the super user** login. If you start the listener in a terminal where you are logged in as a super user, but where you are logged into Gnome as a non super user, you will most likely get the error below
 
