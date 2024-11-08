@@ -14,15 +14,11 @@
 ## Install vosk
 **Login** as the `<user>` who needs `nerd-dictation` installed
 
-This [installation script for vosk and nerd-dictation](install%20vosk_nerd-dictation.sh) only installs them for that single `<user>`. 
+Download, `chmod +x` and then execute this [installation script to install vosk and nerd-dictation](install%20vosk_nerd-dictation.sh) for a single `<user>` who executes it
 
-The `<user>` must login with XOrg for this to work as this method uses the `xdotool`.
-
+The `<user>` must login with XOrg for `nerd dictation` to work as this method uses the `xdotool`
 
 ![Login with Xorg](Login%20with%20Xorg.png)
-
-
-Follow [these instructions if using ydotool and to be independent of X Server](https://github.com/ideasman42/nerd-dictation/blob/main/readme-ydotool.rst)
 
 
 The following warning is expected in this approach. 
@@ -31,6 +27,8 @@ The following warning is expected in this approach.
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 ```
 It is addressed by ensuring that `~/.local/bin` is prepended to the `$PATH` variable for the `<user>`
+
+**Note on alternate method:** Follow [these instructions if using ydotool and to be independent of X Server](https://github.com/ideasman42/nerd-dictation/blob/main/readme-ydotool.rst)
 
 ### Starting the listener
 
@@ -64,7 +62,8 @@ Search for **arunk140** to find **Command Menu** and install it and turn it on w
 
 *Edit Commands*, add the following lines, save the file and *Reload* the **Command Menu** to get the *Nerd Dictation* commands in a sub-menu. The complete `.commands.json` [file is here](.commands.json)
 
-``` ,
+```
+    ,
     {
         "title": "Nerd Dictation",
         "type": "submenu",
