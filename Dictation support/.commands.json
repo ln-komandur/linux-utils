@@ -1,0 +1,54 @@
+[
+    {
+        "title": "Termimal",
+        "command": "gnome-terminal",
+        "icon": "utilities-terminal"
+    },
+    {
+        "title": "File Manager",
+        "command": "nautilus",
+        "icon": "folder"
+    },
+    {
+        "type": "separator"
+    },
+    {
+        "title": "Web Browser",
+        "command": "firefox",
+        "icon": "web-browser"
+    },
+    {
+        "type": "separator"
+    },
+    {
+        "title": "Nerd Dictation",
+        "type": "submenu",
+        "submenu": [
+            {
+                "title": "Begin",
+                "command": "python3 .config/nerd-dictation/nerd-dictation begin",
+                "icon": "media-record"
+            },
+            {
+                "title": "End",
+                "command": "python3 .config/nerd-dictation/nerd-dictation end",
+                "icon": "media-playback-stop"
+            },
+            {
+                "title": "Suspend",
+                "command": "python3 .config/nerd-dictation/nerd-dictation suspend",
+                "icon": "media-playback-pause"
+            },
+            {
+                "title": "Resume",
+                "command": "python3 .config/nerd-dictation/nerd-dictation resume",
+                "icon": "media-forward"
+            },
+            {
+                "title": "Cancel",
+                "command": "python3 .config/nerd-dictation/nerd-dictation cancel",
+                "icon": "media-rewind"
+            }
+        ]
+    }
+]
