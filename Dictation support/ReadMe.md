@@ -54,6 +54,49 @@ Once successful, you can try more instructions from [nerd-dictation installation
 
 This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) show how to use the **Command Menu** *Gnome Extension*
 
+Install **Command Menu** from **Extension Manager**
+
+![Extension Manager.png](Extension%20Manager.png)
+
+
+**Edit Commands**, add the following lines, save the file and **Reload** the Command Menu to get the **Nerd Dictation** commands in a sub-menu
+
+
+![Command Menu - edited with Submenu.png](Command%20Menu%20-%20edited%20with%20Submenu.png)
+``` ,
+    {
+        "title": "Nerd Dictation",
+        "type": "submenu",
+        "submenu": [
+            {
+                "title": "Begin",
+                "command": "python3 .config/nerd-dictation/nerd-dictation begin",
+                "icon": "media-record"
+            },
+            {
+                "title": "End",
+                "command": "python3 .config/nerd-dictation/nerd-dictation end",
+                "icon": "media-playback-stop"
+            },
+            {
+                "title": "Suspend",
+                "command": "python3 .config/nerd-dictation/nerd-dictation suspend",
+                "icon": "media-playback-pause"
+            },
+            {
+                "title": "Resume",
+                "command": "python3 .config/nerd-dictation/nerd-dictation resume",
+                "icon": "media-forward"
+            },
+            {
+                "title": "Cancel",
+                "command": "python3 .config/nerd-dictation/nerd-dictation cancel",
+                "icon": "media-rewind"
+            }
+        ]
+    }
+```
+
 # Uninstalling for one user
 Use this script to [uninstall vosk and nerd-dictation](uninstall%20vosk_nerd-dictation.sh) from the said `<user>`'s login
 
