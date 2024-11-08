@@ -52,7 +52,7 @@ Once successful, you can try more instructions from [nerd-dictation installation
 
 ## Using Command Menu Gnome Extension
 
-This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) show how to use the **Command Menu** *Gnome Extension*
+**Reference:** This video [Simple Dictation Software for Linux](https://youtu.be/Cw1SESc8sdA) shows **Command Menu** *Gnome Extension* being used
 
 Install **Command Menu** from **Extension Manager**
 
