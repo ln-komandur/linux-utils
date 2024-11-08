@@ -33,7 +33,3 @@ unzip vosk-model-small-en-us-0.15.zip
 echo
 echo mv vosk-model-small-en-us-0.15 model
 mv vosk-model-small-en-us-0.15 model
-
-echo
-echo ./nerd-dictation begin --vosk-model-dir=./model & #Run as a background process
-./nerd-dictation begin --vosk-model-dir=./model & #Run as a background process
