@@ -96,8 +96,22 @@ Also use any other means to enhance these png images now to crop, enhance images
 ### Insert any new png files if needed. i.e. there may be some pages that may need to be in color. e.g. cover page
 It is a good idea to add color cover pages as the last step (after OCR) by adding them to the pdf directly using pdftk. This produces smaller files for some reason
 
+
+### Sharpen the pages
+`mkdir sharper`
+
+`mogrify -path ./sharper/ -format png -sharpen 1x1 -quality 96% PageNo*.png #Sharpen`
+
+[in the `-sharpen 1x1` switch](http://www.graphicsmagick.org/GraphicsMagick.html#details-sharpen), the first `1` is the radius, the second `1` is the sigma factor
+
+or 
+
+`mogrify -path ./sharper/ -format png -unsharp 1x1 -quality 96% PageNo*.png #Sharpen the image with an unsharp mask operator`
+
+[in the `-unsharp 1x1` switch](http://www.graphicsmagick.org/GraphicsMagick.html#details-unsharp), the first `1` is the radius, the second `1` is the sigma factor
+
 ### Make a PDF book again from png files which have white/no background
-`cd whitebkgnd/`
+`cd whitebkgnd/sharper`
 
 `img2pdf PageNo*.* -o Book-v2-nobkgnd.pdf` or `img2pdf single-page*.* -o Book-v2-nobkgnd.pdf`
 
