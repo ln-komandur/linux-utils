@@ -32,10 +32,6 @@ Type = Application
 Terminal = false
 Name = MATLAB-R20XXy 
 Exec = ~/MATLAB/R20XXy/bin/matlab -desktop
-Icon = ~/MATLAB/logo.png
+Icon = ~/MATLAB/R20XXy/ui/install/product_installer_ui/images/membrane-logo.png
 Categories = Development;Math;Science;Education;' | sudo tee /usr/share/applications/MATLAB-R20XXy.desktop # Create a desktop entry for MatLab
 ```
-
-
-
-
