@@ -49,7 +49,7 @@ Install matlab just for ONE non-`sudo` user
 1. `xhost -SI:localuser:root`
 1. Login as super user to create a `.desktop` file in `/usr/share/applications/` by executing the command below after changing `R20XXy` to say `R2024a`, `R2024b` etc.
 1. `su <super-user>`
-1. Create a desktop entry for MatLab  
+1. Create a desktop launcher entry for MatLab. Though it may be available for all users, this desktop launcher will however work only for the ONE non-`sudo` user who has installed MATLAB here
 ```
 echo '[Desktop Entry]
 Version = R20XXy
