@@ -79,11 +79,11 @@ Install matlab just for ONE non-`sudo` user
 1. Create a desktop launcher entry for MatLab. Though it may be available for all users, this desktop launcher will however work only for the ONE non-`sudo` user who has installed MATLAB here
 ```
 echo '[Desktop Entry]
-Version = R20XXy
-Type = Application
-Terminal = false
-Name = MATLAB-R20XXy 
-Exec = /home/<users-home>/MATLAB/R20XXy/bin/matlab -desktop
-Icon = /home/<users-home>/MATLAB/R20XXy/ui/install/product_installer_ui/images/membrane-logo.png
-Categories = Development;Math;Science;Education;' | sudo tee /usr/share/applications/MATLAB-R20XXy.desktop # Create a desktop entry for MatLab
+Version=1.0
+Type=Application
+Terminal=false
+Name=MATLAB-R20XXy 
+Exec=/home/<users-home>/MATLAB/R20XXy/bin/matlab -desktop
+Icon=/home/<users-home>/MATLAB/R20XXy/ui/install/product_installer_ui/images/membrane-logo.png
+Categories=Math;Education;' | sudo tee /usr/share/applications/MATLAB-R20XXy.desktop # Create a desktop entry for MatLab
 ```
