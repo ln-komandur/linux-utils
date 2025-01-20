@@ -1,13 +1,31 @@
 # Latex
 ## References
+[How to install LaTex on Ubuntu 22.04](https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux)
 
-## TBD
+## Installation type
+
+Install latex for all users one the system by logging in as `su <super-user>`
+
+## Steps
+
+1. `su <super-user> # Login as super user`
+1. `python3 --version # Find python3 version` . The output may be similar to the below
+    ```
+    Python 3.10.12
+    ```
+1. `sudo pip show httpx # Find the version of httpx on pip` . Versions immediately after 0.27.2 give problems for nala as of January 2025
+1. `sudo pip install httpx==0.27.2 # Downgrade the version of httpx to 0.27.2 if after that as of January 2025`
+1. `sudo pip show httpx # Verify that the version of httpx on pip os 0.27.2`
+1. `sudo nala install texlive-latex-extra # Install texlive-latex-extra`
+1. `sudo nala install texstudio # Install latex.` This should also give the desktop launcher with an icon for all users
 
 # Matlab
 ## References 
 1. [MATLAB for UCSD Students](https://matlab.ucsd.edu/student.html) - for licensing and SSO authorization
 
 1. [Download and Install MATLAB](https://www.mathworks.com/help/install/ug/install-products-with-internet-connection.html)
+
+1. [How do I make a desktop launcher for MATLAB in Ubuntu](https://www.mathworks.com/matlabcentral/answers/20-how-do-i-make-a-desktop-launcher-for-matlab-in-linux)
 
 ## Installation type
 
