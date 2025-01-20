@@ -1,3 +1,27 @@
+# Jupyter Notebook
+
+## References
+[On Debian and Debian-based distributions such as Ubuntu - using apt](https://linuxconfig.org/introduction-to-jupiter-notebook)
+
+[How to install and execute Jupyter Notebook on Ubuntu 18.04](https://medium.com/@joaolggross/how-to-install-and-execute-jupyter-notebook-on-ubuntu-18-04-d5b37159bd8e)
+
+## Installation type
+
+Install Jupyter Notebook for all users on the system by logging in as a `<super-user>`
+
+## Steps
+
+__A note about httpx as of December 2024__
+1. `sudo pip show httpx # Find the version of httpx on pip` . Versions immediately after 0.28.0 _could_ give problems
+1. `sudo pip install httpx==0.28.0 # Downgrade and pin the version of httpx to 0.28.0 if more recent than that as of December 2024`
+1. `sudo pip show httpx # Verify the version of httpx on pip to be 0.28.0`
+
+__Use this__ [Jupyter-notebook installation script](install_jupyter-notebook.sh) after logging in as a super-user
+
+
+---
+
+
 # Latex
 ## References
 [How to install LaTex on Ubuntu 22.04](https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux)
@@ -22,9 +46,12 @@ Install latex for all users on the system by logging in as a `<super-user>`
         nala()
     ```
 1. `sudo pip install httpx==0.27.2 # Downgrade and pin the version of httpx to 0.27.2 if more recent than that as of January 2025`
-1. `sudo pip show httpx # Verify that the version of httpx on pip to be 0.27.2`
+1. `sudo pip show httpx # Verify the version of httpx on pip to be 0.27.2`
 1. `sudo nala install texlive-latex-extra # Install texlive-latex-extra`
 1. `sudo nala install texstudio # Install latex.` This should also give the __TeXstudio__ desktop launcher with an icon for all users
+
+
+---
 
 # Matlab
 ## References 
