@@ -13,7 +13,14 @@ Install latex for all users one the system by logging in as `su <super-user>`
     ```
     Python 3.10.12
     ```
-1. `sudo pip show httpx # Find the version of httpx on pip` . Versions immediately after 0.27.2 give problems for nala as of January 2025
+1. `sudo pip show httpx # Find the version of httpx on pip` . Versions immediately after 0.27.2 give problems for `nala` as of January 2025 similar to the below and as described as [faced by other applications, and also with the solution to downgrade httpx to 0.27.2](https://community.openai.com/t/error-with-openai-1-56-0-client-init-got-an-unexpected-keyword-argument-proxies/1040332/4)
+    ```
+    Traceback (most recent call last):
+      File "/usr/bin/nala", line 8, in <module>
+        sys.exit(main())
+      File "/usr/lib/python3/dist-packages/nala/__main__.py", line 41, in main
+        nala()
+    ```
 1. `sudo pip install httpx==0.27.2 # Downgrade the version of httpx to 0.27.2 if after that as of January 2025`
 1. `sudo pip show httpx # Verify that the version of httpx on pip os 0.27.2`
 1. `sudo nala install texlive-latex-extra # Install texlive-latex-extra`
