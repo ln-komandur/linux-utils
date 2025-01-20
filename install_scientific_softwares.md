@@ -61,6 +61,8 @@ Install latex for all users on the system by logging in as a `<super-user>`
 
 1. [How do I make a desktop launcher for MATLAB in Ubuntu](https://www.mathworks.com/matlabcentral/answers/20-how-do-i-make-a-desktop-launcher-for-matlab-in-linux)
 
+1. [Desktop entries - ArchWiki](https://wiki.archlinux.org/title/Desktop_entries) for `desktop-file-validate <your desktop file>`
+
 ## Installation type
 
 Install matlab just for ONE non-`sudo` user
