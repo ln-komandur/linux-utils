@@ -76,9 +76,9 @@ Install matlab just for ONE non-`sudo` user
 1. `./install.sh # We are not doing sudo -H ./install as the user is not sudo`
     - __Create the folder__ `~/MATLAB/R20XXy/` and give it as the __installation directory__ when prompted by the installer
 1. `xhost -SI:localuser:root`
-1. Login as super user to create a `.desktop` file in `/usr/share/applications/` by executing the command below after changing `R20XXy` to say `R2024a`, `R2024b` etc.
-1. `su <super-user>`
-1. Create a desktop launcher entry for MatLab. Though it may be available for all users, this desktop launcher will however work only for the ONE non-`sudo` user who has installed MATLAB here
+1. Create a `.desktop` launcher file for MatLab just for the ONE non-`sudo` user. It will __NOT__ be available for other users.
+    - Place it in the `~/.local/share/applications/` directory with appropriate entries shown below
+    - Execute the command below after changing `R20XXy` to say `R2024a`, `R2024b` etc., and replacing `<users-home>` with the __actual user name__ of the ONE non-`sudo` user.
 ```
 echo '[Desktop Entry]
 Version=1.0
@@ -87,5 +87,5 @@ Terminal=false
 Name=MATLAB-R20XXy 
 Exec=/home/<users-home>/MATLAB/R20XXy/bin/matlab -desktop
 Icon=/home/<users-home>/MATLAB/R20XXy/ui/install/product_installer_ui/images/membrane-logo.png
-Categories=Math;Education;' | sudo tee /usr/share/applications/MATLAB-R20XXy.desktop # Create a desktop entry for MatLab
+Categories=Math;Education;' | tee ~/.local/share/applications/MATLAB-R20XXy.desktop # Create a desktop entry for MatLab just for the user
 ```
