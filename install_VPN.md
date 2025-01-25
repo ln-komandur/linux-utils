@@ -29,11 +29,16 @@ NordVPN only has paid plans, however with a 30 day free trial. It has servers in
 
 `nordvpn disconnect # Disconnect`
 
-#### If getting errors ####
+#### Resolving errors ####
 
-__Permission denied accessing /run/nordvpn/nordvpnd.sock__ - then execute
+1. ___Permission denied accessing /run/nordvpn/nordvpnd.sock___
 
-`sudo usermod -aG nordvpn <non-sudo-user-who-is-allowed-to-use-nordvpn> # Add non-sudo-users who are to be allowed to use nordvpn to the nordvpn group`
+```
+Permission denied accessing /run/nordvpn/nordvpnd.sock
+```
+- ___Resolution___
+
+`sudo usermod -aG nordvpn <non-sudo-user> # Add <non-sudo-users> who are to be allowed to use nordvpn to the nordvpn group`
 
 
 -----------------------------------------
@@ -44,7 +49,8 @@ Proton VPN has a free tier which allows only 1 device at a time, and blocks ads.
 ### References
 
 1. [Installation steps](https://protonvpn.com/support/official-linux-vpn-ubuntu)
-1. [Handling errors with pyopenssl cryptography](https://stackoverflow.com/questions/74981558/error-updating-python3-pip-attributeerror-module-lib-has-no-attribute-openss/75053968#75053968)
+1. ['OpenSSL_add_all_algorithms' error](https://www.reddit.com/r/ProtonVPN/comments/132cpsv/openssl_add_all_alghoritms_error/?rdt=50650)
+1. [Handling errors with pyopenssl cryptography](https://stackoverflow.com/questions/74981558/error-updating-python3-pip-attributeerror-module-lib-has-no-attribute-openss/75053968#75053968) - also referenced in the above
 
 
 ### Steps / Commands
@@ -59,14 +65,43 @@ Proton VPN has a free tier which allows only 1 device at a time, and blocks ads.
 
 `protonvpn-app`
 
-#### If getting errors ####
+#### Resolving errors ####
+
+1.  ___AttributeError: module 'lib' has no attribute 'OpenSSL_add_all_algorithms'___
+
+```
+File "/usr/bin/protonvpn", line 11, in <module>
+   load_entry_point('protonvpn-gui==1.12.0', 'console_scripts', 'protonvpn')()
+ File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 479, in load_entry_point
+   return get_distribution(dist).load_entry_point(group, name)
+ File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 2861, in load_entry_point
+   return ep.load()
+ File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 2465, in load
+   return self.resolve()
+ File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 2471, in resolve
+   module = __import__(self.module_name, fromlist=['__name__'], level=0)
+ File "/usr/lib/python3/dist-packages/protonvpn_gui/main.py", line 14, in <module>
+   from proton.constants import VERSION as proton_version
+ File "/usr/lib/python3/dist-packages/proton/__init__.py", line 1, in <module>
+   from .api import Session # noqa
+ File "/usr/lib/python3/dist-packages/proton/api.py", line 21, in <module>
+   from .cert_pinning import TLSPinningAdapter
+ File "/usr/lib/python3/dist-packages/proton/cert_pinning.py", line 5, in <module>
+   from OpenSSL import crypto
+ File "/usr/lib/python3/dist-packages/OpenSSL/__init__.py", line 8, in <module>
+   from OpenSSL import crypto, SSL
+ File "/usr/lib/python3/dist-packages/OpenSSL/crypto.py", line 3279, in <module>
+   _lib.OpenSSL_add_all_algorithms()
+AttributeError: module 'lib' has no attribute 'OpenSSL_add_all_algorithms' 
+```
+- ___Resolution___
  
-`sudo pip show cryptography`
+`sudo pip show cryptography # Check the version`
 
-`sudo pip show pyOpenSSL`
+`sudo pip show pyOpenSSL # Check the version`
 
-`sudo pip install -U pyopenssl cryptography # From https://stackoverflow.com/questions/74981558/error-updating-python3-pip-attributeerror-module-lib-has-no-attribute-openss/75053968#75053968`
+`sudo pip install -U pyopenssl cryptography # Upgrade both to the latest version as in https://stackoverflow.com/questions/74981558/error-updating-python3-pip-attributeerror-module-lib-has-no-attribute-openss/75053968#75053968`
 
-`sudo pip show pyOpenSSL`
+`sudo pip show pyOpenSSL # Verify that the version is upgraded`
 
-`sudo pip show cryptography`
+`sudo pip show cryptography # Verify that the version is upgraded`
