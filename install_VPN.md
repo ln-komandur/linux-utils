@@ -29,7 +29,7 @@ NordVPN only has paid plans, however with a 30 day free trial. It has servers in
 
 `nordvpn disconnect # Disconnect`
 
-#### Resolving errors ####
+#### Resolving errors
 
 1. ___Permission denied accessing /run/nordvpn/nordvpnd.sock___
 
@@ -46,14 +46,27 @@ Permission denied accessing /run/nordvpn/nordvpnd.sock
 
 Proton VPN has a free tier which allows only 1 device at a time, and blocks ads. Servers for the free plan are available  only in the USA, Netherlands and Japan
 
-### References
+### Preferred Approach (1). Using ProtonVPN on the free tier with OpenVPN apps on Linux or iOS
+
+-  This approach __allows multiple devices to simultaneously connect__ to VPN 
+
+[How to manually configure OpenVPN for Proton VPN in Linux](https://protonvpn.com/support/linux-openvpn)
+-  This covers Ubuntu in detail
+-  Use the [OpenVPN iOS app](https://apps.apple.com/us/app/openvpn-connect-openvpn-app/id590379981) to import the OpenVPN configuration files (for UDP), and provide OpenVPN / IKEv2 username, and OpenVPN / IKEv2 password
+
+### Alternative Approach (2). Using ProtonVPN on the free tier with their own client
+
+-  This approach will only __allow one device at at time to connect__ to VPN 
+
+
+#### References
 
 1. [Installation steps](https://protonvpn.com/support/official-linux-vpn-ubuntu)
 1. ['OpenSSL_add_all_algorithms' error](https://www.reddit.com/r/ProtonVPN/comments/132cpsv/openssl_add_all_alghoritms_error/?rdt=50650)
 1. [Handling errors with pyopenssl cryptography](https://stackoverflow.com/questions/74981558/error-updating-python3-pip-attributeerror-module-lib-has-no-attribute-openss/75053968#75053968) - also referenced in the above
 
 
-### Steps / Commands
+#### Steps / Commands
 
 `cd Downloads/`
 
@@ -65,7 +78,7 @@ Proton VPN has a free tier which allows only 1 device at a time, and blocks ads.
 
 `protonvpn-app`
 
-#### Resolving errors ####
+##### Resolving errors
 
 1.  ___AttributeError: module 'lib' has no attribute 'OpenSSL_add_all_algorithms'___
 
