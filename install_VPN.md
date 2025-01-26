@@ -54,7 +54,21 @@ Proton VPN has a free tier which allows only 1 device at a time, and blocks ads.
 -  This covers Ubuntu in detail
 -  Use the [OpenVPN iOS app](https://apps.apple.com/us/app/openvpn-connect-openvpn-app/id590379981) to import the OpenVPN configuration files (for UDP), and provide OpenVPN / IKEv2 username, and OpenVPN / IKEv2 password
 
-### Alternative Approach (2). Using ProtonVPN on the free tier with their own client
+### Preferred Approach (2). Using ProtonVPN on the free tier with wireguard on Ubuntu. NOT sure about concurrent clients
+
+Download the wireguard `.conf` file from your [ProtonVPN login](https://account.protonvpn.com/downloads)
+
+[Add wireguard VPN to ubuntu network settings](https://askubuntu.com/questions/1250870/add-wireguard-vpn-to-ubuntu-network-settings) with `nmcli connection import type wireguard file <YourConfigFile.conf>`
+
+[Connect / Disconnect to wireguard server](https://developerinsider.co/how-to-set-up-wireguard-client-on-ubuntu/) using
+
+`nmcli connection show # View all connections including configured WireGuard VPNs`
+
+`nmcli connection up <wireguard-config-name> # Connect to WireGuard VPN`
+
+`nmcli connection down <wireguard-config-name> # Disconnect from WireGuard VPN`
+
+### Alternative Approach (3). Using ProtonVPN on the free tier with their own client
 
 -  This approach will only __allow one device at at time to connect__ to VPN 
 
