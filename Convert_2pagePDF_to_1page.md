@@ -67,16 +67,16 @@ Create a directory to store images without background / white background
 
 `mkdir whitebkgnd`
  
-#### Remove the background for every file in the folder using a shell script
-`./removebkgnd.sh`
+#### Using a shell script and process every file in the folder to remove its background, crop it, and also sharpen it
+`./process-all-pngs.sh`
 
 ```
 #This shell script contains the below
 
 
-if [ $# -le 1 ]
+if [ $# -le 0 ]
 then
-    echo "Usage: removebkgnd <threshold>% <destination-folder-name>"
+    echo "Usage: process-all-pngs <threshold>% <destination-folder-name>"
     echo "Provide the % threshold to use to whiten page backgrounds without the % symbol, followed by the folder to place this images in."
     echo "Exiting"
     exit 1
@@ -85,11 +85,21 @@ fi
 mkdir -p $2
 echo "Made sub-directory " $2 " to place output files "
 
+mkdir -p "$2/sharper"
+echo "Made sub-directory " "$2/sharper" " to place output files "
+
 for file in *.png
 do
-    echo "Removing background on - " $file
-    convert "$file" -threshold $1% "./$2/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
+    echo "Processing - " $file ". Removing the background, cropping it, and also sharpening it
+    mogrify -crop 1050x1338+0+45 -path "./$2/sharper" -format png -unsharp 1.5x1 -background '#ffffff' -quality 100% "$file" #Sharpen the image with an unsharp mask operator
+
+    # convert "$file" -threshold $1% "./$2/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
+    # convert "$file" -transparent '#ffcc66' "./$2/$file"  # Use this command if the file has Color. This does not use threshold
+    # convert "$file" -crop 1050x1338+0+45 -transparent '#ffcc66' "./$2/$file"  # Use this command if the file has Color. This does not use threshold. convert in.png -crop [final-right-x]x[final-right-y]+[crop-left]+[crop-top] out.png
+    # convert "$file" -crop 1050x1338+0+45 "./$2/$file"  # Use this command if the file has Color. This does not use threshold. convert in.png -crop [final-right-x]x[final-right-y]+[crop-left]+[crop-top] out.png
+    # mogrify -crop 1050x1338+0+45 -path "./$2/sharper" -format png -unsharp 1.5x1 -background '#ffffff' -quality 100% "./$2/$file" #Sharpen the image with an unsharp mask operator
 done
+
 ```
 Also use any other means to enhance these png images now to crop, enhance images. e.g. using shotwell, gimp etc.
 
@@ -97,7 +107,7 @@ Also use any other means to enhance these png images now to crop, enhance images
 It is a good idea to add color cover pages as the last step (after OCR) by adding them to the pdf directly using pdftk. This produces smaller files for some reason
 
 
-### Sharpen the pages
+### Sharpen the pages if not done by the script above (which uses -unsharp rather than -sharpen
 `mkdir sharper`
 
 `mogrify -path ./sharper/ -format png -sharpen 1x1 -quality 96% PageNo*.png #Sharpen`
