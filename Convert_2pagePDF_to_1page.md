@@ -60,13 +60,8 @@ If you originally generated PNG files (using `pdftoppm -png`), skip this step an
 
 `pdftoppm -png Book-v1.pdf ./png-images/PageNo`
 
-#### Whiten the background
 `cd png-images/`
 
-Create a directory to store images without background / white background 
-
-`mkdir whitebkgnd`
- 
 #### Using a shell script and process every file in the folder to remove its background, crop it, and also sharpen it
 `./process-all-pngs.sh`
 
@@ -76,30 +71,24 @@ Create a directory to store images without background / white background
 
 if [ $# -le 0 ]
 then
-    echo "Usage: process-all-pngs <threshold>% <destination-folder-name>"
-    echo "Provide the % threshold to use to whiten page backgrounds without the % symbol, followed by the folder to place this images in."
+    echo "Usage: process-all-pngs <first-level-sub-directory-name>"
+    echo "Provide the first level sub-directory name to place images in. Another folder with the name sharper will be created under it"
     echo "Exiting"
     exit 1
 fi
 
-mkdir -p $2
-echo "Made sub-directory " $2 " to place output files "
+mkdir -p $1
+echo "Made sub-directory " $1 " to place output files "
 
-mkdir -p "$2/sharper"
-echo "Made sub-directory " "$2/sharper" " to place output files "
+mkdir -p "$1/sharper"
+echo "Made sub-directory " "$1/sharper" " to place output files "
 
 for file in *.png
 do
-    echo "Processing - " $file ". Removing the background, cropping it, and also sharpening it
-    mogrify -crop 1050x1338+0+45 -path "./$2/sharper" -format png -unsharp 1.5x1 -background '#ffffff' -quality 100% "$file" #Sharpen the image with an unsharp mask operator
+    echo "Processing - " $file ". Removing the background, cropping it, and also sharpening it."
+    mogrify -crop 1050x1338+0+45 -path "./$1/sharper" -format png -unsharp 1.5x1 -background '#ffffff' -quality 100% "$file" #Sharpen the image with an unsharp mask operator
 
-    # convert "$file" -threshold $1% "./$2/$file" # Use this command if the file has BW & gray. Adjust the threshold value and check
-    # convert "$file" -transparent '#ffcc66' "./$2/$file"  # Use this command if the file has Color. This does not use threshold
-    # convert "$file" -crop 1050x1338+0+45 -transparent '#ffcc66' "./$2/$file"  # Use this command if the file has Color. This does not use threshold. convert in.png -crop [final-right-x]x[final-right-y]+[crop-left]+[crop-top] out.png
-    # convert "$file" -crop 1050x1338+0+45 "./$2/$file"  # Use this command if the file has Color. This does not use threshold. convert in.png -crop [final-right-x]x[final-right-y]+[crop-left]+[crop-top] out.png
-    # mogrify -crop 1050x1338+0+45 -path "./$2/sharper" -format png -unsharp 1.5x1 -background '#ffffff' -quality 100% "./$2/$file" #Sharpen the image with an unsharp mask operator
 done
-
 ```
 Also use any other means to enhance these png images now to crop, enhance images. e.g. using shotwell, gimp etc.
 
