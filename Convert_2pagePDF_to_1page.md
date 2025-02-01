@@ -51,10 +51,10 @@ There is no command for this
 ### Make a book with single pages
 `img2pdf single-page*.* -o Book-v1.pdf`
 
-### Whiten background
+### Whiten background, crop pages, and also sharpen each of them
  
-#### Split the book again to get png files for each page as below
-If you originally generated PNG files (using `pdftoppm -png`), skip this step and directly go for whitening the background
+#### Split the book again to get png files of each page as below
+If you originally generated PNG files (using `pdftoppm -png`), skip this step and directly go for progressing all pngs
 
 `mkdir png-images`
 
@@ -66,8 +66,7 @@ If you originally generated PNG files (using `pdftoppm -png`), skip this step an
 `./process-all-pngs.sh`
 
 ```
-#This shell script contains the below
-
+#This shell script process each png file as below
 
 if [ $# -le 0 ]
 then
