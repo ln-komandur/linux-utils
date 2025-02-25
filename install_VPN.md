@@ -41,7 +41,7 @@ Permission denied accessing /run/nordvpn/nordvpnd.sock
 `sudo usermod -aG nordvpn <non-sudo-user> # Add <non-sudo-users> who are to be allowed to use nordvpn to the nordvpn group`
 
 
------------------------------------------
+---
 ## Proton VPN
 
 Proton VPN has a free tier which allows only 1 device at a time, and blocks ads. Servers for the free plan are available  only in the USA, Netherlands and Japan
@@ -54,7 +54,9 @@ Proton VPN has a free tier which allows only 1 device at a time, and blocks ads.
 -  This covers Ubuntu in detail
 -  Use the [OpenVPN iOS app](https://apps.apple.com/us/app/openvpn-connect-openvpn-app/id590379981) to import the OpenVPN configuration files (for UDP), and provide OpenVPN / IKEv2 username, and OpenVPN / IKEv2 password
 
-### Preferred Approach (2). Using ProtonVPN on the free tier with wireguard on Ubuntu. NOT sure about concurrent clients
+### Preferred Approach (2). Using ProtonVPN on the free tier with wireguard on Ubuntu
+
+This approach __allows multiple / concurrent clients__. However each of them will be __hardbound__ to the respective ProtonVPN wireguard servers they are connected to. If that server gets overloaded, then there will be __no auto switching__ to another server with less load to be the exit node. 
 
 Download the wireguard `.conf` file from your [ProtonVPN login](https://account.protonvpn.com/downloads)
 
@@ -67,6 +69,8 @@ Download the wireguard `.conf` file from your [ProtonVPN login](https://account.
 `nmcli connection up <wireguard-config-name> # Connect to WireGuard VPN`
 
 `nmcli connection down <wireguard-config-name> # Disconnect from WireGuard VPN`
+
+To automatically connect or disconnect to the configured wireguard server, execute `nm-connection-editor` on the terminal, select the wireguard configuration to edit, and click the _cog_ . And in the _General_ tab, check or uncheck the _Connect automatically with priority_ box.
 
 ### Alternative Approach (3). Using ProtonVPN on the free tier with their own client
 
@@ -132,3 +136,16 @@ AttributeError: module 'lib' has no attribute 'OpenSSL_add_all_algorithms'
 `sudo pip show pyOpenSSL # Verify that the version is upgraded`
 
 `sudo pip show cryptography # Verify that the version is upgraded`
+
+--------
+
+# Tailscale VPN
+
+This is a different type of VPN from _nordvpn_ or _ProtonVPN_. It lets devices and tailscale accounts allowed in a `tailnet` to see and communicate with each other.
+
+1. Create a tailscale account and add devices to it
+1. Take a fun name for the `<tailnet_name>`
+1. Connect devices to tailnet and change their name from `computer_host_name` to `<some_other_name>` to avoid exposing the real name
+1. If needed, generate a TLS certificate for the device using the following command. Refer [here on ideas to renew the TLS certificate](https://codingrelic.geekhold.com/2024/11/tailscale-certificates-with-nextcloud.html?m=1)
+
+`sudo tailscale cert --cert-file=/etc/ssl/certs/tls-cert-<whatever_filename-computer_name-tailnet_name>.ts.net.pem --key-file=/etc/ssl/private/tls-cert--<whatever_filename-computer_name-tailnet_name>.ts.net.key <NC_server_name>.<tailnet_name>.ts.net` # Reference https://tailscale.com/kb/1080/cli
