@@ -136,6 +136,9 @@ Helps save space and needless updates for those who dont use this app
 
 ## Install chromium brower from Linux Mint repositories if needed
 Refer [this link](https://askubuntu.com/questions/1386738/how-to-install-chromium-from-the-linux-mint-repositories-in-ubuntu)
+
+**Note:** See **Option 3: Install Czkawka and Chromium browser from xtradeb PPA** as it does not import weird keys like below.
+
 1. `sudo apt purge chromium-browser` #Remove chromium snap package if present
 2. Create an apt source file for the Mint repository:
    1. `echo "deb http://packages.linuxmint.com una upstream" | sudo tee /etc/apt/sources.list.d/mint-una.list` #For Ubuntu **20.04**
@@ -155,6 +158,7 @@ Pin-Priority: 1000
 EOF
 ```
 6. `sudo apt install chromium` #Install chromium
+
 
 ## Install zoom if needed
 1. `sudo dpkg -i ./Downloads/zoom_amd64.deb`
@@ -233,7 +237,7 @@ Using the xtradeb PPA - Debian / Ubuntu (unofficial) - as [described here](https
 
 `sudo add-apt-repository ppa:xtradeb/apps` #Add the xtradeb unofficial PPA  
 
-This xtradeb PPA would end up providing firefox updates also. So, retrict it [only to czkawka](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/) with
+This xtradeb PPA would end up providing firefox updates also. So, restrict it [only to czkawka](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/) with
 
 ```
 sudo tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
@@ -250,6 +254,29 @@ EOF
 `sudo apt-get update` #Update the packages
 
 `sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
+
+### Option 3: Install Czkawka and Chromium browser from xtradeb PPA
+Using the xtradeb PPA - Debian / Ubuntu (unofficial) - as [described here](https://qarmin.github.io/czkawka/instructions/Installation.html)
+
+`sudo add-apt-repository ppa:xtradeb/apps` #Add the xtradeb unofficial PPA  
+
+This xtradeb PPA would end up providing firefox updates also. So, restrict it [only to czkawka](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/) and Chromium browser (including its dependencies) with
+
+```
+sudo tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
+Package: *
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: -10
+
+Package: czkawka chromium chromium-common chromium-sandbox
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: 999
+```
+`sudo apt-get update` #Update the packages
+
+`sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
+
+`sudo apt install chromium` #Install chromium
 
 ## Install gparted
 Install gparted with
