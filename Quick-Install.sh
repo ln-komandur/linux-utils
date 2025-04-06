@@ -96,6 +96,36 @@ apt-get install okular
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
+echo "Adding the xtradeb unofficial PPA to install czkawka and chromium browser"
+echo "apt install czkawka"
+echo "---------------------------------------------------------------------------------------------------"
+
+add-apt-repository ppa:xtradeb/apps #Add the xtradeb unofficial PPA
+
+tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
+Package: *
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: -10
+
+Package: czkawka chromium chromium-common chromium-sandbox
+Pin: release o=LP-PPA-xtradeb-*
+Pin-Priority: 999
+EOF
+
+apt-get update #Update the packages
+
+apt-get install czkawka #Install czkawka from xtradeb PPA
+
+echo "---------------------------------------------------------------------------------------------------"
+echo "apt install chromium"
+echo "---------------------------------------------------------------------------------------------------"
+
+apt install chromium #Install chromium from xtradeb PPA
+
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
 echo "DOING FULL-UPGRADE"
 echo "apt full-upgrade"
 echo "---------------------------------------------------------------------------------------------------"
