@@ -271,12 +271,13 @@ Pin-Priority: -10
 Package: czkawka chromium chromium-common chromium-sandbox
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: 999
+EOF
 ```
 `sudo apt-get update` #Update the packages
 
 `sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
 
-`sudo apt install chromium` #Install chromium
+`sudo apt install chromium` #Install chromium from xtradeb PPA
 
 ## Install gparted
 Install gparted with
