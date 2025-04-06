@@ -96,15 +96,6 @@ apt-get install okular
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "ADDING REPOSITORY FOR libreoffice-7-0. WILL BE INSTALLED DURING FULL-UPGRADE"
-echo "add-apt-repository ppa:libreoffice/libreoffice-7-0"
-echo "---------------------------------------------------------------------------------------------------"
-
-add-apt-repository ppa:libreoffice/libreoffice-7-0
-
-echo
-echo
-echo "---------------------------------------------------------------------------------------------------"
 echo "DOING FULL-UPGRADE"
 echo "apt full-upgrade"
 echo "---------------------------------------------------------------------------------------------------"
