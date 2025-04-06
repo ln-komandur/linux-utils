@@ -42,6 +42,8 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 `sudo mount -a` # *Check if the fstab edits are good and partitions can be mounted at their new mount points*
 
+If necessary execute `sudo systemctl daemon-reload` or `reboot` for fstab edits to take effect
+
 ## Add other users to the group of the user who is going to own the mount point (in this case the superuser) to share common files
 
 `sudo gpasswd -a <another-user> <first-user's-group>` # *First-user's-group is the group of those mount points*
@@ -50,15 +52,18 @@ fstab takes tabs or spaces in the line entry above. The options at the end of th
 
 **Note:** Use `gpasswd --delete <user> <group>` # To delete a user from a group if needed
 
-## Change the owner and group from root:root to a different user and group, in this case the super-user
+## Need to execute a few times
+
+The following 3 commands (`chown`, `chmod`, and `ls`) need to be executed a few times with each partition opened in nautilus as `<another-user>` until it is possible to create a new folder in each of them. It is not clear why they do not work in a single attempt or what changes when they are executed repeatedly, and may have to do with fstab changes taking effect (with `systemctl daemon-reload` or `reboot`). While executing them in succession, it is typical to see a `lost+found` folder getting created in them but owned by root. This folder has to eventually be owned by the `<first_user>:<first_user's_group>` by these repeated attempts, and that's when it also seems to become possible to create a new folder in each partition as `<another-user>`
+
+### Change the owner and group from root:root to a different user and group, in this case the super-user
 
 `sudo chown -R <first_user>:<first_user's_group> /media/all-users-<partition-name>` # *Do not end the directory name with a '/'. Change the owner and group from root:root to a different user and group, in this case the super-user*
 
 **Note:** Add other non-super users to <first_user's_group> so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
 
-## Set write permission to multiple users using setgid and sticky bits
+### Set write permission to multiple users using setgid and sticky bits
 
 `sudo chmod -R 2775 /media/all-users-<partition-name>` # *[Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
 
 `ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
-``
