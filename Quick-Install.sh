@@ -129,8 +129,8 @@ echo "--------------------------------------------------------------------------
 echo "Downloading .deb file to install chrome browser with wget -P <Destination Path>"
 echo "Installing chrome browser from .deb file with dpkg -i"
 echo "---------------------------------------------------------------------------------------------------"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/Downloads/ #Download the .deb file to the Downloads folder
-dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb #This command will also add the https://dl.google.com/linux/chrome/deb/ PPA to Other software
+wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ./Downloads/ #Download the .deb file to the Downloads folder
+dpkg -i ./Downloads/google-chrome-stable_current_amd64.deb #This command will also add the https://dl.google.com/linux/chrome/deb/ PPA to Other software
 
 echo
 echo
