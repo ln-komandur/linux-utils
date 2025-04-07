@@ -23,7 +23,7 @@ echo
 echo
 
 
-cat /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount >> ~/Desktop/mount-file.txt #Backup the file
+cat /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount >> ./Desktop/mount-file.txt #Backup the file
 rm -rf /etc/systemd/system/var-snap-firefox-common-host\\x2dhunspell.mount #Delete the file that creates the binding mount
 umount /var/snap/firefox/common/host-hunspell #Unmount the mount point
 rm -i /etc/systemd/system/snapd.mounts.target.wants/var-snap-firefox-common-host\\x2dhunspell.mount #Delete a lingering link. This step may need to be done after the snap purge (not sure)
@@ -37,8 +37,10 @@ echo
 echo
 
 apt-get purge snapd #Remove the snap daemon with apt and remove all snap apps in one go
+echo rm -rf /var/cache/snapd/ \#Delete any leftover cache from Snap
 rm -rf /var/cache/snapd/ #Delete any leftover cache from Snap
-rm -rf ~/snap #Remove snap directory where apps were installed and your personal settings for them stored
+echo rm -rf ./snap/ \#Remove snap directory where apps were installed and your personal settings for them stored
+rm -rf ./snap/ #Remove snap directory where apps were installed and your personal settings for them stored
 
 
 #Prevent ubuntu from installing snap package again
