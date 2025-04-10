@@ -53,6 +53,15 @@ systemctl disable NetworkManager-wait-online.service ofono.service dundee.servic
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
+echo "INSTALLING nala"
+echo "apt install nala"
+echo "---------------------------------------------------------------------------------------------------"
+
+apt install nala
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
 echo "PLEASE CHECK WARNINGS"
 echo "systemctl status udisks2"
 echo "---------------------------------------------------------------------------------------------------"
@@ -63,7 +72,7 @@ while true; do
     read -p "DO YOU SEE WARNINGS ON mdraid: libbd_mdraid.so.2, 'mdraid' libblockdev plugin? (Y/N)" yn
     case $yn in
         [Yy]* ) echo "INSTALLING libblockdev-crypto2 libblockdev-mdraid2"; 
-                apt-get install libblockdev-crypto2 libblockdev-mdraid2; 
+                apt install libblockdev-crypto2 libblockdev-mdraid2; # Intentionally not used nala. This error occurs in 22.04 and prior. nala is not supported in 20.04 
                 echo "RESTARTING udisks2"; 
                 systemctl restart udisks2; 
                 break;;
@@ -78,26 +87,29 @@ echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
 echo "INSTALLING GAMES - (1) KSUDOKU (2) KPAT (CARD GAME) (3) KMAHJONGG (4) KNIGHTS (CHESS)"
-echo "apt-get install ksudoku kpat kmahjongg knights"
+echo "nala / apt install ksudoku kpat kmahjongg knights"
 echo "---------------------------------------------------------------------------------------------------"
 
-apt-get install ksudoku kpat kmahjongg knights 
+if ! nala install ksudoku kpat kmahjongg knights; then
+    apt install ksudoku kpat kmahjongg knights 
+fi 
 
 
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
 echo "INSTALLING OKULAR"
-echo "apt-get install okular"
+echo "nala / apt install okular"
 echo "---------------------------------------------------------------------------------------------------"
 
-apt-get install okular 
+if ! nala install okular; then
+    apt install okular 
+fi 
 
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "Adding the xtradeb unofficial PPA to install czkawka and chromium browser"
-echo "apt install czkawka"
+echo "Adding the xtradeb unofficial PPA to install czkawka, chromium, audacity"
 echo "---------------------------------------------------------------------------------------------------"
 
 add-apt-repository ppa:xtradeb/apps #Add the xtradeb unofficial PPA
@@ -107,21 +119,39 @@ Package: *
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: -10
 
-Package: czkawka chromium chromium-common chromium-sandbox
+Package: czkawka chromium* audacity*
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: 999
 EOF
 
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "nala / apt install czkawka"
+echo "---------------------------------------------------------------------------------------------------"
+
 apt-get update #Update the packages
 
-apt-get install czkawka #Install czkawka from xtradeb PPA
+if ! nala install czkawka; then
+    apt install czkawka #Install czkawka from xtradeb PPA
+fi
+
 
 echo "---------------------------------------------------------------------------------------------------"
-echo "apt install chromium"
+echo "nala / apt install chromium"
 echo "---------------------------------------------------------------------------------------------------"
 
-apt install chromium #Install chromium from xtradeb PPA
+if ! nala install chromium; then
+    apt install chromium #Install chromium from xtradeb PPA
+fi
 
+echo "---------------------------------------------------------------------------------------------------"
+echo "nala / apt install audacity"
+echo "---------------------------------------------------------------------------------------------------"
+
+if ! nala install audacity; then
+    apt install audacity #Install audacity from xtradeb PPA
+fi
 
 echo
 echo
