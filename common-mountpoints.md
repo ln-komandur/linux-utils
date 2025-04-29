@@ -69,14 +69,26 @@ The following 3 commands (`chown`, `chmod`, and `ls`) need to be executed a few 
 `ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
 
 
-## Configure a veracrypt volume to be mountable by non-sudo users
+## Allowing non-sudo users to use Veracrypt
 
-## Reference
+## References
 [SOLVED: Veracrypt and multiple user accounts](https://forums.linuxmint.com/viewtopic.php?p=1933439) - refer rootbeer's solution
 
-[Download the veracrypt .deb installable](https://veracrypt.fr/en/Downloads.html) and install it using `nala` or `apt`. Encrypt a desired empty volume, and then mount it as a `sudo` user
+[Creating a veracrypt encrypted volume on Ubuntu](https://linuxconfig.org/full-disk-encryption-with-veracrypt-on-ubuntu-linux)
 
-Then, on that volume, perform the __Steps above to__
+### Install Veracrypt and encrypt a volume
+
+Use the [Veracrypt PPA from Unit193](https://veracrypt.fr/en/Contributed%20Resources.html) per the [3rd party binaries referred by Veracrypt](https://veracrypt.fr/en/Contributed%20Resources.html)
+
+Alternatively, [download the veracrypt .deb installable](https://veracrypt.fr/en/Downloads.html) 
+
+Install either of them using `nala` or `apt`.
+
+[Encrypt a desired empty volume](https://linuxconfig.org/full-disk-encryption-with-veracrypt-on-ubuntu-linux), and then mount it as a `sudo` user
+
+### Configure the veracrypt encrypted volume to be mountable by non-sudo users
+
+On the veracrypt encrypted volume, perform the __Steps above to__
 1.   __Change the owner and group from root:root to a different user and group, in this case the super-user__
 2.   __Set write permission to multiple users using setgid and sticky bits__
 
