@@ -48,7 +48,7 @@ If necessary execute `sudo systemctl daemon-reload` or `reboot` for fstab edits 
 
 `sudo gpasswd -a <another-user> <first-user's-group>` # *First-user's-group is the group of those mount points*
 
-`groups <another-user>` # Verify the <another-user> has been added to the <first-user's-group>
+`groups <another-user>` # Verify the `<another-user>` has been added to the `<first-user's-group>`
 
 **Note:** Use `gpasswd --delete <user> <group>` # To delete a user from a group if needed
 
@@ -60,10 +60,49 @@ The following 3 commands (`chown`, `chmod`, and `ls`) need to be executed a few 
 
 `sudo chown -R <first_user>:<first_user's_group> /media/all-users-<partition-name>` # *Do not end the directory name with a '/'. Change the owner and group from root:root to a different user and group, in this case the super-user*
 
-**Note:** Add other non-super users to <first_user's_group> so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
+**Note:** Add other non-super users to `<first_user's_group>` so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
 
 ### Set write permission to multiple users using setgid and sticky bits
 
 `sudo chmod -R 2775 /media/all-users-<partition-name>` # *[Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
 
 `ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
+
+
+## Configure a veracrypt volume to be mountable by non-sudo users
+
+## Reference
+[SOLVED: Veracrypt and multiple user accounts](https://forums.linuxmint.com/viewtopic.php?p=1933439) - refer rootbeer's solution
+
+[Download the veracrypt .deb installable](https://veracrypt.fr/en/Downloads.html) and install it using `nala` or `apt`. Encrypt a desired empty volume, and then mount it as a `sudo` user
+
+Then, on that volume, perform the __Steps above to__
+1.   __Change the owner and group from root:root to a different user and group, in this case the super-user__
+2.   __Set write permission to multiple users using setgid and sticky bits__
+
+Then do the following per [rootbeer's solution](https://forums.linuxmint.com/viewtopic.php?p=1913627&sid=7923c6cd8706987055ec0f1c34828d0a#p1913627)
+
+`sudo groupadd veracrypt` #Create a veracrypt group
+
+`sudo usermod -aG veracrypt <another-user>`  #Add <another-user> to veracrypt group
+
+`sudo visudo /etc/sudoers` #Edit the sudoers-file with visudo to add the veracrypt group
+
+_add this in the file: below the `%sudo ALL=(ALL:ALL) ALL` line._ It allows users who belong to the `veracrypt` group to execute __ONLY__ `/usr/bin/veracrypt` with `sudo` prilleges __ONLY__ for that executable
+
+     `%veracrypt ALL=(ALL) /usr/bin/veracrypt`
+
+It should look like this
+
+```
+# Allow members of group sudo to execute any command
+%sudo ALL=(ALL:ALL) ALL
+
+%veracrypt ALL=(ALL) /usr/bin/veracrypt
+```
+
+Exit `visudo` and save the file using `Ctrl+x`, and reboot the system. 
+
+-  Login as `<another-user>`
+-  Open veracrypt GUI app
+-  Mount the veracrypt encrypted volume with the password for `<another-user>`, not the password of the `<super-user>`. You may have to try a couple of times with the password of `<super-user>` and `<another-user>`
