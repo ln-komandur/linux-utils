@@ -89,20 +89,20 @@ Install either of them using `nala` or `apt`.
 ### Configure the veracrypt encrypted volume to be mountable by non-sudo users
 
 On the veracrypt encrypted volume, perform the __Steps above to__
-1.   __Change the owner and group from root:root to a different user and group, in this case the super-user__
-2.   __Set write permission to multiple users using setgid and sticky bits__
+1.   [Change the owner and group from root:root to a different user and group, in this case the super-user](#change-the-owner-and-group-from-rootroot-to-a-different-user-and-group-in-this-case-the-super-user)
+2.   [Set write permission to multiple users using setgid and sticky bits](#set-write-permission-to-multiple-users-using-setgid-and-sticky-bits)
 
 Then do the following per [rootbeer's solution](https://forums.linuxmint.com/viewtopic.php?p=1913627&sid=7923c6cd8706987055ec0f1c34828d0a#p1913627)
 
 `sudo groupadd veracrypt` #Create a veracrypt group
 
-`sudo usermod -aG veracrypt <another-user>`  #Add <another-user> to veracrypt group
+`sudo usermod -aG veracrypt <another-user>`  #Add `<another-user>` to veracrypt group
 
 `sudo visudo /etc/sudoers` #Edit the sudoers-file with visudo to add the veracrypt group
 
 _add this in the file: below the `%sudo ALL=(ALL:ALL) ALL` line._ It allows users who belong to the `veracrypt` group to execute __ONLY__ `/usr/bin/veracrypt` with `sudo` prilleges __ONLY__ for that executable
 
-     `%veracrypt ALL=(ALL) /usr/bin/veracrypt`
+`%veracrypt ALL=(ALL) /usr/bin/veracrypt`
 
 It should look like this
 
