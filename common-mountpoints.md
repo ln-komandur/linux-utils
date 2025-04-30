@@ -84,7 +84,7 @@ The `chmod` command below MAY need to be executed again to cascade down the setg
 
 ### Install Veracrypt and encrypt a volume
 
-Use the [Veracrypt PPA from Unit193](https://veracrypt.fr/en/Contributed%20Resources.html) per the [3rd party binaries referred by Veracrypt](https://veracrypt.fr/en/Contributed%20Resources.html)
+Use the [Veracrypt PPA from Unit193 on Launchpad](https://launchpad.net/~unit193/+archive/ubuntu/encryption) per the [3rd party binaries referred by Veracrypt](https://veracrypt.fr/en/Contributed%20Resources.html)
 
 Alternatively, [download the veracrypt .deb installable](https://veracrypt.fr/en/Downloads.html) 
 
