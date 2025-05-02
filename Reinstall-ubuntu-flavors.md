@@ -251,16 +251,16 @@ Pin-Priority: 999
 EOF
 ```
 
-`sudo apt-get update` #Update the packages
+`sudo apt-get update` # *Update the packages*
 
-`sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
+`sudo apt-get install czkawka` # *Install czkawka from xtradeb PPA*
 
-### Option 3: Install Czkawka and Chromium browser from xtradeb PPA
+### Option 3: Install Czkawka and a few other apps from xtradeb PPA
 Using the xtradeb PPA - Debian / Ubuntu (unofficial) - as [described here](https://qarmin.github.io/czkawka/instructions/Installation.html)
 
-`sudo add-apt-repository ppa:xtradeb/apps` #Add the xtradeb unofficial PPA  
+`sudo add-apt-repository ppa:xtradeb/apps` # *Add the xtradeb unofficial PPA*  
 
-This xtradeb PPA would end up providing firefox updates also. So, restrict it [only to czkawka](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/) and Chromium browser (including its dependencies) with
+This xtradeb PPA would end up providing firefox updates also. So, restrict it [only to **Czkawka**](https://xtradeb.net/wiki/how-to-restrict-which-applications-are-available-to-install/), **Chromium browser** (including its dependencies), **Ungoogled-chromium browser** (including its dependencies), and **Audacity** with
 
 ```
 sudo tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
@@ -268,21 +268,29 @@ Package: *
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: -10
 
-Package: czkawka chromium chromium-common chromium-sandbox
+Package: czkawka chromium* audacity* ungoogled-chromium*
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: 999
 EOF
 ```
-`sudo apt-get update` #Update the packages
+`sudo apt-get update` # *Update the packages*
 
-`sudo apt-get install czkawka` #Install czkawka from xtradeb PPA
+`sudo apt-get install czkawka` # *Install czkawka from xtradeb PPA*
 
-`sudo apt install chromium` #Install chromium from xtradeb PPA
+`sudo apt-get install chromium` # *Install chromium from xtradeb PPA*
+
+`sudo apt-get install ungoogled-chromium` # *Install ungoogled-chromium from xtradeb PPA*
+
+`sudo apt-get install audacity` # *Install audacity from xtradeb PPA*
 
 ## Install gparted
 Install gparted with
 
 `sudo apt install gparted`
+
+## Copy from drives preserving file permissions and ownership
+
+`sudo cp -av * /media/all-users-common-data/` # *Use the -av option to preserve file permissions and ownership*
 
 ## Clean up all lint
 Use the script [DiskSpaceJanitor.sh](DiskSpaceJanitor.sh) (formerly `CleanCacheAndLogs.sh` & `CleanCacheLogsSnaps.sh`) as root to clean up all lint
