@@ -119,7 +119,7 @@ Package: *
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: -10
 
-Package: czkawka chromium* audacity*
+Package: czkawka chromium* audacity* ungoogled-chromium*
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: 999
 EOF
@@ -143,6 +143,14 @@ echo "--------------------------------------------------------------------------
 
 if ! nala install chromium; then
     apt install chromium #Install chromium from xtradeb PPA
+fi
+
+echo "---------------------------------------------------------------------------------------------------"
+echo "nala / apt install ungoogled-chromium"
+echo "---------------------------------------------------------------------------------------------------"
+
+if ! nala install ungoogled-chromium; then
+    apt install ungoogled-chromium #Install ungoogled-chromium from xtradeb PPA
 fi
 
 echo "---------------------------------------------------------------------------------------------------"
