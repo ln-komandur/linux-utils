@@ -123,8 +123,8 @@ fi
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "INSTALLING Okular GParted Gnome-shell-extension-manager"
-echo "nala / apt install okular gparted gnome-shell-extension-manager"
+echo "INSTALLING okular gparted gnome-shell-extension-manager vlc"
+echo "nala / apt install okular gparted gnome-shell-extension-manager vlc"
 echo "---------------------------------------------------------------------------------------------------"
 
 if ! nala install okular gparted gnome-shell-extension-manager vlc; then
