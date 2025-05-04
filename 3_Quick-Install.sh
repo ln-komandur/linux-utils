@@ -86,6 +86,31 @@ done
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
+echo "nala / apt curl"
+echo "---------------------------------------------------------------------------------------------------"
+
+if ! nala install curl; then
+    apt install curl #Install curl
+fi
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "curl Google chrome browser"
+echo "---------------------------------------------------------------------------------------------------"
+curl -sLO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "curl Master PDF Editor"
+echo "---------------------------------------------------------------------------------------------------"
+curl -sLO http://code-industry.net/public/master-pdf-editor-4.3.89_qt5.amd64.deb && sudo dpkg -i master-pdf-editor-4.3.89_qt5.amd64.deb
+
+
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
 echo "INSTALLING GAMES - (1) KSUDOKU (2) KPAT (CARD GAME) (3) KMAHJONGG (4) KNIGHTS (CHESS)"
 echo "nala / apt install ksudoku kpat kmahjongg knights"
 echo "---------------------------------------------------------------------------------------------------"
@@ -98,12 +123,12 @@ fi
 echo
 echo
 echo "---------------------------------------------------------------------------------------------------"
-echo "INSTALLING OKULAR"
-echo "nala / apt install okular"
+echo "INSTALLING Okular GParted Gnome-shell-extension-manager"
+echo "nala / apt install okular gparted gnome-shell-extension-manager"
 echo "---------------------------------------------------------------------------------------------------"
 
-if ! nala install okular; then
-    apt install okular 
+if ! nala install okular gparted gnome-shell-extension-manager; then
+    apt install okular gparted gnome-shell-extension-manager
 fi 
 
 echo
