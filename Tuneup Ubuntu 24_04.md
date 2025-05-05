@@ -2,13 +2,13 @@
 
 Login as super-user. Then download the following `.sh` files. Move them from `~/Downloads` to the sudo users home (`~`) directory. Do `chmod +x *.sh` and then execute them from the super-user's login one by one
 
-### Execute 3 comprehensive shell scripts
+### Execute 3 comprehensive one-time-use shell scripts
 
 `./1_DisableUnnecessaryServices.sh`
 
 `./2_Purge-snapd-install-apt-equivalents.sh`
 
-`./3_Quick-Install.sh`
+`./3_Quick-Install.sh #` *Watch for **mdraid** warnings and answer Y or N at the prompt*`
 
 ### Install zoom and signal through shell scripts
 
