@@ -25,7 +25,7 @@ Download the following `.sh` files and do `chmod +x` before executing them from 
 
 ### "Dependencies failed" for SSSD
 
-Place image here
+![Alt text](sssd%20dependency%20failed.jpg "sssd dependency failed")
 
 `sudo cp /usr/lib/x86_64-linux-gnu/sssd/conf/sssd.conf /etc/sssd/. && sudo chmod 600 /etc/sssd/sssd.conf` # *Per https://bugs.launchpad.net/ubuntu/+source/sssd/+bug/2048436*
 
@@ -35,7 +35,7 @@ Place image here
 
 ### spi-nor errors on boot
 
-Place image here
+![Alt text](spi-nor%20failed.jpg "spi-nor failed")
 
 **spi-nor spi0.0: probe with driver spi-nor failed with error -22**
 
