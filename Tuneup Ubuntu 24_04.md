@@ -32,3 +32,11 @@ Place image here
 ### Fix errors with mounting ntfs drives
 
 `echo 'blacklist ntfs3' | sudo tee /etc/modprobe.d/disable-ntfs3.conf` # *Per https://bugs.launchpad.net/ubuntu/+source/ntfs-3g/+bug/2062972/comments/18*
+
+### spi-nor errors on boot
+
+Place image here
+
+**spi-nor spi0.0: probe with driver spi-nor failed with error -22**
+
+Solution TBD
