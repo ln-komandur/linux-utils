@@ -1,6 +1,6 @@
 ## Tuneup by using shell scripts
 
-Download the following `.sh` files and do `chmod +x` before executing them from the super-user's login
+Login as super-user. Then download the following `.sh` files. Move them from `~/Downloads` to the sudo users home (`~`) directory. Do `chmod +x *.sh` and then execute them from the super-user's login one by one
 
 ### Execute 3 comprehensive shell scripts
 
