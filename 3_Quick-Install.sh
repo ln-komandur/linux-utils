@@ -107,6 +107,12 @@ echo "curl Master PDF Editor"
 echo "---------------------------------------------------------------------------------------------------"
 curl -sLO http://code-industry.net/public/master-pdf-editor-4.3.89_qt5.amd64.deb && sudo dpkg -i master-pdf-editor-4.3.89_qt5.amd64.deb
 
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "curl tailscale"
+echo "---------------------------------------------------------------------------------------------------"
+curl -fsSL https://tailscale.com/install.sh | sh
 
 echo
 echo
