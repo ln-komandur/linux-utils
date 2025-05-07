@@ -52,15 +52,22 @@ If necessary execute `sudo systemctl daemon-reload` or `reboot` for fstab edits 
 
 **Note:** Use `gpasswd --delete <user> <group>` # *To delete a user from a group if needed*
 
-## Need to execute a few times
+## Happy Scenario
+1.  First mount the volumes that were just configured and check if their path in Nautilus (Ctrl + l) shows their common mount points
+2.  Change their group
+    1.  If they do not contain any files, then use `sudo chown` and [Change the owner and group from root:root to a different user and group, in this case the super-user](#change-the-owner-and-group-from-rootroot-to-a-different-user-and-group-in-this-case-the-super-user)
+    2.  If they **already contain** files, then `sudo chgrp -R <first_user's_group> /media/all-users-<partition-name>` # *Change the group to the <first_user's_group>. Consider additional options -h -H -L for traversing symbolic links*
+1.  Lastly use `sudo chmod` to [Set write permission to multiple users using setgid bit](#set-write-permission-to-multiple-users-using-setgid-bit)
 
-The following 3 commands (`chown`, `chmod`, and `ls`) need to be executed a few times with each partition opened in nautilus as `<another-user>` until it is possible to create a new folder in each of them. It is not clear why they do not work in a single attempt or what changes when they are executed repeatedly, and may have to do with fstab changes taking effect (with `systemctl daemon-reload` or `reboot`). While executing them in succession, it is typical to see a `lost+found` folder getting created in them but owned by root. This folder has to eventually be owned by the `<first_user>:<first_user's_group>` by these repeated attempts, and that's when it also seems to become possible to create a new folder in each partition as `<another-user>`
+## Alternate Scenario - Need to execute a few times
+
+If the happy scenario does not work, execute the `chown`, `chmod`, and `ls` commands a few times with each partition opened in nautilus as `<another-user>` until it is possible to create a new folder in each of them. It is not clear why they do not work in a single attempt or what changes when they are executed repeatedly, and may have to do with fstab changes taking effect (with `systemctl daemon-reload` or `reboot`). While executing them in succession, it is typical to see a `lost+found` folder getting created in them but owned by root. This folder has to eventually be owned by the `<first_user>:<first_user's_group>` by these repeated attempts, and that's when it also seems to become possible to create a new folder in each partition as `<another-user>`
 
 __Important:__ If a file belonging to a group other than `<first-user's-group>` is _moved_ to a common partition owned by the `<first_user>:<first_user's_group>`, then it will not be editable by anyone other than members of the original user's group. Therefore execute the following command after doing such file moves.
 
 `sudo chgrp -R <first_user's_group> /media/all-users-<partition-name>` # *Change the group to the <first_user's_group>. Consider additional options -h -H -L for traversing symbolic links*
 
-The `chmod` command below MAY need to be executed again to cascade down the setgid and sticky bits 
+The `chmod` command below MAY need to be executed again to cascade down the setgid bit
 
 ### Change the owner and group from root:root to a different user and group, in this case the super-user
 
@@ -68,11 +75,11 @@ The `chmod` command below MAY need to be executed again to cascade down the setg
 
 **Note:** Add other non-super users to `<first_user's_group>` so that they can access this mount point as a member of the group. If the partition is not auto mounted in fstab or if that group is the super-user's group, then all those other users need to authenticate with the super user's credentials
 
-### Set write permission to multiple users using setgid and sticky bits
+### Set write permission to multiple users using setgid bit
 
-`sudo chmod -R 2775 /media/all-users-<partition-name>` # *[Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-and-sticky-bits)*
+`sudo chmod -R 2775 /media/all-users-<partition-name>` # *[Refer - set write permission to multiple users](https://ubuntuforums.org/archive/index.php/t-2017287.html). 2 is the setgid [(set group id bit to inherit the group id for users in the group)](https://linuxconfig.org/how-to-use-special-permissions-the-setuid-setgid-bit)*
 
-`ls -l /media/` # Check if the sticky bit, the owner and the group are set correctly
+`ls -l /media/` # Check if the setgid bit, the owner and the group are set correctly
 
 
 ## Allowing non-sudo users to use Veracrypt
@@ -97,10 +104,10 @@ Install either of them using `nala` or `apt`.
 On the veracrypt encrypted volume, perform the __Steps above to__
 1.  __Important:__
     1.  Veracrypt seem to mount volumes as logical volumes. This can be seen by executing `lsblk`.
-    1.  Veracrypt mounts encrypted volumes at mount points with a number suffix based on the slot selected to mount the volume (e.g. `/media/veracrypt1`). Even if the same slot is used to mount the encrypted volume everytime, the ownership and the setgid and sticky bit at the volume level are not preserved. Files created at the base of the encrpted volume will not take these attributes. 
-    1.  __Therefore,__ create a folder named `all-files` at the base of the encrypted volume using `sudo mkdir -p all-files`. It is required to cascade down the ownership and the setgid and sticky bit to all files that __MUST BE__ placed only inside this folder. Else the following `chown` and `chmod` will need to be repeatedly executed every time after mounting the veracrypt volume. 
+    1.  Veracrypt mounts encrypted volumes at mount points with a number suffix based on the slot selected to mount the volume (e.g. `/media/veracrypt1`). Even if the same slot is used to mount the encrypted volume everytime, the ownership and the setgid bit at the volume level are not preserved. Files created at the base of the encrpted volume will not take these attributes. 
+    1.  __Therefore,__ create a folder named `all-files` at the base of the encrypted volume using `sudo mkdir -p all-files`. It is required to cascade down the ownership and the setgid bit to all files that __MUST BE__ placed only inside this folder. Else the following `chown` and `chmod` will need to be repeatedly executed every time after mounting the veracrypt volume. 
 1.  [Change the owner and group from root:root to a different user and group, in this case the super-user](#change-the-owner-and-group-from-rootroot-to-a-different-user-and-group-in-this-case-the-super-user)
-1.  [Set write permission to multiple users using setgid and sticky bits](#set-write-permission-to-multiple-users-using-setgid-and-sticky-bits)
+1.  [Set write permission to multiple users using setgid bit](#set-write-permission-to-multiple-users-using-setgid-bit)
 
 Then do the following per [rootbeer's solution](https://forums.linuxmint.com/viewtopic.php?p=1913627&sid=7923c6cd8706987055ec0f1c34828d0a#p1913627)
 
