@@ -39,4 +39,4 @@ Login as super-user. Then download the following `.sh` files. Move them from `~/
 
 **spi-nor spi0.0: probe with driver spi-nor failed with error -22**
 
-Solution TBD
+`echo 'blacklist spi_intel_platform' | sudo tee /etc/modprobe.d/06-spi-intel.conf` # *Per https://github.com/fwupd/fwupd/issues/5643#issuecomment-2727295026*
