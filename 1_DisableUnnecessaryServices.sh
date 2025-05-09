@@ -23,7 +23,8 @@ echo "(1) NetworkManager-wait-online.service"
 echo "(2) plymouth-quit-wait.service"
 echo "(3) ModemManager.service"
 echo "(4) ofono.service dundee.service"
-echo "(5) blueman-mechanism.service"
+echo "(5) dundee.service"
+echo "(6) blueman-mechanism.service"
 echo "---------------------------------------------------------------------------------------------------"
 systemctl stop NetworkManager-wait-online.service plymouth-quit-wait.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
@@ -35,7 +36,8 @@ echo "(1) NetworkManager-wait-online.service"
 echo "(2) plymouth-quit-wait.service"
 echo "(3) ModemManager.service"
 echo "(4) ofono.service dundee.service"
-echo "(5) blueman-mechanism.service"
+echo "(5) dundee.service"
+echo "(6) blueman-mechanism.service"
 echo "---------------------------------------------------------------------------------------------------"
 systemctl disable NetworkManager-wait-online.service plymouth-quit-wait.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
