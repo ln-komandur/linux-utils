@@ -17,20 +17,35 @@ fi
 echo "AUTHENTICATION SUCCESSFUL. You are executing the script as" $USER
 echo
 echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Stopping many unnecessary services if installed"
+echo "(1) NetworkManager-wait-online.service"
+echo "(2) plymouth-quit-wait.service"
+echo "(3) ModemManager.service"
+echo "(4) ofono.service dundee.service"
+echo "(5) blueman-mechanism.service"
+echo "---------------------------------------------------------------------------------------------------"
+systemctl stop NetworkManager-wait-online.service plymouth-quit-wait.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
-echo "Stopping and Disabling NetworkManager-wait-online.service"
-systemctl stop NetworkManager-wait-online.service
-systemctl disable NetworkManager-wait-online.service
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Disabling many unnecessary services if installed"
+echo "(1) NetworkManager-wait-online.service"
+echo "(2) plymouth-quit-wait.service"
+echo "(3) ModemManager.service"
+echo "(4) ofono.service dundee.service"
+echo "(5) blueman-mechanism.service"
+echo "---------------------------------------------------------------------------------------------------"
+systemctl disable NetworkManager-wait-online.service plymouth-quit-wait.service ModemManager.service ofono.service dundee.service blueman-mechanism.service
 
-echo "Stopping and Disabling plymouth-quit-wait.service"
-systemctl stop plymouth-quit-wait.service
-systemctl disable plymouth-quit-wait.service
-
-echo "Stopping and Disabling ModemManager.service"
-systemctl stop ModemManager.service
-systemctl disable ModemManager.service
-
-echo "Stopping and Disabling ofono.service and dundee.service (IF Installed)"
-systemctl stop ofono.service dundee.service
-systemctl disable ofono.service dundee.service
-
+echo
+echo
+echo "---------------------------------------------------------------------------------------------------"
+echo "Purging"
+echo "(1) plymouth"
+echo "(2) bluedevil" 
+echo "(3) modemmanager"
+echo "apt-get purge plymouth bluedevil modemmanager"
+echo "---------------------------------------------------------------------------------------------------"
+apt-get purge plymouth bluedevil modemmanager
