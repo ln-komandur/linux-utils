@@ -40,3 +40,19 @@ Login as super-user. Then download the following `.sh` files. Move them from `~/
 **spi-nor spi0.0: probe with driver spi-nor failed with error -22**
 
 `echo 'blacklist spi_intel_platform' | sudo tee /etc/modprobe.d/06-spi-intel.conf` # *Per https://github.com/fwupd/fwupd/issues/5643#issuecomment-2727295026*
+
+### Map Super+e to open Nautilus at /home
+
+`gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"` # *Map Super+e to open Nautilus at /home. This can be done in Settings GUI too*
+
+
+### Correct enlarged display in Dell Inspiron 3542 / Inspiron 5559
+
+**Note** :  Display resolution on Dell Inspiron 3542 / Inspiron 5559 is *1366x768 (16:9)* causing enlarged icons and texts. The below changes will have to be done for **each user separately**
+
+`gsettings set org.gnome.shell.extensions.ding icon-size small` # *Reduce the Desktop icon size from standard to small. This can be done in Settings GUI too*
+
+`gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 40` # *Reduce the dock icon size to 40 from the default 48. This can be done in Settings GUI too*
+
+`gsettings set org.gnome.desktop.interface text-scaling-factor 0.85` # *Reduce the text scaling factor from 1.00 to 0.85. This needs gnome-tweaks to change via GUI*
+
