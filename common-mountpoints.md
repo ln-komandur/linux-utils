@@ -109,7 +109,7 @@ On the veracrypt encrypted volume, perform the __Steps above to__
 1.  [Change the owner and group from root:root to a different user and group, in this case the super-user](#change-the-owner-and-group-from-rootroot-to-a-different-user-and-group-in-this-case-the-super-user)
 1.  [Set write permission to multiple users using setgid bit](#set-write-permission-to-multiple-users-using-setgid-bit)
 
-Then do the following per [rootbeer's solution](https://forums.linuxmint.com/viewtopic.php?p=1913627&sid=7923c6cd8706987055ec0f1c34828d0a#p1913627)
+Then do the following per [rootbeer's solution](https://forums.linuxmint.com/viewtopic.php?p=1913627&sid=7923c6cd8706987055ec0f1c34828d0a#p1913627) but modified to [keep it in a separate sudoers file](https://sourceforge.net/p/veracrypt/discussion/general/thread/b738c75977/?page=2#bf01/1151/dfbd)
 
 `sudo groupadd veracrypt` # *Create a veracrypt group*
 
