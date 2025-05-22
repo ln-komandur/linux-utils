@@ -115,22 +115,7 @@ Then do the following per [rootbeer's solution](https://forums.linuxmint.com/vie
 
 `sudo usermod -aG veracrypt <another-user>`  # *Add `<another-user>` to veracrypt group*
 
-`sudo visudo /etc/sudoers` # *Edit the sudoers-file with visudo to add the veracrypt group*
-
-_add this in the file: below the `%sudo ALL=(ALL:ALL) ALL` line._ It allows users who belong to the `veracrypt` group to execute __ONLY__ `/usr/bin/veracrypt` with `sudo` prilleges __ONLY__ for that executable
-
-`%veracrypt ALL=(ALL) /usr/bin/veracrypt`
-
-It should look like this
-
-```
-# Allow members of group sudo to execute any command
-%sudo ALL=(ALL:ALL) ALL
-
-%veracrypt ALL=(ALL) /usr/bin/veracrypt
-```
-
-Exit `visudo` and save the file using `Ctrl+x`, and reboot the system. 
+`echo -e "# Allow members of group veracrypt to execute veracrypt \n%veracrypt ALL=(ALL) /usr/bin/veracrypt" | sudo tee "/etc/sudoers.d/veracrypt-users"` # *Add the veracrypt group to a separate sudoers file and allow them to execute veracrypt*
 
 -  Login as `<another-user>`
 -  Open veracrypt GUI app
