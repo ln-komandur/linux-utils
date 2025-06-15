@@ -22,10 +22,10 @@ echo "To extract part "$part_number" of the video from" $1 ", enter Start time a
 while true; do
 	part_number=$((part_number+1)) # Increment the part number
 	while
-		echo "Example: To start at 2 minutes and to last 14 seconds, enter"
-		echo "00:02:00 00:00:14"
+		echo "Example: To start at 2 minutes and to last 14.5 seconds, enter"
+		echo "00:02:00 00:00:14.5"
 		read -p ">" start_time duration # Get the user input
-	  	[[ -z $start_time || $start_time == *[^0-9:]* || -z $duration || $duration == *[^0-9:]* ]] # Prompt again if an empty string or containing anything other than "0-9 / :"
+	  	[[ -z $start_time || $start_time == *[^0-9:.]* || -z $duration || $duration == *[^0-9:.]* ]] # Prompt again if an empty string or containing anything other than "0-9 or : or ."
 	do echo "Please enter a valid start time and duration in hh:mm:ss hh:mm:ss"; done
 
 	ext="${1##*.}" # The single # operator is used to try and remove the shortest text matching the pattern, while ## tries to do it with the longest text matching from the beginning of the string.
