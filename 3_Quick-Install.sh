@@ -127,7 +127,7 @@ echo "--------------------------------------------------------------------------
 
 add-apt-repository ppa:xtradeb/apps #Add the xtradeb unofficial PPA
 
-tee -a /etc/apt/preferences.d/xtradeb.pref <<EOF
+tee /etc/apt/preferences.d/xtradeb.pref <<EOF
 Package: *
 Pin: release o=LP-PPA-xtradeb-*
 Pin-Priority: -10
