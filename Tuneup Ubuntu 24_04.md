@@ -51,14 +51,16 @@ Login as super-user. Then download the following `.sh` files. Move them from `~/
 
 **Verify the error after boot** with
 
-`sudo dmesg --level=err` # *Check for "lenovo_wmi_hotkey_utilities failed with error -5"*
+`sudo dmesg --level=err` # *Check if 'lenovo_wmi_hotkey_utilities failed with error -5'*
 
 The output would be like the below
 ```
-[    timestamp] lenovo_wmi_hotkey_utilities I-D-E-N-T-I-F-I-E-R: probe with driver lenovo_wmi_hotkey_utilities failed with error -5
+[    timestamp] lenovo_wmi_hotkey_utilities <alias from `modinfo lenovo_wmi_hotkey_utilities` command>: probe with driver lenovo_wmi_hotkey_utilities failed with error -5
 ```
 
-[Fix it by blacklisting the kernel module](https://wiki.archlinux.org/title/Lenovo_Yoga_7_2-in-1_14AHP9) . *Unlike ThinkPads, this device does not feature LED indication on audio mute keys. If you encounter errors related to the lenovo-wmi-hotkey-utilities kernel module, you can simply blacklist it. Doing so will not affect functionality of other LED indicators.*
+`modinfo lenovo_wmi_hotkey_utilities` # *View the filename, alias, name of the module. Note that the filename uses - , but the name uses _*
+
+[Fix it by blacklisting that kernel module](https://wiki.archlinux.org/title/Lenovo_Yoga_7_2-in-1_14AHP9) . *Unlike ThinkPads, this device does not feature LED indication on audio mute keys. If you encounter errors related to the lenovo-wmi-hotkey-utilities kernel module, you can simply blacklist it. Doing so will not affect functionality of other LED indicators.*
 
 ```
 sudo tee /etc/modprobe.d/blacklist-lenovo-wmi-hotkey-utilities.conf <<EOF
@@ -66,7 +68,7 @@ sudo tee /etc/modprobe.d/blacklist-lenovo-wmi-hotkey-utilities.conf <<EOF
 # # Unlike ThinkPads, this device does not feature LED indication on audio mute keys.
 # # If you encounter errors related to the lenovo-wmi-hotkey-utilities kernel module, you can simply blacklist it.
 # # Doing so will not affect functionality of other LED indicators.
-# # Either of the below with - or _ will work. Comment out one.
+# # Either of the below with - as in the filename or _ in the module name will work. Comment out one.
 # blacklist lenovo-wmi-hotkey-utilities
 blacklist lenovo_wmi_hotkey_utilities
 EOF
