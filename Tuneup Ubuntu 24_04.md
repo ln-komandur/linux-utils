@@ -47,12 +47,13 @@ Login as super-user. Then download the following `.sh` files. Move them from `~/
 
 ### lenovo_wmi_hotkey_utilities error on Lenovo 16" Ideapad 5 2-in-1
 
-**probe lenovo_wmi_hotkey_utilities error -5** appears on boot in ***kernel version 6.14.0-24-generic or 6.14.0-27-generic***. 
+**probe with driver lenovo_wmi_hotkey_utilities failed with error -5** appears on boot in *kernel version 6.14.0-24-generic or 6.14.0-27-generic*. 
 
 **Verify the error after boot** with
 
-`sudo dmesg --level=err` # *Check for "probe lenovo_wmi_hotkey_utilities failed with error -5"*
-The output would look like the below
+`sudo dmesg --level=err` # *Check for "lenovo_wmi_hotkey_utilities failed with error -5"*
+
+The output would be like the below
 ```
 [    timestamp] lenovo_wmi_hotkey_utilities I-D-E-N-T-I-F-I-E-R: probe with driver lenovo_wmi_hotkey_utilities failed with error -5
 ```
