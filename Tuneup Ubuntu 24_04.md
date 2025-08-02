@@ -45,17 +45,19 @@ Login as super-user. Then download the following `.sh` files. Move them from `~/
 
 `gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"` # *Map Super+e to open Nautilus at /home. This can be done in Settings GUI too*
 
-### lenovo_wmi_hotkey_utilities error on Lenovo Ideapad 5 2-in-1
+### lenovo_wmi_hotkey_utilities error on Lenovo 16" Ideapad 5 2-in-1
 
-**probe lenovo_wmi_hotkey_utilities error -5** appears on boot. **Verify the error after boot** with
+**probe lenovo_wmi_hotkey_utilities error -5** appears on boot in ***kernel version 6.14.0-24-generic or 6.14.0-27-generic***. 
+
+**Verify the error after boot** with
 
 `sudo dmesg --level=err` # *Check for "probe lenovo_wmi_hotkey_utilities failed with error -5"*
-
+The output would look like the below
 ```
-[xxxx] probe lenovo_wmi_hotkey_utilities failed with error -5
+[    timestamp] lenovo_wmi_hotkey_utilities I-D-E-N-T-I-F-I-E-R: probe with driver lenovo_wmi_hotkey_utilities failed with error -5
 ```
 
-**Apply the below Fix** per https://wiki.archlinux.org/title/Lenovo_Yoga_7_2-in-1_14AHP9. *Unlike ThinkPads, this device does not feature LED indication on audio mute keys. If you encounter errors related to the lenovo-wmi-hotkey-utilities kernel module, you can simply blacklist it. Doing so will not affect functionality of other LED indicators.*
+[Fix it by blacklisting the kernel module](https://wiki.archlinux.org/title/Lenovo_Yoga_7_2-in-1_14AHP9) . *Unlike ThinkPads, this device does not feature LED indication on audio mute keys. If you encounter errors related to the lenovo-wmi-hotkey-utilities kernel module, you can simply blacklist it. Doing so will not affect functionality of other LED indicators.*
 
 ```
 sudo tee /etc/modprobe.d/blacklist-lenovo-wmi-hotkey-utilities.conf <<EOF
