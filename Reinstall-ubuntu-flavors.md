@@ -207,7 +207,7 @@ Install with
 Install [LocalSend](https://localsend.org/) to share files without any cloud
 1. Download the latest `.deb` release from [LocalSend Github repo](https://github.com/localsend/localsend/releases/)
 2. Install with `sudo dpkg -i LocalSend*.deb` or `sudo nala install LocalSend*.deb`
-3. If using `ufw` (e.g. for NextCloud server), configure it to ensure that port 53317 is open for incoming and outgoing traffic on both TCP and UDP
+3. If using `ufw` (e.g. for NextCloud server), [configure it](./configure-ufw-for-LocalSend.sh) to ensure that port 53317 is open for incoming and outgoing traffic on both TCP and UDP
 
 ## Games
 Install KDE games for Sudoko, Card Games, Mahjongg & Chess in Lubuntu with 
