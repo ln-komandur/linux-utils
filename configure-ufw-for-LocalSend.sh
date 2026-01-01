@@ -41,7 +41,7 @@ ufw allow from $subnet_mask_CIDR_format to any port 53317 comment \"Incoming\ TC
 echo
 
 echo "Adding a rule to open and allow all outgoing TCP and UDP packets on port 53317"
-ufw allow out to $subnet_mask_CIDR_format port 53317 comment \"Outgoing\ TCP\ and\ UDP\ on\ 53317\ for\ LocalSend-App\" #opens and allows outgoing TCP packets on port 53317
+ufw allow out from any port 53317 to $subnet_mask_CIDR_format comment \"Outgoing\ TCP\ and\ UDP\ on\ 53317\ for\ LocalSend-App\" #opens and allows outgoing TCP packets on port 53317
 echo
 
 echo "Refreshing UFW "
