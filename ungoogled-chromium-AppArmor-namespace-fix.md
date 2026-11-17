@@ -6,16 +6,11 @@ This error happens because Ubuntu 24.04 restricts unprivileged user namespaces b
 
 You can resolve this issue using either a narrow, highly secure fix (creating a custom AppArmor profile) or a broad system-wide adjustment. \[[1](https://www.google.com/goto?url=CAESgQEBxCJF1w5JZjL7Y0QoU8ZBdx9S_uRxwxjJ_ZhbK8roPlFWXYJl4kPbVivUrg-ICTTaEYJNocOiCLLbEFG_3Gt09afN0S2emSe-L1lOYHqyUgzSIW95oyR8kVPm63j2bNWO4U_pP_v-gVdlMQmyl17w5bkbiC8X8L_iVxAFKcaZeg0)\]
 
-Create a Custom AppArmor Profile (Recommended & Secure)
+##### Create a Custom AppArmor Profile (Recommended & Secure)
 
-This is the cleanest approach because it grants namespace permissions only to your ungoogled-chromium binary without weakening the rest of your system. \[[1](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\]
+This is the cleanest approach because it grants namespace permissions **only to your ungoogled-chromium binary without weakening the rest of your system**. \[[1](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\]
 
-1.  Verify your ungoogled-chromium path: 
-    
-    `which ungoogled-chromium`
-    
-    Use code with caution. 
-    
+1.  `which ungoogled-chromium` # Verify ungoogled-chromium path
     (Usually, this will output `/usr/bin/ungoogled-chromium or /usr/local/bin/ungoogled-chromium`). 
     
 2.  Create the profile file:Open a terminal and generate an AppArmor profile targeting that specific executable path (adjust `/usr/bin/ungoogled-chromium` if yours is different): 
@@ -30,15 +25,14 @@ This is the cleanest approach because it grants namespace permissions only to yo
     } 
     EOF 
     ```
-    Use code with caution. 
-    
-3.  Reload AppArmor to apply the profile: \[[1](https://www.google.com/goto?url=CAESgQEBxCJF1w5JZjL7Y0QoU8ZBdx9S_uRxwxjJ_ZhbK8roPlFWXYJl4kPbVivUrg-ICTTaEYJNocOiCLLbEFG_3Gt09afN0S2emSe-L1lOYHqyUgzSIW95oyR8kVPm63j2bNWO4U_pP_v-gVdlMQmyl17w5bkbiC8X8L_iVxAFKcaZeg0), [2](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\] 
-    
-    `sudo systemctl reload apparmor` 
-    Use code with caution. 
-    
 
-Launch your browser again; it should start perfectly with the sandbox enabled. \[[1](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\]
+    Use code with caution. 
+    
+3.  `sudo systemctl reload apparmor` # Reload AppArmor to apply the profile: \[[1](https://www.google.com/goto?url=CAESgQEBxCJF1w5JZjL7Y0QoU8ZBdx9S_uRxwxjJ_ZhbK8roPlFWXYJl4kPbVivUrg-ICTTaEYJNocOiCLLbEFG_3Gt09afN0S2emSe-L1lOYHqyUgzSIW95oyR8kVPm63j2bNWO4U_pP_v-gVdlMQmyl17w5bkbiC8X8L_iVxAFKcaZeg0), [2](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\]
+
+    Use code with caution. 
+
+Launch ungoogled-chromium browser again; it should start perfectly with the sandbox enabled. \[[1](https://www.google.com/goto?url=CAESrQEBxCJF1w__Qvdagu9grpEGwZyJNYfQp7COjKeF8FRLnvySqtXTSlDi55PX1_nVqG9ydAansvmEC7jQCHqZ6Ldt5a1HVJdvWbrUh4t1iiTsw18q61FCOGDeSBd__jB3hbWCQdtvLZd0CoxVld6mIDFhp_KMTtX95KosJH1bj0jJ0TNyN83gj9t5aXjYEMw8iBLZPcQ7pD92JGJpkZQ_zL8LZIZQZniKkqw3ncG_OA)\]
 
 #### Question: But I do not get this error on ubuntu 22.04. Why? What's different only for 24.04 and that too only from the recent versions of ungoogled-chromium ?
 
@@ -63,7 +57,7 @@ However, upstream Chromium developers have phased out and deprecated the SUID sa
 
 Without that dedicated AppArmor profile on 24.04, the browser crashes instantly and reports a failure to find a usable sandbox. \[[1](https://www.google.com/goto?url=CAESrQEBxCJF19Bryc_SQaAh2vddISzDMe1ELkqZ7IZxpERGXt8xzCtf3KpVVd6fh_xXMAx7N277tflCvYycfNWPWsMuxwX4GQQ2ALH_SkOV798JtMaqrRj_KJsmVU1FJ16JziB-zCm8fUSaUvsHhgbHuZs_zW8qiC94DS8mcYZEFYaaxjr_zJDVJ34FGFBngNaubeESokqrLfTqXBjhXCF176IxSlmtdUyQAWE-u21Cqg)\]
 
-Would you like to double-check if your Custom AppArmor Profile (Option 1) is active by running an AppArmor status command?
+`sudo aa-status | grep ungoogled-chromium` # Double-check if your Custom AppArmor Profile is active by running an AppArmor status command
 
 #### Question: what changes happened around the version "ungoogled-chromium-155.0.8059.39" after which all these problems started happening?
 
